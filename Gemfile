@@ -36,6 +36,8 @@ gem "simple_calendar", "~> 2.0"
 gem "stamp"
 gem "react_on_rails", "~> 5"
 gem 'commontator'
+gem 'mysql2'
+gem 'tzinfo-data'
 
 
 
