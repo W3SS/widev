@@ -1,0 +1,6 @@
+// Place all the styles related to the Releases controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+$("#thread_1_new_comment_form_div").removeClass("hidden");   // I added this   
+$("#thread_1_new_comment_form_div").fadeIn()[0].scrollIntoView();

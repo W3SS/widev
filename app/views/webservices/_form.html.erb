@@ -1,0 +1,45 @@
+<%= form_for(@webservice) do |f| %>
+  <% if @webservice.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@webservice.errors.count, "error") %> prohibited this webservice from being saved:</h2>
+
+      <ul>
+      <% @webservice.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :int_endpoint %><br>
+    <%= f.text_field :int_endpoint %>
+  </div>
+  <div class="field">
+    <%= f.label :bs %><br>
+    <%= f.text_field :bs %>
+  </div>
+  <div class="field">
+    <%= f.label :bs_method %><br>
+    <%= f.text_field :bs_method %>
+  </div>
+  <div class="field">
+    <%= f.label :applet %><br>
+    <%= f.text_field :applet %>
+  </div>
+  <div class="field">
+    <%= f.label :applet_method %><br>
+    <%= f.text_field :applet_method %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

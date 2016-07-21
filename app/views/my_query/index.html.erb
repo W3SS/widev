@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Query List</h1>
+<div class="well bs-component">
+
+ <div class="table-responsive">
+  <table class="table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Tags</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @queries.each do |query| %>
+      <tr>
+        <td><a href="/my_query/show/<%=query.id %>" ><%= query.title %></a></td>
+        
+        <td>
+          <% query.tags.each() do | tag | %>
+               <span class="tagsmall label label-success">
+                 <%= tag.name.upcase  %>
+               </span>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+<br>
+
+<%= link_to 'New Query', new_query_path %>
+</div>

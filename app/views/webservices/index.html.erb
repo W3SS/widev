@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Webservices</h1>
+ <div class="table-responsive">
+  <table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Int endpoint</th>
+
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @webservices.each do |webservice| %>
+      <tr>
+        
+        <td><%= webservice.name %></td>
+        <td><%= webservice.int_endpoint %></td>
+      
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+
+<br>
+
+<%= link_to 'New Webservice', new_webservice_path %>

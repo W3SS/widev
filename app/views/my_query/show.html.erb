@@ -1,0 +1,45 @@
+
+
+<p id="notice"><%= notice %></p>
+   <h2 class="titlequery">
+        <%= @query.title %>  <button class="btn btn-raised btn-success" data-clipboard-action="copy" data-clipboard-target="#codesnipp">Copy</button>
+      </h2>
+      
+<div class="well bs-component">
+
+<div class="row">
+  <div class="col-md-8">
+   
+      <p>
+          <strong>Tags:</strong>
+          <% @query.tags.each() do | tag | %>
+               <span class="tag label label-success">
+                 <%= tag.name.upcase  %>
+               </span>
+          <% end %>
+      </p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+      <pre id="codesnipp" class="brush: sql; gutter: false;">
+      <%= @query.statment %>
+  </pre>
+  </div>
+</div>
+
+</div>
+<%= link_to 'Back', my_query_index_path %>
+
+<script>
+  $(document).ready(function(){  
+  var clip = new Clipboard('.btn');
+  SyntaxHighlighter.all();
+
+
+    $.material.init();
+
+});
+</script>
+

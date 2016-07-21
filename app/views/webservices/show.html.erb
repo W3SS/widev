@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @webservice.name %>
+</p>
+
+<p>
+  <strong>Int endpoint:</strong>
+  <%= @webservice.int_endpoint %>
+</p>
+
+<p>
+  <strong>Bs:</strong>
+  <%= @webservice.bs %>
+</p>
+
+<p>
+  <strong>Bs method:</strong>
+  <%= @webservice.bs_method %>
+</p>
+
+<p>
+  <strong>Applet:</strong>
+  <%= @webservice.applet %>
+</p>
+
+<p>
+  <strong>Applet method:</strong>
+  <%= @webservice.applet_method %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @webservice.description %>
+</p>
+
+<%= link_to 'Edit', edit_webservice_path(@webservice) %> |
+<%= link_to 'Back', webservices_path %>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><?Siebel-Property-Set EscapeNames="true"?><Test_spcService
+ Service_spcName="WIN GestioneCatalogo BS_PP"
+ Method_spcName="FillCatalogHierarchy"
+ Iterations="1"
+></Test_spcService
+>

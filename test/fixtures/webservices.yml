@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  int_endpoint: MyString
+  bs: MyString
+  bs_method: MyString
+  applet: MyString
+  applet_method: MyString
+  description: MyText
+
+two:
+  name: MyString
+  int_endpoint: MyString
+  bs: MyString
+  bs_method: MyString
+  applet: MyString
+  applet_method: MyString
+  description: MyText
