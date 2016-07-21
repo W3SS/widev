@@ -1,0 +1,18 @@
+        <li class="timeline-inverted">
+          <div class="timeline-badge"><i class="glyphicon glyphicon-plus"></i></div>
+          <div class="timeline-panel">
+            <div class="timeline-heading">
+                
+                <% if a.owner %>
+                 <h4 class="timeline-title"> Update on <%= link_to a.trackable.rel,a.trackable %> </h4>
+            <% end %>
+             
+              <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> Modified by : <%= a.owner.email %> <%= a.trackable.created_at %></small></p>
+            </div>
+            <div class="timeline-body">
+                <p> On <%= a.trackable.system.name %> <%= a.trackable.reltype.name %> <%= link_to a.trackable.date.to_s, a.trackable%></p>
+                 
+            </div>
+          </div>
+        </li>
+        

@@ -1,7 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <h2>
-    <%= @release.rel %>
+    <% if @release.system %>
+      <%= @release.system.name %><% end %> <%= @release.rel %>
     <small> <%= @release.date.to_s(:rel_date) %></small>
 </h2>
 

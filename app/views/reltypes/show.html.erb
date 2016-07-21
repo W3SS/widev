@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @reltype.name %>
+</p>
+
+<p>
+  <strong>Color:</strong>
+  <%= @reltype.color %>
+</p>
+
+<p>
+  <strong>Short:</strong>
+  <%= @reltype.short %>
+</p>
+
+<%= link_to 'Edit', edit_reltype_path(@reltype) %> |
+<%= link_to 'Back', reltypes_path %>

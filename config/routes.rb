@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
+  resources :reltypes
+  resources :systems
   devise_for :users
   get 'hello_world', to: 'hello_world#index'
   get 'calendar/index'
+  get 'monitor/index'
 
   get 'uploads/new'
   resources :uploads
@@ -11,7 +14,7 @@ Rails.application.routes.draw do
 
   get 'my_query/show/:id'=> 'my_query#show'
   
-  root to: "my_query#index"
+  root to: "monitor#index"
 
   resources :queries
   resources :webservices
@@ -23,7 +26,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  #root 'monitor#index'
 
   # Example of regular route:
    get 'webservice/import' => 'webservices#import'

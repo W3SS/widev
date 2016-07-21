@@ -38,6 +38,7 @@ gem "react_on_rails", "~> 5"
 gem 'commontator'
 gem 'mysql2'
 gem 'tzinfo-data'
+gem 'public_activity'
 
 
 

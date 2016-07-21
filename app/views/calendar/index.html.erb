@@ -1,15 +1,11 @@
-<h1>Calendar#index</h1>
-<p>Find me in app/views/calendar/index.html.erb</p>
-
-<div class="well bs-component">
+<h1>Release Calendar</h1>
 <%= month_calendar events: @releases do |date, releases| %>
   <%= date %>
   
   <% releases.each do |release| %>
     <div>
-      <%= link_to release.rel, release %>
-
+      <span class="label cal-label " style="background-color:<%=release.reltype.color %>"><%= link_to release.system.short+"-"+release.rel, release , class: "cal-link" %></span> 
     </div>
   <% end %>
 <% end %>  
-</div>
+

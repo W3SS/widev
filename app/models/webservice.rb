@@ -1,5 +1,5 @@
 class Webservice < ActiveRecord::Base
-    
+
  
 def self.import(file)
      

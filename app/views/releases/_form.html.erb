@@ -14,6 +14,9 @@
     <% end %>
 
       <%= f.text_field :rel %>
+      <%= f.select :system_id, System.all.collect { |p| [ p.name, p.id ] }, include_blank: true %>
+      <%= f.select :reltype_id, Reltype.all.collect { |p| [ p.name, p.id ] }, include_blank: true %>
+
 
       <div class="form-group">
           <div class="checkbox">

@@ -112,6 +112,11 @@ GEM
       mime-types
       mimemagic (~> 0.3.0)
     pkg-config (1.1.7)
+    public_activity (1.5.0)
+      actionpack (>= 3.0.0)
+      activerecord (>= 3.0)
+      i18n (>= 0.5.0)
+      railties (>= 3.0.0)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -217,6 +222,7 @@ DEPENDENCIES
   jquery-rails
   mysql2
   paperclip (~> 5.0.0)
+  public_activity
   rails (= 4.2.5)
   react_on_rails (~> 5)
   roo
