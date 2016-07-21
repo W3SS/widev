@@ -1,18 +1,41 @@
-<h1>Release Calendar</h1>
 
-
+<div class="container">
+  <h1>Release Calendar</h1>
 <%= month_calendar events: @releases do |date, releases| %>
   <%= date %>
   
   <% releases.each do |release| %>
     <div>
-      <span class="label cal-label " style="background-color:<%=release.reltype.color %>"><%= link_to release.system.short+"-"+release.rel, release , class: "cal-link" %></span> 
+      <span class="label cal-label" style="background-color:<%=release.reltype.color %>"><%= link_to release.system.short+"-"+release.rel, release , class: "cal-link" %></span> 
     </div>
   <% end %>
 <% end %>  
 <div class="row">
   <div class="col-md-12">
     <%= link_to 'New Release', new_release_path ,class: "btn btn-success" %>
-
   </div>
+</div>
+
+<br/>
+
+<div class="row">
+  <div class="col-md-3">
+    <h4>Systems</h4>
+    <ul>
+      <% @systems.each() do |system| %>
+      <li><span class="label" style="background-color:<%=system.color %>"><%= system.name %></span></li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="col-md-3">
+    <h4>Release Types</h4>
+    <ul>
+      <% @types.each() do |type| %>
+      <li><span class="label" style="background-color:<%=type.color %>"><%= type.name %></span></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+  
 </div>
