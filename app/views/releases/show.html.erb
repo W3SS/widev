@@ -2,88 +2,94 @@
 
 <h2>
     <%= @release.rel %>
-    <small> <%= @release.date.to_s(:rel_date) %></li>
-
+    <small> <%= @release.date.to_s(:rel_date) %></small>
 </h2>
 
-<%= link_to 'Edit', edit_release_path(@release), class:"btn btn-raised btn-primary" %>
 
 <div class="well bs-component">
-  
+  <%= bootstrap_form_for(@release) do |f| %>
 
-<div class="row">
-  <div class="col-md-6">
-      <strong>Note:</strong>
-      <textarea class="rnoutcome" readonly>
-        <%= @release.note %>
-      </textarea>
-  </div>
-  <div class="col-md-6">
-    <strong>Outcome:</strong>
-          <textarea class="rnoutcome" readonly>
+    <%= link_to 'Edit', edit_release_path(@release), class:"btn btn-primary" %>
+    <%= f.submit 'Save', :class => "btn btn-success" %>
+     <br/>
+    
+     <div class="row">
+          <div class="col-md-6">
+            <%= f.text_area :note, style: "height:300px",class: "rnoutcome" %>
+          </div>
+          <div class="col-md-6">
+            <%= f.text_area :outcome, style: "height:300px",class: "rnoutcome" %>
+              </textarea>
+          </div>
+     </div>
+    <p>
+    
+    <div class="form-group">
+          <div class="checkbox">
+            <label>
+              <input  name="release[completed]" type="checkbox"> Completed
+            </label>
+          </div>
+        </div>
+    <% end %> <!-- end form -->
 
-    <%= @release.outcome %>
-  </textarea>
-  </div>
-  
-</div>
-<p>
-
-<p>
-  <strong>Completed:</strong>
-  <%= @release.completed %>
-</p>
-
-
-  <table class="table">
-  <thead>
-    <tr>
-      <th>Uploads</th>
-    </tr>
-  </thead>
-
-  <tbody>
-   <% @release.uploads.each() do |file| %>
-      <tr>
-        <td><a href="<%= file.myfile.url %>"><%= file.myfile_file_name %></a></td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
-
+    
+      <table  class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Uploads</th>
+          <th>Size</th>
+        </tr>
+      </thead>
+    
+      <tbody>
+       <% @release.uploads.each() do |file| %>
+          <tr>
+            <td><a href="<%= file.myfile.url %>"><%= file.myfile_file_name %></a></td>
+            <td><%= file.myfile_file_size %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+      
+   
 
 
 <%= form_for(@upload, html: { multipart: true, class: "dropzone"}) do |f|  %>
-  <div class="fallback">
-    <%= f.file_field :myfile %><br>
-    <%= f.submit "Upload" %>
-  </div>
-<% end %>
+    <div class="fallback">
+      <%= f.file_field :myfile %><br>
+      <%= f.submit "Upload" %>
+    </div>
+  <% end %>
 
 
 <div class="row">
     <div class="col-md-12">
         <%= commontator_thread(@release) %>
-
     </div>
-  </div>
+</div>
+
+
+   
+
+
 </div>
 
 <script>
   $(document).ready(function(){
 	// disable auto discover
-	Dropzone.autoDiscover = false;
+	Dropzone.autoDiscover = true;
 
 	// grap our upload form by its id
 	$("#new_upload").dropzone({
 		// restrict image size to a maximum 1MB
-		maxFilesize: 1,
+		maxFilesize: 50,
 		// changed the passed param to one accepted by
 		// our rails app
 		paramName: "upload[myfile]",
 		params: {"upload[release_id]" : <%= @release.id %>},
 		// show remove links on each image upload
-		addRemoveLinks: true
+		addRemoveLinks: false
 	});	
 });
 </script>
