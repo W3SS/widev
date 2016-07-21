@@ -1,4 +1,6 @@
 <h1>Release Calendar</h1>
+
+
 <%= month_calendar events: @releases do |date, releases| %>
   <%= date %>
   
@@ -8,4 +10,9 @@
     </div>
   <% end %>
 <% end %>  
+<div class="row">
+  <div class="col-md-12">
+    <%= link_to 'New Release', new_release_path ,class: "btn btn-success" %>
 
+  </div>
+</div>
