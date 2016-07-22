@@ -7,10 +7,10 @@
                  <h4 class="timeline-title"> Created <%=a.trackable.system.short %> <%= link_to a.trackable.rel,a.trackable %> </h4>
             <% end %>
              
-              <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> Created by : <%= a.owner.email %> <%= a.trackable.created_at %></small></p>
+              <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> Created by : <%= a.owner.email %> on <%= a.trackable.created_at.to_s(:rel_date) %></small></p>
             </div>
             <div class="timeline-body">
-                <p>New <%= a.trackable.system.name %> <%= a.trackable.reltype.name %> <%= link_to a.trackable.date.to_s, a.trackable%></p>
+                <p>New <%= a.trackable.system.name %> <%= a.trackable.reltype.name %> <%= link_to a.trackable.date.to_formatted_s(:long), a.trackable%></p>
             </div>
           </div>
         </li>

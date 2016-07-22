@@ -48,7 +48,7 @@
           <th>Type</th>
           <th>Latest rel</th>
           <th>Latest date</th>
-          <th>Latest file REL</th>
+          <th>File REL</th>
         </tr>
       </thead>
     
@@ -61,7 +61,7 @@
             <td><%= item.ftype %></td>
             <% if latest %>
                 <td><span class="label cal-label" style="background-color:<%=latest.release.reltype.color %>"><%= link_to latest.release.system.short+"-"+latest.release.rel, latest.release , class: "cal-link" %></span></td>
-                <td><%= latest.release.date %></td>
+                <td><%= latest.release.date.to_s(:rel_date)  %></td>
                 <td><%= latest.file_name[0..10] %></td>
             <% else %>
                 <td>-</td>

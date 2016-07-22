@@ -7,7 +7,7 @@
                  <h4 class="timeline-title"> Created query <%= link_to a.trackable.title , "/my_query/show/"+ a.trackable.id.to_s %> </h4>
             <% end %>
              
-              <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> Created by : <%= a.owner.email %> <%= a.trackable.created_at %></small></p>
+              <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> Created by : <%= a.owner.email %> <%= a.trackable.created_at.to_formatted_s(:long) %></small></p>
             </div>
           </div>
         </li>

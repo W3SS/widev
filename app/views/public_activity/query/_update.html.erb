@@ -7,7 +7,7 @@
                  <h4 class="timeline-title"> Update on <%=a.trackable.system.short %> <%= link_to a.trackable.rel,a.trackable %> </h4>
             <% end %>
              
-              <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> Modified by : <%= a.owner.email %> <%= a.trackable.updated_at %></small></p>
+              <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> Modified by : <%= a.owner.email %> <%= a.trackable.updated_at.to_formatted_s(:long) %></small></p>
             </div>
             <div class="timeline-body">
                 <p> On <%= a.trackable.system.name %> <%= a.trackable.reltype.name %> <%= link_to a.trackable.date.to_s, a.trackable%></p>
