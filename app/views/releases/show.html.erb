@@ -6,20 +6,21 @@
     <small> <%= @release.date.to_s(:rel_date) %></small>
 </h2>
 
-
 <div class="well bs-component">
   <%= bootstrap_form_for(@release) do |f| %>
 
     <%= link_to 'Edit', edit_release_path(@release), class:"btn btn-primary" %>
     <%= f.submit 'Save', :class => "btn btn-success" %>
+    <%= link_to 'Release Items' , '/release/objects/'+@release.id.to_s , class:"btn btn-primary" %>
+
      <br/>
     
      <div class="row">
           <div class="col-md-6">
-            <%= f.text_area :note, style: "height:300px",class: "rnoutcome" %>
+            <%= f.text_area :note, label:"Note for RN", style: "height:300px",class: "rnoutcome" %>
           </div>
           <div class="col-md-6">
-            <%= f.text_area :outcome, style: "height:300px",class: "rnoutcome" %>
+            <%= f.text_area :outcome , label:"Outcome after RN", style: "height:300px",class: "rnoutcome" %>
               </textarea>
           </div>
      </div>
@@ -38,7 +39,7 @@
       <table  class="table table-bordered">
       <thead>
         <tr>
-          <th>Uploads</th>
+          <th>Uploads KO and logs</th>
           <th>Size</th>
         </tr>
       </thead>

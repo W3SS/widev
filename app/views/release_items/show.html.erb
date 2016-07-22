@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @release_item.name %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @release_item.ftype %>
+</p>
+
+<p>
+  <strong>Scratchable:</strong>
+  <%= @release_item.scratchable %>
+</p>
+
+<p>
+  <strong>Remove:</strong>
+  <%= @release_item.remove %>
+</p>
+
+<%= link_to 'Edit', edit_release_item_path(@release_item) %> |
+<%= link_to 'Back', release_items_path %>

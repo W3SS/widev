@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :release_items
   resources :reltypes
   resources :systems
   devise_for :users
@@ -32,6 +33,17 @@ Rails.application.routes.draw do
    get 'webservice/import' => 'webservices#import'
    post 'webservice/import' => 'webservices#import'
 
+
+  get 'ritems/import' => 'release_items#import'
+  post 'ritems/import' => 'release_items#import'
+  
+  get 'ritems/remove_all/:release' => 'release_items#remove_all'
+  
+  get 'release/objects/:id' => 'releases#viewobject'
+  
+  
+  
+  
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 

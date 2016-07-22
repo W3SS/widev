@@ -6,7 +6,8 @@ class Release < ActiveRecord::Base
     has_many :uploads
     belongs_to :system
     belongs_to :reltype
-    
+    has_many :release_items
+
     def start_time
         self.date
     end

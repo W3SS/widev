@@ -1,0 +1,110 @@
+<h2>
+    Items for <% if @release.system %>
+      <%= @release.system.name %><% end %> <%= @release.rel %>
+    <small> <%= @release.date.to_s(:rel_date) %></small>
+</h2>
+<div class="well bs-component">
+        <div class="row">
+               <div class="col-md-3">
+                <%= link_to 'Back', '/releases/'+@release.id.to_s, class:"btn btn-primary"  %>
+        </div>
+        <div class="col-md-5">
+            <%= form_tag ritems_import_path, class: "form-inline" , multipart: true do %>
+
+
+            <div class="input-group">
+                <label class="input-group-btn">
+                    <span class="btn btn-primary">
+                        Browse<input type="file" name="file" style="display: none;" multiple>
+                    </span>
+                </label>
+                <input type="text" class="form-control" readonly>
+                <span class="input-group-btn">
+                 <%= submit_tag "Import" ,class: "btn btn-success" %>
+              </span>
+            </div>
+
+              
+            <%= hidden_field_tag :release ,@release.id.to_s %>
+    <% end %>
+    </div>
+     
+    <div class="col-md-3">
+            <%= link_to 'Remove all', '/ritems/remove_all/'+@release.id.to_s, class:"btn btn-danger" ,:data => {:confirm => 'Are you sure?'} %>
+    </div>
+
+    
+
+    </div>
+    </div>
+<div class="well bs-component">
+
+    <div class="row">
+        <div class="col-md-12">
+                  <table  class="table table-bordered datatable">
+      <thead>
+        <tr>
+          <th>Filename</th>
+          <th>Type</th>
+          <th>Latest rel</th>
+          <th>Latest date</th>
+          <th>Latest file REL</th>
+        </tr>
+      </thead>
+    
+      <tbody>
+        <% @release.release_items.each() do | item | %>
+         
+          <% latest = item.getlatestrel(item) %>
+          <tr>
+            <td><%= item.file_name %></td>
+            <td><%= item.ftype %></td>
+            <% if latest %>
+                <td><span class="label cal-label" style="background-color:<%=latest.release.reltype.color %>"><%= link_to latest.release.system.short+"-"+latest.release.rel, latest.release , class: "cal-link" %></span></td>
+                <td><%= latest.release.date %></td>
+                <td><%= latest.file_name[0..10] %></td>
+            <% else %>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            <% end %>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+        </div>
+    </div>
+    
+</div>
+
+
+<script>
+    
+$(function() {
+    $('.datatable').DataTable({});
+  // We can attach the `fileselect` event to all file inputs on the page
+  $(document).on('change', ':file', function() {
+    var input = $(this),
+        numFiles = input.get(0).files ? input.get(0).files.length : 1,
+        label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+    input.trigger('fileselect', [numFiles, label]);
+  });
+
+  // We can watch for our custom `fileselect` event like this
+  $(document).ready( function() {
+      $(':file').on('fileselect', function(event, numFiles, label) {
+
+          var input = $(this).parents('.input-group').find(':text'),
+              log = numFiles > 1 ? numFiles + ' files selected' : label;
+
+          if( input.length ) {
+              input.val(log);
+          } else {
+              if( log ) alert(log);
+          }
+
+      });
+  });
+  
+});
+</script>

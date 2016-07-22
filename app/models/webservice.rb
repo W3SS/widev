@@ -3,7 +3,7 @@ class Webservice < ActiveRecord::Base
  
 def self.import(file)
      
-     logger.info ("Start importing")
+      logger.info ("Start importing")
       spreadsheet = Roo::Spreadsheet.open(file)
      
       header = spreadsheet.row(1)

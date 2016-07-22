@@ -3,11 +3,23 @@ class ReleasesController < ApplicationController
 
   before_action :set_release, only: [:show, :edit, :update, :destroy]
 
+
+  def viewobject
+      release_id = params[:id]
+      @release  = Release.find(release_id)
+    
+  end
+
+
   # GET /releases
   # GET /releases.json
   def index
     @releases = Release.all
   end
+
+
+
+
 
   # GET /releases/1
   # GET /releases/1.json

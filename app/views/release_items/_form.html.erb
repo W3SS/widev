@@ -1,0 +1,33 @@
+<%= form_for(@release_item) do |f| %>
+  <% if @release_item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@release_item.errors.count, "error") %> prohibited this release_item from being saved:</h2>
+
+      <ul>
+      <% @release_item.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :ftype %><br>
+    <%= f.text_field :ftype %>
+  </div>
+  <div class="field">
+    <%= f.label :scratchable %><br>
+    <%= f.check_box :scratchable %>
+  </div>
+  <div class="field">
+    <%= f.label :remove %><br>
+    <%= f.check_box :remove %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
