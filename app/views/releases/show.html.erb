@@ -19,6 +19,7 @@
           <div class="col-md-6">
             <%= f.text_area :note, label:"Note for RN", style: "height:300px",class: "rnoutcome" %>
           </div>
+    
           <div class="col-md-6">
             <%= f.text_area :outcome , label:"Outcome after RN", style: "height:300px",class: "rnoutcome" %>
               </textarea>
@@ -79,6 +80,13 @@
 
 <script>
   $(document).ready(function(){
+    
+     $(function() {
+          $('.rnoutcome').froalaEditor({
+            
+      height: 300
+          })
+      });
 	// disable auto discover
 	Dropzone.autoDiscover = true;
 

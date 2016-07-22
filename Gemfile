@@ -40,6 +40,7 @@ gem 'mysql2'
 gem 'tzinfo-data'
 gem 'public_activity'
 gem 'jquery-datatables-rails', '~> 3.3.0'
+gem "wysiwyg-rails"
 
 
 
