@@ -16,6 +16,7 @@
   "dependencies": {
     "pubnub": "^3.14.5",
     "react": "^15.2.1",
-    "react-web-notification": "^0.2.3"
+    "react-addons-css-transition-group": "^15.2.1",
+    "react-dom": "^15.2.1"
   }
 }

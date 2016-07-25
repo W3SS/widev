@@ -16,6 +16,7 @@ export default class MessageInput extends React.Component {
   }
 
   handleSend(e) {
+    e.preventDefault();
     const mess = this.refs.message.value;
     console.log(mess);
     this.props.onSend(mess);
@@ -25,12 +26,14 @@ export default class MessageInput extends React.Component {
   render() {
     return (
            <div className="chat-box bg-white">
-                <div className="input-group">
+            <form onSubmit={(e)=>this.handleSend(e)}>
+
                     <input ref="message" className="form-control border no-shadow no-rounded" placeholder="Type your message here" />
                     <span className="input-group-btn">
                         <button className="btn btn-success no-rounded"  onClick={(e)=>this.handleSend(e)} type="button">Send</button>
                     </span>
-                </div>
+                 </form>
+
             </div> 
      );
   }

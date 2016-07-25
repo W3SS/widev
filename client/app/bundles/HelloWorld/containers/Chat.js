@@ -4,6 +4,7 @@ import 'pubnub';
 import MessageInput from '../components/MessageInput';
 import UserList from '../components/UserList';
 
+import {NotificationContainer, NotificationManager} from 'react-notifications';
 
 
     
@@ -25,6 +26,8 @@ export default class Chat extends React.Component {
 
   componentDidMount(){
       
+      this._notificationSystem = this.refs.notificationSystem;
+
     let publish_key =  'pub-c-b2b03759-be93-423c-9bef-ac0f131dc2a0'; 
     let subscribe_key  = 'sub-c-4be724ac-5249-11e6-9c7c-0619f8945a4f'; 
  
@@ -37,7 +40,17 @@ export default class Chat extends React.Component {
 
         this.PubNub.subscribe({
             channel: this.props.channel,
-            
+            presence :  (m)=>{
+                console.log(m);
+                 NotificationManager.info(m.uuid +" "+m.action+" this chat!");
+                  this.PubNub.here_now({
+            channel : this.props.channel,
+            callback : (m)=>{
+                console.log(m);
+                this.setState({users: m.uuids});
+            }
+        });
+            },
             message: (message) =>{
                  console.log(message);
                 
@@ -84,10 +97,12 @@ export default class Chat extends React.Component {
     console.log(data);
     this.PubNub.publish({
       channel: this.props.channel,
-      message: data,
+      message: data
     });
     
   }
+  
+  
   
 
   render() {
@@ -137,6 +152,9 @@ export default class Chat extends React.Component {
                     <MessageInput onSend={(mess)=>this.handleSend(mess)}/>
                 </div>
             </div>
+                    <NotificationContainer/>
+
+
         </div>
     );
   }
