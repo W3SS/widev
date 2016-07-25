@@ -12,5 +12,10 @@
     "build:client": "(cd client && npm run build:client --silent",
     "build:dev:client": "(cd client && npm run build:dev:client --silent)",
     "test": "rspec"
+  },
+  "dependencies": {
+    "pubnub": "^3.14.5",
+    "react": "^15.2.1",
+    "react-web-notification": "^0.2.3"
   }
 }

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'chat/index'
+
   resources :release_items
   resources :reltypes
   resources :systems
