@@ -1,0 +1,49 @@
+<%= form_for(@item_per_installation) do |f| %>
+  <% if @item_per_installation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@item_per_installation.errors.count, "error") %> prohibited this item_per_installation from being saved:</h2>
+
+      <ul>
+      <% @item_per_installation.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :rel_template_item %><br>
+    <%= f.text_field :rel_template_item %>
+  </div>
+  <div class="field">
+    <%= f.label :start_time %><br>
+    <%= f.date_select :start_time %>
+  </div>
+  <div class="field">
+    <%= f.label :end_time %><br>
+    <%= f.date_select :end_time %>
+  </div>
+  <div class="field">
+    <%= f.label :installation %><br>
+    <%= f.text_field :installation %>
+  </div>
+  <div class="field">
+    <%= f.label :is_done %><br>
+    <%= f.check_box :is_done %>
+  </div>
+  <div class="field">
+    <%= f.label :is_started %><br>
+    <%= f.check_box :is_started %>
+  </div>
+  <div class="field">
+    <%= f.label :is_error %><br>
+    <%= f.check_box :is_error %>
+  </div>
+  <div class="field">
+    <%= f.label :note %><br>
+    <%= f.text_area :note %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

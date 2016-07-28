@@ -31,6 +31,7 @@
     "jquery-ujs": "^1.2.1",
     "loader-utils": "^0.2.13",
     "lodash": "^4.7.0",
+    "pubnub": "^3.14.5",
     "react": "^0.14.8 || ^15.0.0",
     "react-addons-css-transition-group": "^15.2.1",
     "react-dom": "^0.14.8 || ^15.0.0",

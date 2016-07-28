@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @rel_template_item.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @rel_template_item.description %>
+</p>
+
+<p>
+  <strong>Note:</strong>
+  <%= @rel_template_item.note %>
+</p>
+
+<%= link_to 'Edit', edit_rel_template_item_path(@rel_template_item) %> |
+<%= link_to 'Back', rel_template_items_path %>

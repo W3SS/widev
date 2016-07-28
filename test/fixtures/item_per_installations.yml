@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  rel_template_item: 
+  start_time: 2016-07-28
+  end_time: 2016-07-28
+  installation: 
+  is_done: false
+  is_started: false
+  is_error: false
+  note: MyText
+
+two:
+  rel_template_item: 
+  start_time: 2016-07-28
+  end_time: 2016-07-28
+  installation: 
+  is_done: false
+  is_started: false
+  is_error: false
+  note: MyText

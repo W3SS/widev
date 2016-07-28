@@ -1,0 +1,27 @@
+
+<h2>Installation in progress</h2>
+
+<div class="row">
+    <div class="col-md-12">
+        <table  class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Release</th>
+      <th>Env</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @installations.each do |installation| %>
+      <tr>
+        <td><%= installation.release %></td>
+        <td><%= installation.environment.name %></td>
+        <td><%= link_to 'Show', '/my_installation/viewinstall/' + installation.id.to_s %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+    </div>
+</div>

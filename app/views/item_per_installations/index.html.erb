@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Item Per Installations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Rel template item</th>
+      <th>Start time</th>
+      <th>End time</th>
+      <th>Installation</th>
+      <th>Is done</th>
+      <th>Is started</th>
+      <th>Is error</th>
+      <th>Note</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @item_per_installations.each do |item_per_installation| %>
+      <tr>
+        <td><%= item_per_installation.rel_template_item %></td>
+        <td><%= item_per_installation.start_time %></td>
+        <td><%= item_per_installation.end_time %></td>
+        <td><%= item_per_installation.installation %></td>
+        <td><%= item_per_installation.is_done %></td>
+        <td><%= item_per_installation.is_started %></td>
+        <td><%= item_per_installation.is_error %></td>
+        <td><%= item_per_installation.note %></td>
+        <td><%= link_to 'Show', item_per_installation %></td>
+        <td><%= link_to 'Edit', edit_item_per_installation_path(item_per_installation) %></td>
+        <td><%= link_to 'Destroy', item_per_installation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Item per installation', new_item_per_installation_path %>

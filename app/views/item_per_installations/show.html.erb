@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Rel template item:</strong>
+  <%= @item_per_installation.rel_template_item %>
+</p>
+
+<p>
+  <strong>Start time:</strong>
+  <%= @item_per_installation.start_time %>
+</p>
+
+<p>
+  <strong>End time:</strong>
+  <%= @item_per_installation.end_time %>
+</p>
+
+<p>
+  <strong>Installation:</strong>
+  <%= @item_per_installation.installation %>
+</p>
+
+<p>
+  <strong>Is done:</strong>
+  <%= @item_per_installation.is_done %>
+</p>
+
+<p>
+  <strong>Is started:</strong>
+  <%= @item_per_installation.is_started %>
+</p>
+
+<p>
+  <strong>Is error:</strong>
+  <%= @item_per_installation.is_error %>
+</p>
+
+<p>
+  <strong>Note:</strong>
+  <%= @item_per_installation.note %>
+</p>
+
+<%= link_to 'Edit', edit_item_per_installation_path(@item_per_installation) %> |
+<%= link_to 'Back', item_per_installations_path %>

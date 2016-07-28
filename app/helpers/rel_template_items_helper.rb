@@ -1,0 +1,2 @@
+module RelTemplateItemsHelper
+end

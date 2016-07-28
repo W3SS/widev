@@ -1,0 +1,11 @@
+<h1>Editing Installation Template</h1>
+
+<%= render 'form' %>
+
+
+<%= link_to 'Show', @rel_template %> |
+<%= link_to 'Back', rel_templates_path %>
+
+
+
+<%= react_component("TemplateApp", props: {currentUser: current_user,template: @rel_template }, prerender: false) %>

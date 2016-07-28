@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160722083048) do
+ActiveRecord::Schema.define(version: 20160728125447) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "trackable_id"
@@ -78,9 +78,62 @@ ActiveRecord::Schema.define(version: 20160722083048) do
 
   add_index "commontator_threads", ["commontable_id", "commontable_type"], name: "index_commontator_threads_on_c_id_and_c_type", unique: true
 
+  create_table "environments", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "installations", force: :cascade do |t|
+    t.string   "release"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "rel_template_id"
+    t.integer  "environment_id"
+    t.boolean  "is_started"
+    t.boolean  "is_done"
+  end
+
+  create_table "item_per_installations", force: :cascade do |t|
+    t.integer  "rel_template_item_id"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.integer  "installation_id"
+    t.boolean  "is_done"
+    t.boolean  "is_started"
+    t.boolean  "is_error"
+    t.text     "note"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  create_table "item_per_templates", force: :cascade do |t|
+    t.integer  "rel_template_id"
+    t.integer  "rel_template_item_id"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "item_per_templates", ["rel_template_id"], name: "index_item_per_templates_on_rel_template_id"
+  add_index "item_per_templates", ["rel_template_item_id"], name: "index_item_per_templates_on_rel_template_item_id"
+
   create_table "queries", force: :cascade do |t|
     t.string   "title"
     t.text     "statment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "rel_template_items", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
+    t.text     "note"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "rel_templates", force: :cascade do |t|
+    t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

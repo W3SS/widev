@@ -1,0 +1,24 @@
+<%= bootstrap_form_for(@rel_template_item) do |f| %>
+  <% if @rel_template_item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@rel_template_item.errors.count, "error") %> prohibited this rel_template_item from being saved:</h2>
+
+      <ul>
+      <% @rel_template_item.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+    <%= f.text_field :name %>
+ 
+    <%= f.text_field :description %>
+ 
+    <%= f.text_area :note %>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,4 +1,40 @@
 Rails.application.routes.draw do
+  namespace :api do
+  get 'template/getavailablesteps'
+  end
+
+  namespace :api do
+  get 'template/getstepfortemplate/:id'=> 'template#getstepfortemplate'
+  end
+
+  namespace :api do
+  get 'template/addsteptotemplate'
+  end
+
+  namespace :api do
+  get 'template/removestepfromtemplate'
+  end
+
+  namespace :api do
+    get 'installation/startTask/:id'  => 'installation#startTask'
+    get 'installation/endTask/:id'  => 'installation#endTask'
+    get 'installation/errorTask/:id'   => 'installation#errorTask'
+    get 'installation/complete/:id'   => 'installation#complete'
+  end
+
+
+
+  resources :environments
+  get 'my_installation/newinstall'
+  get 'my_installation/viewinstall/:id' => 'my_installation#viewinstall'
+  get 'my_installation/ongoing'
+
+  post 'my_installation/createinstall'
+
+  resources :item_per_installations
+  resources :installations
+  resources :rel_template_items
+  resources :rel_templates
   get 'chat/index'
 
   resources :release_items
