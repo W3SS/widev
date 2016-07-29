@@ -1,0 +1,8 @@
+<li class="list-group-item list-group-item-info">
+    <% if a.owner %>
+        <%= a.trackable.created_at.to_formatted_s(:long) %> - <%= a.owner.email %> Started <%=a.trackable.rel_template_item.name %>
+    <% end %>
+    <% if !a.owner %>
+        <%= a.trackable.created_at.to_formatted_s(:long) %> -Someone started <%=a.trackable.rel_template_item.name %>
+    <% end %>
+</li>

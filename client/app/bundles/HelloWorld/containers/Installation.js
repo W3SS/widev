@@ -70,7 +70,7 @@ export default class Installation extends React.Component {
     }
     
     return (
-      <div className="container">
+      <div >
         <div className="row">
               <div className="col-md-12">
                <h1> {inst.release}</h1>

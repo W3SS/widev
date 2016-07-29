@@ -1,4 +1,6 @@
 class MyInstallationController < ApplicationController
+    before_action :authenticate_user!
+
   def newinstall
     @installation = Installation.new
   end
@@ -17,6 +19,9 @@ class MyInstallationController < ApplicationController
   
   def viewinstall
     @installation = Installation.find(params[:id])
+    
+    @activities = PublicActivity::Activity.where(trackable_type:'ItemPerInstallation').where(recipient: @installation).limit(100).order(created_at: :desc)
+
   end
   
   

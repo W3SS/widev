@@ -7,7 +7,8 @@ class Api::InstallationController < ApplicationController
     @item.start_time = DateTime.now.to_formatted_s(:db)   
     @item.is_started = true
     @item.save!
-    
+    @item.create_activity key: 'item_per_installation.started', owner: current_user,recipient: @item.installation
+
      respond_to do |format|
         format.json { render :show, status: :ok, location: @item }
      end
@@ -19,6 +20,9 @@ class Api::InstallationController < ApplicationController
     @item.is_done = true
     @item.save!
     
+    @item.create_activity key: 'item_per_installation.done', owner: current_user,recipient: @item.installation
+
+    
      respond_to do |format|
         format.json { render :show, status: :ok, location: @item }
      end
@@ -29,6 +33,9 @@ class Api::InstallationController < ApplicationController
     @item.end_time =DateTime.now
     @item.is_error = true
     @item.save!
+    
+    @item.create_activity key: 'item_per_installation.error', owner: current_user,recipient: @item.installation
+
     
      respond_to do |format|
         format.json { render :show, status: :ok, location: @item }

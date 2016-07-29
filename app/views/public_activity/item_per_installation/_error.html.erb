@@ -1,0 +1,8 @@
+<li class="list-group-item list-group-item-warning">
+    <% if a.owner %>
+        <%= a.trackable.created_at.to_formatted_s(:long) %> - <%= a.owner.email %> completed  <%=a.trackable.rel_template_item.name %> with error
+    <% end %>
+    <% if !a.owner %>
+        <%= a.trackable.created_at.to_formatted_s(:long) %> -Someone completed <%=a.trackable.rel_template_item.name %> with error 
+    <% end %>
+</li>
