@@ -4,7 +4,7 @@ class Api::InstallationController < ApplicationController
   def startTask
      
     @item = ItemPerInstallation.find(params[:id]);
-    @item.start_time = DateTime.now.to_formatted_s(:db)   
+    @item.start_time = DateTime.now
     @item.is_started = true
     @item.save!
     @item.create_activity key: 'item_per_installation.started', owner: current_user,recipient: @item.installation
