@@ -4,6 +4,7 @@
 import React, { PropTypes } from 'react';
 import _ from 'lodash';
 import Axios from 'axios';
+import moment from 'moment';
 
 // Simple example of a React "dumb" component
 export default class InstallationItemRow extends React.Component {
@@ -58,6 +59,18 @@ export default class InstallationItemRow extends React.Component {
     let start_enabled=true;
     let status="";
     
+    let start = moment(item.start_time);
+    let end;
+    if (item.end_time != null){
+       end = moment(item.end_time);
+    }else{
+       end = moment(new Date());
+    }
+    let elapsed="-";
+    if (item.start_time != null){
+       elapsed = moment.duration(end.diff(start)).humanize();
+    }
+    
     if( item.start_time == null && item.end_time == null ){
       start_enabled=true
       error_enabled=false;
@@ -82,16 +95,18 @@ export default class InstallationItemRow extends React.Component {
     if(item.is_error){
        status =<span className="label label-danger"> ERROR </span>
     }
-     
     
     
+     const startF= item.start_time?moment(item.start_time).format('MMMM Do, h:mm:ss a'):"-";
+     const endF= item.end_time?moment(item.end_time).format('MMMM Do, h:mm:ss a'):"-";
+
     
     return (
          <tr>
             <td>{ item.rel_template_item.name }</td>
-            <td>{ item.start_time }</td>
-            <td>{ item.end_time }</td>
-            <td> 5 min</td>
+            <td>{ startF }</td>
+            <td>{ endF }</td>
+            <td> { elapsed } </td>
             <td>{ status } </td>
             <td><button disabled={!start_enabled} className="btn btn-primary" onClick={()=>this.setStart()}>Start</button></td>
             <td><button disabled={!done_enabled} className="btn btn-success" onClick={()=>this.setDone()} >Done</button></td>
