@@ -1,0 +1,8 @@
+ 
+
+<%= react_component("InstallationApp", props: {currentUser: current_user,installation: @installation ,show_btn: false }, prerender: false) %>
+
+<h2>Installation Timeline</h2>
+<ul class="list-group">
+        <%= render_activities(@activities, fallback: :text) %>
+</ul>

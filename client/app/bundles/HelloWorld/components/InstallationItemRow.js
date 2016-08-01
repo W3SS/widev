@@ -9,7 +9,8 @@ import moment from 'moment';
 // Simple example of a React "dumb" component
 export default class InstallationItemRow extends React.Component {
   static propTypes = {
-    item: PropTypes.object.isRequired
+    item: PropTypes.object.isRequired,
+    show_button:PropTypes.boolean
  
   };
 
@@ -99,7 +100,15 @@ export default class InstallationItemRow extends React.Component {
     
      const startF= item.start_time?moment(item.start_time).format('MMMM Do, h:mm:ss a'):"-";
      const endF= item.end_time?moment(item.end_time).format('MMMM Do, h:mm:ss a'):"-";
-
+      let button1='';
+      let button2='';
+      let button3='';
+      
+      if(this.props.show_button != false){
+        button1 = <td><button disabled={!start_enabled} className="btn btn-primary" onClick={()=>this.setStart()}>Start</button></td>
+        button2=     <td><button disabled={!done_enabled} className="btn btn-success" onClick={()=>this.setDone()} >Done</button></td>
+        button3  =  <td><button disabled={!error_enabled} className="btn btn-danger" onClick={()=>this.setError()} >Error</button></td>
+      }
     
     return (
          <tr>
@@ -108,9 +117,10 @@ export default class InstallationItemRow extends React.Component {
             <td>{ endF }</td>
             <td> { elapsed } </td>
             <td>{ status } </td>
-            <td><button disabled={!start_enabled} className="btn btn-primary" onClick={()=>this.setStart()}>Start</button></td>
-            <td><button disabled={!done_enabled} className="btn btn-success" onClick={()=>this.setDone()} >Done</button></td>
-            <td><button disabled={!error_enabled} className="btn btn-danger" onClick={()=>this.setError()} >Error</button></td>
+            {button1}
+            {button2}
+            {button3}
+            
          </tr>    
     );
   }

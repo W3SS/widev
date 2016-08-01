@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+
+<div class="row" style="text-align: center"><div class="col-md-12">
+  <h1>Listing Environments</h1>
+
+      <% @environments.each do |environment| %>
+
+        <h2><%= link_to  environment.name, '/my_environment/status?env_id='+environment.id.to_s  %></h2>
+    <% end %>
+
+</div></div>
+
+<br>
+
+

@@ -1,0 +1,66 @@
+<h1>Status of <strong><%= @env.name %></strong></h1>
+
+
+
+<h2>Ongoing installations</h2>
+
+<div class="row">
+    <div class="col-md-12 well">
+        <table id="newinstall"  class="table table-bordered">
+  <thead>
+    <tr>
+
+      <th>Release</th>      <th>Created</th>
+
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @installations.each do |installation| %>
+      <tr>
+        <td><%= installation.release %></td>
+        <td><%= installation.created_at.strftime("%d-%m-%Y %H:%M:%S")   %></td>
+        <td><%= link_to 'Show', '/my_installation/testview/' + installation.id.to_s , class:"btn btn-success"%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+    </div>
+</div>
+
+
+<h2>Old installations</h2>
+
+<div class="row">
+    <div class="col-md-12 well">
+        <table id="oldinstall" class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Release</th>      <th>Created</th>
+
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @oldinstall.each do |installation| %>
+      <tr>        <td><%= installation.release %></td>
+
+        <td><%= installation.created_at.strftime("%d-%m-%Y %H:%M:%S")  %></td>
+        <td><%= link_to 'Show', '/my_installation/viewinstall/' + installation.id.to_s , class:"btn btn-success"%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+    </div>
+</div>
+<script>
+    
+$(function() {
+    $('#oldinstall').DataTable({});
+    $('#newinstall').DataTable({});
+ });
+</script>

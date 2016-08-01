@@ -8,6 +8,7 @@ export default class Installation extends React.Component {
  static propTypes = {
     currentUser: PropTypes.object.isRequired, // this is passed from the Rails view
     installation: PropTypes.object.isRequired, 
+    show_btn:PropTypes.boolean
   };
   
 
@@ -26,6 +27,7 @@ export default class Installation extends React.Component {
        this.setState({
          installation:response.data.installation,
          items: response.data.installation.items,
+         
          is_done:false
        });
     })
@@ -49,6 +51,7 @@ export default class Installation extends React.Component {
   render() {
       
     const inst  = this.state.installation;
+    const show_btn =  this.props.show_btn;
     let complete_enabled=true;
     
     let item_rows = this.state.items.map((i)=>{
@@ -57,17 +60,26 @@ export default class Installation extends React.Component {
       { 
         complete_enabled=false;
       }
-      return <InstallationItemRow key={i.id} item={i} />
+      return <InstallationItemRow key={i.id} item={i} show_button={show_btn} />
     })
     
     let btn="";
-    if(this.state.installation != null){
+    
+    if(this.state.installation != null && show_btn != false){
       if (this.state.installation.is_done){
         btn=<h3>Completed</h3>
       }else{
         btn=<button disabled={!complete_enabled} onClick={()=>this.markCompleted()} className="btn btn-success">Mark Completed</button>
       }
     }
+    
+    let thbtn ="";
+    
+    if( show_btn != false )
+    {
+      thbtn = <th colSpan="3"></th>
+    }
+    
     
     return (
       <div >
@@ -87,7 +99,7 @@ export default class Installation extends React.Component {
                             <th>Stop</th>
                             <th>Elapsed</th>
                             <th>Status</th>
-                            <th colSpan="3"></th>
+                            {thbtn}
                           </tr>
                         </thead><tbody>
                         {item_rows}

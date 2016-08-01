@@ -1,10 +1,13 @@
-<h1>MyInstallation#newinstall</h1>
-<p>Find me in app/views/my_installation/newinstall.html.erb</p>
+<h1>Create new installation</h1>
 
-<%= bootstrap_form_for(@installation, :url => url_for(:controller => 'my_installation', :action => 'createinstall')) do |f| %>
-    <%= f.text_field :release %>
-    <%= f.collection_select :rel_template_id, RelTemplate.all, :id, :name %>
-     <%= f.collection_select :environment_id, Environment.all, :id, :name %>
-
-    <%= f.submit %>
-<% end %>
+<div class="row">
+    <div class="col-md-6 well">
+        <%= bootstrap_form_for(@installation, :url => url_for(:controller => 'my_installation', :action => 'createinstall')) do |f| %>
+                <%= f.text_field :release %>
+                <%= f.collection_select :rel_template_id, RelTemplate.all, :id, :name %>
+                 <%= f.collection_select :environment_id, Environment.all, :id, :name %>
+            
+                <%= f.submit %>
+            <% end %>
+    </div>
+</div>

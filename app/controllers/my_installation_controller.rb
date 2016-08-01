@@ -4,6 +4,7 @@ class MyInstallationController < ApplicationController
   def newinstall
     @installation = Installation.new
   end
+  
   def createinstall
     
     @installation = Installation.new(installation_params)
@@ -15,15 +16,20 @@ class MyInstallationController < ApplicationController
     @template.rel_template_item.each() do |i|
       @installation.item_per_installation.create(rel_template_item_id:i.id)
     end
+    
+    redirect_to '/my_installation/viewinstall/'+@installation.id.to_s
+    
   end
   
   def viewinstall
     @installation = Installation.find(params[:id])
-    
     @activities = PublicActivity::Activity.where(trackable_type:'ItemPerInstallation').where(recipient: @installation).limit(100).order(created_at: :desc)
-
   end
   
+  def testview
+    @installation = Installation.find(params[:id])
+    @activities = PublicActivity::Activity.where(trackable_type:'ItemPerInstallation').where(recipient: @installation).limit(100).order(created_at: :desc)
+  end
   
   def ongoing
     @installations = Installation.where(is_started:true).where("is_done is null").order(created_at: :desc)

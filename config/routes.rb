@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  get 'my_environment/status'
+
+  get 'my_environment/history'
+
+  get 'my_environment/info'
+  get 'my_environment/home'
+
   namespace :api do
   get 'template/getavailablesteps'
   end
@@ -28,6 +35,7 @@ Rails.application.routes.draw do
   get 'my_installation/newinstall'
   get 'my_installation/viewinstall/:id' => 'my_installation#viewinstall'
   get 'my_installation/ongoing'
+  get 'my_installation/testview/:id' => 'my_installation#testview'
 
   post 'my_installation/createinstall'
 
