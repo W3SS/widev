@@ -17,7 +17,8 @@ export default class Installation extends React.Component {
     this.state={
         installation:this.props.installation,
         items:[],
-        is_done:false
+        is_done:false,
+        newitemname:''
     }
   }
 
@@ -27,7 +28,6 @@ export default class Installation extends React.Component {
        this.setState({
          installation:response.data.installation,
          items: response.data.installation.items,
-         
          is_done:false
        });
     })
@@ -47,6 +47,40 @@ export default class Installation extends React.Component {
    });
   }
   
+  handleAddItem(){
+    const name = this.state.newitemname;
+    console.log (name)
+   const data = {
+     item_name:name,
+     installation_id:this.state.installation.id
+   }
+    this.setState({
+         newitemname:''
+       });
+   
+    Axios.post('/api/installation/additem.json',data).then( (response) =>{
+      
+      let newitems = this.state.items.concat(response.data);
+      
+       this.setState({
+         items: newitems,
+         newitemname:''
+       });
+       
+    })
+    .catch(function (error) {
+      alert(error);
+   });
+  }
+  
+  handleInpChange(e){
+    const newval= e.target.value;
+    console.log(newval);
+    this.setState({
+      newitemname:newval
+    })
+  }
+  
 
   render() {
       
@@ -55,7 +89,6 @@ export default class Installation extends React.Component {
     let complete_enabled=true;
     
     let item_rows = this.state.items.map((i)=>{
-      console.log(i);
       if (!i.is_done && !i.is_error ) 
       { 
         complete_enabled=false;
@@ -74,10 +107,26 @@ export default class Installation extends React.Component {
     }
     
     let thbtn ="";
+    let formAddItem="";
+    
+    let btn_disabled = true;
+    if (this.state.newitemname != ''){
+      btn_disabled=false;
+    }
     
     if( show_btn != false )
     {
       thbtn = <th colSpan="3"></th>
+      formAddItem = <div className="row">
+                        <div className="col-md-12">
+                        <div className="form-inline">
+                          <div className="form-group">
+                                <input value={this.state.newitemname} onChange={(e)=>this.handleInpChange(e)} className="form-control" type="text" placeholder="Add extra item" ref="newitem" id="query_title"/>
+                                <button disabled={btn_disabled} className="btn btn-primary" onClick={()=>this.handleAddItem()}>Add</button>
+                          </div>
+                        </div>
+                        </div>
+                      </div>
     }
     
     let envname = "Loading...";
@@ -113,6 +162,7 @@ export default class Installation extends React.Component {
                   </table>
               </div>
         </div>
+     {formAddItem}
       </div>
     );
   }
