@@ -1,8 +1,8 @@
 <li class="list-group-item list-group-item-success">
     <% if a.owner %>
-        <%= a.created_at.to_formatted_s(:long) %> - <%= a.owner.email %> completed <%=a.trackable.rel_template_item.name %>
+        <%= a.created_at.to_formatted_s(:long) %> - <%= a.owner.email %> completed <strong><%=a.trackable.rel_template_item.name %></strong>
     <% end %>
     <% if !a.owner %>
-        <%= a.created_at.to_formatted_s(:long) %> -Someone completed <%=a.trackable.rel_template_item.name %>
+        <%= a.created_at.to_formatted_s(:long) %> -Someone completed <strong><%=a.trackable.rel_template_item.name %></strong>
     <% end %>
 </li>

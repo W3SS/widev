@@ -80,13 +80,19 @@ export default class Installation extends React.Component {
       thbtn = <th colSpan="3"></th>
     }
     
+    let envname = "Loading...";
+    if( inst.environment != null ){
+     envname= inst.environment.name;
+    }
+    
     
     return (
       <div >
         <div className="row">
               <div className="col-md-12">
-               <h1> {inst.release}</h1>
-                {btn}
+               <h1> {inst.release}  <small> on {envname}</small>                 {btn}</h1>
+               <br/>
+               <br/>
               </div>
         </div>
          <div className="row">

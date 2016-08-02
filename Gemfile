@@ -41,7 +41,10 @@ gem 'tzinfo-data'
 gem 'public_activity'
 gem 'jquery-datatables-rails', '~> 3.3.0'
 gem "wysiwyg-rails"
-
+gem 'telegram-bot'
+gem 'telegram-bot-types'
+gem 'wit'
+gem 'bootswatch-rails'
 
 
 # Use ActiveModel has_secure_password

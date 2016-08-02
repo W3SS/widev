@@ -11,8 +11,16 @@
  * file per style scope.
  *
   */
+//Import bootstrap-sprockets
 @import "bootstrap-sprockets";
+
+// Import cerulean variables
+@import "bootswatch/flatly/variables";
+
+// Then bootstrap itself
 @import "bootstrap";
+
+
 //@import "bootstrap-material-design";
 //@import "ripples";
 @import "syntax-highlighter-rails/shCore";
@@ -35,6 +43,10 @@
 
 #query_statment{
     height:400px;
+}
+
+table{
+    background-color:white;
 }
 
 .tag{

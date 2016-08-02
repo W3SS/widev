@@ -68,6 +68,8 @@ Rails.application.routes.draw do
   
   mount Commontator::Engine => '/commontator'
 
+  telegram_webhooks TelegramController
+
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

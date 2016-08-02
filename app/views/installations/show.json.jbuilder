@@ -17,4 +17,7 @@ json.items do
           json.updated_at i.updated_at
     end
 end
+json.environment do
+    json.name @installation.environment.name
+end
 end

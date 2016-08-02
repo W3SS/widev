@@ -1,11 +1,10 @@
 <h1>Editing Installation Template</h1>
 
-<%= render 'form' %>
+<div class="row">
+    <div class="col-md-12 well">
+        <%= render 'form' %>
+    <%= react_component("TemplateApp", props: {currentUser: current_user,template: @rel_template }, prerender: false) %>
 
+    </div>
+</div>
 
-<%= link_to 'Show', @rel_template %> |
-<%= link_to 'Back', rel_templates_path %>
-
-
-
-<%= react_component("TemplateApp", props: {currentUser: current_user,template: @rel_template }, prerender: false) %>
