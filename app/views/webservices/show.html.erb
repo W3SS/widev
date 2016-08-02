@@ -1,10 +1,9 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @webservice.name %>
-</p>
-
+<br/>
+<h1>  <%= @webservice.name %> </h1>
+<div class="row">
+  <div class="col-md-12 well">
+ 
 <p>
   <strong>Int endpoint:</strong>
   <%= @webservice.int_endpoint %>
@@ -31,9 +30,29 @@
 </p>
 
 <p>
+  <strong>Comments:</strong>
+  <pre>
+      <%= @webservice.comments %>
+
+  </pre>
+</p>
+
+<p>
+  <strong>Involved flow:</strong>
+  <pre>
+      <%= @webservice.involvedflow %>
+
+  </pre>
+</p>
+
+
+<p>
   <strong>Description:</strong>
   <%= @webservice.description %>
 </p>
+
+  </div>
+</div>
 
 <%= link_to 'Edit', edit_webservice_path(@webservice) %> |
 <%= link_to 'Back', webservices_path %>

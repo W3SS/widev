@@ -1,8 +1,9 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Webservices</h1>
- <div class="table-responsive">
-  <table class="table">
+<h1>Listing Outbound WebServices</h1>
+ <div class="row">
+   <div class="col-md-12 well">
+  <table style="table-layout:fixed" class="table datatable">
   <thead>
     <tr>
       <th>Name</th>
@@ -15,8 +16,8 @@
     <% @webservices.each do |webservice| %>
       <tr>
         
-        <td><%= webservice.name %></td>
-        <td><%= webservice.int_endpoint %></td>
+        <td><%= link_to webservice.name , webservice %></td>
+        <td style:"overflow:hidden"><%= webservice.int_endpoint[0..70] %></td>
       
 
       </tr>
@@ -24,7 +25,16 @@
   </tbody>
 </table>
 </div>
-
+</div>
 <br>
 
-<%= link_to 'New Webservice', new_webservice_path %>
+<script>
+    
+$(function() {
+    $('.datatable').DataTable({});
+ 
+
+  
+  
+});
+</script>
