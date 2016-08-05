@@ -42,6 +42,25 @@ class Api::InstallationController < ApplicationController
         format.json { render :show, status: :ok, location: @item }
      end
   end
+
+ def setnaTask
+      
+    @item = ItemPerInstallation.find(params[:id]);
+    @item.end_time = DateTime.now
+    @item.start_time = DateTime.now
+    @item.is_done = true
+    @item.is_na = true
+    @item.save!
+    
+    @item.create_activity key: 'item_per_installation.done', owner: current_user,recipient: @item.installation
+
+    
+     respond_to do |format|
+        format.json { render :show, status: :ok, location: @item }
+     end
+  end
+  
+  
   
   def complete
       @installation = Installation.find(params[:id]);

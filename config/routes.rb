@@ -26,6 +26,7 @@ Rails.application.routes.draw do
     get 'installation/startTask/:id'  => 'installation#startTask'
     get 'installation/endTask/:id'  => 'installation#endTask'
     get 'installation/errorTask/:id'   => 'installation#errorTask'
+    get 'installation/setnaTask/:id'   => 'installation#setnaTask'
     get 'installation/complete/:id'   => 'installation#complete'
     post 'installation/additem'   => 'installation#additem'
   end

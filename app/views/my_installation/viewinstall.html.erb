@@ -4,7 +4,20 @@
 
 <%= react_component("InstallationApp", props: {currentUser: current_user,installation: @installation }, prerender: false) %>
 
+<br/>
+
+
+<div class="row">
+    <div class="col-md-12 ">
 <h2>Installation Timeline</h2>
 <ul class="list-group">
         <%= render_activities(@activities, fallback: :text) %>
 </ul>
+</div>
+</div>
+
+<div class="row">
+    <div class="col-md-12 well">
+        <%= commontator_thread(@installation) %>
+    </div>
+</div>

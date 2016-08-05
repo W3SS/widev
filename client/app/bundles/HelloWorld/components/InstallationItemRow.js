@@ -50,6 +50,15 @@ export default class InstallationItemRow extends React.Component {
           alert(error);
        });
       }
+      
+    setNa(){
+          Axios.get('/api/installation/setnaTask/'+this.props.item.id +'.json').then( (response) =>{
+           this.setState({item:response.data } );
+        })
+        .catch(function (error) {
+          alert(error);
+       });
+      }
   
 
   render() {
@@ -103,11 +112,13 @@ export default class InstallationItemRow extends React.Component {
       let button1='';
       let button2='';
       let button3='';
+      let button4='';
       
       if(this.props.show_button != false){
         button1 = <td><button disabled={!start_enabled} className="btn btn-primary" onClick={()=>this.setStart()}>Start</button></td>
         button2=     <td><button disabled={!done_enabled} className="btn btn-success" onClick={()=>this.setDone()} >Done</button></td>
         button3  =  <td><button disabled={!error_enabled} className="btn btn-danger" onClick={()=>this.setError()} >Error</button></td>
+        button4  =  <td><button disabled={!start_enabled} className="btn btn-danger" onClick={()=>this.setNa()} >N/A</button></td>
       }
     
     return (
@@ -120,6 +131,7 @@ export default class InstallationItemRow extends React.Component {
             {button1}
             {button2}
             {button3}
+            {button4}
             
          </tr>    
     );

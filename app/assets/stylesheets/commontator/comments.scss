@@ -3,11 +3,10 @@
   font-weight: normal;
   font-style: normal;
 
-  border-top: 1px solid;
+  border: 1px solid;
   border-left: 1px solid;
   
-  margin-top: 15px;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
 
   padding-top: 5px;
   padding-bottom: 5px;
@@ -31,7 +30,7 @@
 
 .comment_body p {
 	margin: 0px;
-
+  font-size:16px;
 	overflow: hidden;
 }
 

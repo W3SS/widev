@@ -57,10 +57,10 @@
     <% end %>
   </span>
 
-  <span id="thread_<%= thread.id.to_s %>_header_span" class="thread_header">
+  <h2 id="thread_<%= thread.id.to_s %>_header_span" >
     <%= t "commontator.thread.status.#{thread.is_closed? ? 'closed' : 'open'}",
           :closer_name => (thread.is_closed? ? Commontator.commontator_name(thread.closer) : '') %>
-  </span>
+  </h2>
 
   <% if thread.config.comment_order == :l %>
     <%= render :partial => 'commontator/threads/reply',
