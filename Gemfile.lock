@@ -51,6 +51,7 @@ GEM
     bootstrap-sass (3.3.6)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
+    bootstrap-tour-rails (0.4.0)
     bootstrap_form (2.4.0)
     bootswatch-rails (3.3.5)
       railties (>= 3.1)
@@ -247,6 +248,7 @@ PLATFORMS
 DEPENDENCIES
   acts-as-taggable-on (~> 3.4)
   bootstrap-sass (~> 3.3.6)
+  bootstrap-tour-rails
   bootstrap_form
   bootswatch-rails
   byebug

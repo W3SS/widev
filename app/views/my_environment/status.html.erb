@@ -12,7 +12,7 @@
 
       <th>Release</th>      <th>Created</th>
 
-      <th colspan="1"></th>
+      <th ></th>
     </tr>
   </thead>
 
@@ -21,7 +21,7 @@
       <tr>
         <td><%= installation.release %></td>
         <td><%= installation.created_at.strftime("%d-%m-%Y %H:%M:%S")   %></td>
-        <td><%= link_to 'Show', '/my_installation/testview/' + installation.id.to_s , class:"btn btn-success"%></td>
+        <td><%= link_to 'View  <i class="fa fa-eye"></i> '.html_safe , '/my_installation/testview/' + installation.id.to_s , class:"btn btn-sm btn-primary"%></td>
       </tr>
     <% end %>
   </tbody>
@@ -40,7 +40,7 @@
     <tr>
       <th>Release</th>      <th>Created</th>
 
-      <th colspan="1"></th>
+      <th ></th>
     </tr>
   </thead>
 
@@ -49,7 +49,7 @@
       <tr>        <td><%= installation.release %></td>
 
         <td><%= installation.created_at.strftime("%d-%m-%Y %H:%M:%S")  %></td>
-        <td><%= link_to 'Show', '/my_installation/viewinstall/' + installation.id.to_s , class:"btn btn-success"%></td>
+        <td><%= link_to 'View  <i class="fa fa-eye"></i> '.html_safe , '/my_installation/testview/' + installation.id.to_s , class:"btn btn-sm btn-primary"%></td>
       </tr>
     <% end %>
   </tbody>
@@ -60,7 +60,7 @@
 <script>
     
 $(function() {
-    $('#oldinstall').DataTable({});
-    $('#newinstall').DataTable({});
+    $('#oldinstall').DataTable({ "aaSorting": []});
+    $('#newinstall').DataTable({ "aaSorting": []});
  });
 </script>

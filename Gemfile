@@ -45,6 +45,7 @@ gem 'telegram-bot'
 gem 'telegram-bot-types'
 gem 'wit'
 gem 'bootswatch-rails'
+gem 'bootstrap-tour-rails'
 
 
 # Use ActiveModel has_secure_password

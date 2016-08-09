@@ -5,7 +5,7 @@ class MyEnvironmentController < ApplicationController
     @env = Environment.find(params[:env_id])
     
     @installations = Installation.where(is_started:true).where("is_done is null").where(environment_id: @env.id).order(created_at: :desc)
-    @oldinstall = Installation.where(is_done:true).where(environment_id: @env.id).order(created_at: :desc).limit(50)
+    @oldinstall = Installation.where(is_done:true).where(environment_id: @env.id).order(created_at: :desc).limit(200)
     
   end
 

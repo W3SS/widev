@@ -36,6 +36,7 @@
 //= require dataTables/jquery.dataTables
 //= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
 //= require froala_editor.min.js
+//= require bootstrap-tour
 // require_tree .
 
 $.material.init()

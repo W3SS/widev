@@ -8,6 +8,7 @@
     <tr>
       <th>Release</th>
       <th>Env</th>
+      <th>Created</th>
       <th colspan="1"></th>
     </tr>
   </thead>
@@ -17,7 +18,8 @@
       <tr>
         <td><%= installation.release %></td>
         <td><%= installation.environment.name %></td>
-        <td><%= link_to 'Show', '/my_installation/viewinstall/' + installation.id.to_s , class:"btn btn-primary" %></td>
+       <td><%= installation.created_at.strftime("%d-%m-%Y %H:%M:%S")  %></td>
+       <td><%= link_to 'Work it  <i class="fa fa-wrench"></i> '.html_safe, '/my_installation/viewinstall/' + installation.id.to_s , class:"btn btn-sm btn-primary" %></td>
       </tr>
     <% end %>
   </tbody>
