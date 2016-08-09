@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Workspace</title>
+  <title>WUP</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -18,26 +18,33 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/">WIDev Help</a>
+          <a class="navbar-brand" href="/"><span class="logo"><i class="fa fa-cloud-upload fa-4" aria-hidden="true"></i> WUP <small>Utilities portal</small></span></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li><%= link_to "Timeline", monitor_index_path %> </li>
-            <li><%= link_to "Web Service", webservices_path %> </li>
-            <li><%= link_to "Environment", my_environment_home_path %> </li>
-            <li><%= link_to "Release", calendar_index_path %> </li>
-             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Query <span class="caret"></span></a>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Release<span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><%= link_to "New", new_query_path %></li>
-                <li><%= link_to "List", my_query_index_path %></li>
+                <li><%= link_to '<i class="fa fa-calendar" aria-hidden="true"></i> Release Plan'.html_safe, calendar_index_path %></li>
+                    <li role="separator" class="divider"></li>
+
+                <li><%= link_to '<i class="fa fa-tasks" aria-hidden="true"></i> Release progress'.html_safe, my_environment_home_path %></li>
+                <li><%= link_to "Releases Template", rel_templates_path %></li>
+                    <li role="separator" class="divider"></li>
+
+                <li><%= link_to "T&A - New Installation", my_installation_newinstall_path %></li>
+                <li><%= link_to "T&A - Current Installations", my_installation_ongoing_path %></li>
               </ul>
             </li>
-              <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">T&A <span class="caret"></span></a>
+             <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-ambulance" aria-hidden="true"></i> Utilities<span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><%= link_to "New Installation", my_installation_newinstall_path %></li>
-                <li><%= link_to "Current Installations", my_installation_ongoing_path %></li>
+                <li><%= link_to '<i class="fa fa-database" aria-hidden="true"></i> Usefull Query'.html_safe, my_query_index_path %></li>
+                 <li><%= link_to '<i class="fa fa-sign-out" aria-hidden="true"></i> WS Outbound CRMDH'.html_safe, webservices_path %> </li>
+                 <li><a href="/">CheckList RO </a> </li>
+                 <li><a href="/">Morning Check Queries</a> </li>
+
               </ul>
             </li>
             
