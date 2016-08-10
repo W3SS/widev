@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sid: MyString
+  user: MyString
+  pass: MyString
+
+two:
+  sid: MyString
+  user: MyString
+  pass: MyString

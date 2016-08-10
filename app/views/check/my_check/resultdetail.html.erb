@@ -1,0 +1,66 @@
+<h1>Result Detail</h1>
+<div class="row">
+
+</div>
+<div class="row">
+    <div class="col-md-6 well">
+
+      <h2>Previous <small><%= @last_result.created_at.strftime("%d-%m-%Y %H:%M:%S") %></small></h2>
+        <table  id="tbresult" class="table table-bordered">  <thead>
+            <tr>
+                <% @last_tbl[0].each() do |k| %>
+                  <th><%= k[0] %></th>
+                <% end %>
+
+            </tr>
+           </thead>
+
+            <tbody>
+            <% @last_tbl.each() do |row| %>
+              <tr>
+
+
+              <% row.each() do |k| %>
+                  <td><%= k[1] %></td>
+              <% end %>
+              </tr>
+            <% end %>
+
+            </tbody>
+        </table>
+    </div>
+  <div class="col-md-6 well">
+    <h2>Current <small><%= @result.created_at.strftime("%d-%m-%Y %H:%M:%S") %></small></h2>
+
+    <table  id="tbresult2" class="table table-bordered">  <thead>
+    <tr>
+      <% @tbl[0].each() do |k| %>
+          <th><%= k[0] %></th>
+      <% end %>
+
+    </tr>
+    </thead>
+
+      <tbody>
+      <% @tbl.each() do |row| %>
+          <tr>
+
+
+            <% row.each() do |k| %>
+                <td><%= k[1] %></td>
+            <% end %>
+          </tr>
+      <% end %>
+
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+
+  $(function() {
+    $('#tbresult').DataTable({ "aaSorting": [],"pageLength": 50});
+    $('#tbresult2').DataTable({ "aaSorting": [],"pageLength": 50});
+  });
+</script>
