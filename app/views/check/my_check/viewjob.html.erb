@@ -1,0 +1,27 @@
+<h1>Listing all scheduled jobs</h1>
+
+<div class="row">
+    <div class="col-md-12 well">
+        <table  class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Run_at</th>
+      <th>Created</th>
+    </tr>
+  </thead>
+<tbody>
+
+<% @jobs.each() do |j| %>
+
+    <tr>
+        <td><%= j.run_at %></td>
+        <td><%= j.created_at %></td>
+    </tr>
+    
+<% end %>
+
+  </tbody>
+</table>
+
+    </div>
+</div>

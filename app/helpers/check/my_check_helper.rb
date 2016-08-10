@@ -1,0 +1,2 @@
+module Check::MyCheckHelper
+end

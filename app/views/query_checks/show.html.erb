@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+<h2>
+      <%= @query_check.title %>
+</h2>
+<div class="row">
+  
+  
+  <div class="col-md-12 well">
+      <%= link_to 'View Result', check_my_check_viewresults_path(check_id: @query_check.id), class: "btn btn-primary"%>
+      <%= link_to 'Pause', check_my_check_pause_path(check_id: @query_check.id), class: "btn btn-danger"%>
+      <%= link_to 'Stop', check_my_check_stop_path(check_id: @query_check.id), class: "btn btn-primary"%>
+      <%= link_to 'Start', check_my_check_start_path(check_id: @query_check.id), class: "btn btn-primary"%>
+
+    <p>
+      <strong>Rpt interval:</strong>
+      <%= @query_check.rpt_interval %>
+    </p>
+<p>
+  <strong>Is started:</strong>
+  <%= @query_check.is_started %>
+</p>
+
+<p>
+  <strong>Is paused:</strong>
+  <%= @query_check.is_paused %>
+</p>
+
+<p>
+  <strong>Num exec:</strong>
+  <%= @query_check.num_exec %>
+</p>
+
+<p>
+  <strong>Last exec dt:</strong>
+  <%= @query_check.last_exec_dt %>
+</p>
+
+<p>
+  <strong>Statement:</strong>
+  <%= @query_check.statement %>
+</p>
+
+
+  </div>
+</div>
+
+
+
+<%= link_to 'Edit', edit_query_check_path(@query_check) %> |
+<%= link_to 'Back', query_checks_path %>

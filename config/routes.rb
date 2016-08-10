@@ -1,4 +1,20 @@
 Rails.application.routes.draw do
+  resources :check_results
+  namespace :check do
+  get 'my_check/start'
+  get 'my_check/viewjob'
+  get 'my_check/viewresults'
+  end
+
+  namespace :check do
+  get 'my_check/stop'
+  end
+
+  namespace :check do
+  get 'my_check/pause'
+  end
+
+  resources :query_checks
   get 'my_environment/status'
 
   get 'my_environment/history'

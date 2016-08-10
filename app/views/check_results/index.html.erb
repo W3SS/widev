@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Check Results</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Value</th>
+      <th>Query check</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @check_results.each do |check_result| %>
+      <tr>
+        <td><%= check_result.value %></td>
+        <td><%= check_result.query_check %></td>
+        <td><%= link_to 'Show', check_result %></td>
+        <td><%= link_to 'Edit', edit_check_result_path(check_result) %></td>
+        <td><%= link_to 'Destroy', check_result, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Check result', new_check_result_path %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160805065955) do
+ActiveRecord::Schema.define(version: 20160810091727) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "trackable_id"
@@ -36,6 +36,15 @@ ActiveRecord::Schema.define(version: 20160805065955) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
+
+  create_table "check_results", force: :cascade do |t|
+    t.text     "value"
+    t.integer  "query_check_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "check_results", ["query_check_id"], name: "index_check_results_on_query_check_id"
 
   create_table "commontator_comments", force: :cascade do |t|
     t.string   "creator_type"
@@ -78,6 +87,22 @@ ActiveRecord::Schema.define(version: 20160805065955) do
   end
 
   add_index "commontator_threads", ["commontable_id", "commontable_type"], name: "index_commontator_threads_on_c_id_and_c_type", unique: true
+
+  create_table "delayed_jobs", force: :cascade do |t|
+    t.integer  "priority",   default: 0, null: false
+    t.integer  "attempts",   default: 0, null: false
+    t.text     "handler",                null: false
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.string   "queue"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority"
 
   create_table "environments", force: :cascade do |t|
     t.string   "name"
@@ -125,6 +150,18 @@ ActiveRecord::Schema.define(version: 20160805065955) do
     t.text     "statment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "query_checks", force: :cascade do |t|
+    t.string   "title"
+    t.integer  "rpt_interval"
+    t.boolean  "is_started"
+    t.boolean  "is_paused"
+    t.text     "statement"
+    t.integer  "num_exec"
+    t.datetime "last_exec_dt"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "rel_template_items", force: :cascade do |t|

@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  rpt_interval: 1
+  is_started: false
+  is_paused: false
+  statement: MyText
+  num_exec: 1
+  last_exec_dt: 2016-08-10
+
+two:
+  title: MyString
+  rpt_interval: 1
+  is_started: false
+  is_paused: false
+  statement: MyText
+  num_exec: 1
+  last_exec_dt: 2016-08-10

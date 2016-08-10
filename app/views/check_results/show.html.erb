@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Value:</strong>
+  <%= @check_result.value %>
+</p>
+
+<p>
+  <strong>Query check:</strong>
+  <%= @check_result.query_check %>
+</p>
+
+<%= link_to 'Edit', edit_check_result_path(@check_result) %> |
+<%= link_to 'Back', check_results_path %>

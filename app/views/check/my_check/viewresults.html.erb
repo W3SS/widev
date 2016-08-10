@@ -1,0 +1,30 @@
+<h1>Listing Check Results</h1>
+
+<div class="row">
+        <div class="col-md-12 well">
+            <table  id="tbresult" class="table table-bordered">  <thead>
+        <tr>
+          <th>Created</th>
+          <th>Value</th>
+          <th>Query check</th>
+        </tr>
+      </thead>
+    
+      <tbody>
+        <% @check_results.each do |check_result| %>
+          <tr>
+            <td><%= check_result.created_at %></td>
+            <td><%= check_result.value %></td>
+            <td><%= check_result.query_check.title %></td>
+            </tr>
+        <% end %>
+      </tbody>
+    </table>    
+  </div>
+</div>
+<script>
+    
+$(function() {
+    $('#tbresult').DataTable({ "aaSorting": []});
+ });
+</script>

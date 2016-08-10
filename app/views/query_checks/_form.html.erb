@@ -1,0 +1,45 @@
+<%= form_for(@query_check) do |f| %>
+  <% if @query_check.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@query_check.errors.count, "error") %> prohibited this query_check from being saved:</h2>
+
+      <ul>
+      <% @query_check.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :rpt_interval %><br>
+    <%= f.number_field :rpt_interval %>
+  </div>
+  <div class="field">
+    <%= f.label :is_started %><br>
+    <%= f.check_box :is_started %>
+  </div>
+  <div class="field">
+    <%= f.label :is_paused %><br>
+    <%= f.check_box :is_paused %>
+  </div>
+  <div class="field">
+    <%= f.label :statement %><br>
+    <%= f.text_area :statement %>
+  </div>
+  <div class="field">
+    <%= f.label :num_exec %><br>
+    <%= f.number_field :num_exec %>
+  </div>
+  <div class="field">
+    <%= f.label :last_exec_dt %><br>
+    <%= f.date_select :last_exec_dt %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
