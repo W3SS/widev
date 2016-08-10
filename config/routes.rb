@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
+  resources :databases
   resources :check_results
   namespace :check do
   get 'my_check/start'
   get 'my_check/viewjob'
   get 'my_check/viewresults'
+  get 'my_check/executeonce'
+  get 'my_check/resultdetail'
   end
 
   namespace :check do

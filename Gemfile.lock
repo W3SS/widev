@@ -46,6 +46,7 @@ GEM
       ice_nine (~> 0.11.0)
       thread_safe (~> 0.3, >= 0.3.1)
     bcrypt (3.1.11)
+    bcrypt (3.1.11-x86-mingw32)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     bootstrap-sass (3.3.6)
@@ -127,7 +128,11 @@ GEM
     minitest (5.9.0)
     multi_json (1.12.1)
     mysql2 (0.4.4)
+    mysql2 (0.4.4-x86-mingw32)
     nokogiri (1.6.8)
+      mini_portile2 (~> 2.1.0)
+      pkg-config (~> 1.1.7)
+    nokogiri (1.6.8-x86-mingw32)
       mini_portile2 (~> 2.1.0)
       pkg-config (~> 1.1.7)
     orm_adapter (0.5.0)
@@ -185,6 +190,8 @@ GEM
     roo (2.4.0)
       nokogiri (~> 1)
       rubyzip (~> 1.1, < 2.0.0)
+    ruby-oci8 (2.2.2)
+    ruby-oci8 (2.2.2-x86-mingw32)
     rubyzip (1.2.0)
     sass (3.4.22)
     sass-rails (5.0.5)
@@ -209,6 +216,7 @@ GEM
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
     sqlite3 (1.3.11)
+    sqlite3 (1.3.11-x86-mingw32)
     stamp (0.6.0)
     syntax-highlighter-rails (3.0.83.1.1)
       railties
@@ -249,6 +257,7 @@ GEM
 
 PLATFORMS
   ruby
+  x86-mingw32
 
 DEPENDENCIES
   acts-as-taggable-on (~> 3.4)
@@ -271,6 +280,7 @@ DEPENDENCIES
   rails (= 4.2.5)
   react_on_rails (~> 5)
   roo
+  ruby-oci8
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   select2-rails

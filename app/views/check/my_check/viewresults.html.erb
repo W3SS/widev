@@ -13,8 +13,12 @@
       <tbody>
         <% @check_results.each do |check_result| %>
           <tr>
-            <td><%= check_result.created_at %></td>
-            <td><%= check_result.value %></td>
+            <td><%= check_result.created_at.strftime("%d-%m-%Y %H:%M:%S") %></td>
+            <% if check_result.query_check.is_complex == true %>
+                <td> <%= link_to 'Detail',check_my_check_resultdetail_path(result_id: check_result.id)   %></td>
+            <% elsif check_result.query_check.is_complex == false %>
+                <td><%= check_result.value %></td>
+            <% end %>
             <td><%= check_result.query_check.title %></td>
             </tr>
         <% end %>

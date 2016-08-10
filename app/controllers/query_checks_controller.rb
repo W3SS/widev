@@ -69,6 +69,6 @@ class QueryChecksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def query_check_params
-      params.require(:query_check).permit(:title, :rpt_interval, :is_started, :is_paused, :statement, :num_exec, :last_exec_dt)
+      params.require(:query_check).permit(:title, :rpt_interval, :is_started, :is_paused,:is_complex,:database_id, :statement, :num_exec, :last_exec_dt)
     end
 end

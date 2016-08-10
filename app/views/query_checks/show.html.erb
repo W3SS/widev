@@ -9,8 +9,12 @@
       <%= link_to 'View Result', check_my_check_viewresults_path(check_id: @query_check.id), class: "btn btn-primary"%>
       <%= link_to 'Pause', check_my_check_pause_path(check_id: @query_check.id), class: "btn btn-danger"%>
       <%= link_to 'Stop', check_my_check_stop_path(check_id: @query_check.id), class: "btn btn-primary"%>
-      <%= link_to 'Start', check_my_check_start_path(check_id: @query_check.id), class: "btn btn-primary"%>
-
+    <%= link_to 'Start', check_my_check_start_path(check_id: @query_check.id), class: "btn btn-primary"%>
+    <%= link_to 'Execute', check_my_check_executeonce_path(check_id: @query_check.id), class: "btn btn-success"%>
+    <p>
+      <strong>Database SID:</strong>
+      <%= @query_check.database.sid %>
+    </p>
     <p>
       <strong>Rpt interval:</strong>
       <%= @query_check.rpt_interval %>
