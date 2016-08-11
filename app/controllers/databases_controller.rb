@@ -1,5 +1,6 @@
 class DatabasesController < ApplicationController
   before_action :set_database, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /databases
   # GET /databases.json

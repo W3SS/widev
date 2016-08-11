@@ -1,6 +1,9 @@
 class CheckResultsController < ApplicationController
   before_action :set_check_result, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
+
+  
   # GET /check_results
   # GET /check_results.json
   def index

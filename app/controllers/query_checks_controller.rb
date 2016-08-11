@@ -1,5 +1,6 @@
 class QueryChecksController < ApplicationController
   before_action :set_query_check, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /query_checks
   # GET /query_checks.json
