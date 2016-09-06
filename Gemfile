@@ -23,6 +23,8 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+gem 'jenkins_api_client'
+
 gem 'roo'
 gem 'acts-as-taggable-on', '~> 3.4'
 gem 'syntax-highlighter-rails'

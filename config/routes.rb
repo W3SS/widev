@@ -1,4 +1,20 @@
 Rails.application.routes.draw do
+   namespace :api do
+    get 'jenkins/runjob/:item_id' => 'jenkins#runjob'
+    get 'jenkins/jobinfo/:item_id'=> 'jenkins#jobinfo'
+    get 'jenkins/joblog/:item_id'=> 'jenkins#joblog'
+
+   end
+
+
+  get 'jenkins_test/joblist'
+
+  get 'jenkins_test/jobstart'
+
+  get 'rtc/index'
+
+  get 'rtc/get'
+
   resources :databases
   resources :check_results
   namespace :check do

@@ -69,6 +69,6 @@ class RelTemplateItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def rel_template_item_params
-      params.require(:rel_template_item).permit(:name, :description, :note)
+      params.require(:rel_template_item).permit(:name, :description, :note, :command)
     end
 end

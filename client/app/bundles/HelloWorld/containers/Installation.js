@@ -8,7 +8,7 @@ export default class Installation extends React.Component {
  static propTypes = {
     currentUser: PropTypes.object.isRequired, // this is passed from the Rails view
     installation: PropTypes.object.isRequired, 
-    show_btn:PropTypes.boolean
+    show_btn:PropTypes.bool
   };
   
 
@@ -116,7 +116,7 @@ export default class Installation extends React.Component {
     
     if( show_btn != false )
     {
-      thbtn = <th colSpan="3"></th>
+      thbtn = <th colSpan="7"></th>
       formAddItem = <div className="row">
                         <div className="col-md-12">
                         <div className="form-inline">

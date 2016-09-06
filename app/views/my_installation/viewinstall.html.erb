@@ -7,6 +7,40 @@
 <br/>
 
 
+<div class="panel-group">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h2 class="panel-title">
+        <a data-toggle="collapse" href="#collapse1">Release manager objects</a>
+      </h2>
+    </div>
+    <div id="collapse1" class="panel-collapse collapse">
+      <div class="panel-body">
+        <table class="table table-bordered objtable">
+          <thead>
+          <tr>
+            <th>Object</th>
+            <th>Description</th>
+            <th>Type</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @rmobjects.each() do |rmo| %>
+              <tr>
+                <td><%= rmo['NAME'] %></td>
+                <td><%= rmo['DESCRIPTION'] %></td>
+                <td><%= rmo['TYPE'] %></td>
+                <td><%= link_to 'Validate Fix' , rtc_index_path %></td>
+              </tr>
+          <% end %>
+          </tbody>
+         </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <div class="row">
     <div class="col-md-12 ">
 <h2>Installation Timeline</h2>

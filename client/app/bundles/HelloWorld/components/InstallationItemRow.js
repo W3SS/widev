@@ -5,6 +5,7 @@ import React, { PropTypes } from 'react';
 import _ from 'lodash';
 import Axios from 'axios';
 import moment from 'moment';
+import {ModalContainer, ModalDialog} from 'react-modal-dialog';
 
 // Simple example of a React "dumb" component
 export default class InstallationItemRow extends React.Component {
@@ -17,13 +18,12 @@ export default class InstallationItemRow extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state={
-           item:this.props.item
+        item:this.props.item,
+        isShowingModal:false,
+        log:''
     }
   }
-   componentDidMount(){
-      
 
-   }
     setStart(){
       Axios.get('/api/installation/startTask/'+this.props.item.id +'.json').then( (response) =>{
          this.setState({item:response.data } );
@@ -59,81 +59,140 @@ export default class InstallationItemRow extends React.Component {
           alert(error);
        });
       }
-  
 
-  render() {
-      
-    const { item } = this.state;
-    let done_enabled=true;
-    let error_enabled=true;
-    let start_enabled=true;
-    let status="";
-    
-    let start = moment(item.start_time);
-    let end;
-    if (item.end_time != null){
-       end = moment(item.end_time);
-    }else{
-       end = moment(new Date());
-    }
-    let elapsed="-";
-    if (item.start_time != null){
-       elapsed = moment.duration(end.diff(start)).humanize();
-    }
-    
-    if( item.start_time == null && item.end_time == null ){
-      start_enabled=true
-      error_enabled=false;
-      done_enabled=false;
-    }
-    if( item.end_time == null && item.start_time != null ){
-      error_enabled=true;
-      done_enabled=true;
-      start_enabled=false;
-    }
-    if( item.is_done || item.is_error){
-      error_enabled=false;
-      done_enabled=false;
-      start_enabled=false;
-    }
-    if(item.is_started){
-        status =<span className="label label-primary"> ON GOING </span>
-    }
-    if(item.is_done){
-      status =<span className="label label-success"> SUCCESS </span>
-    }
-    if(item.is_error){
-       status =<span className="label label-danger"> ERROR </span>
-    }
-    
-    
-     const startF= item.start_time?moment(item.start_time).format('MMMM Do, h:mm:ss a'):"-";
-     const endF= item.end_time?moment(item.end_time).format('MMMM Do, h:mm:ss a'):"-";
-      let button1='';
-      let button2='';
-      let button3='';
-      let button4='';
-      
-      if(this.props.show_button != false){
-        button1 = <td><button disabled={!start_enabled} className="btn btn-primary" onClick={()=>this.setStart()}>Start</button></td>
-        button2=     <td><button disabled={!done_enabled} className="btn btn-success" onClick={()=>this.setDone()} >Done</button></td>
-        button3  =  <td><button disabled={!error_enabled} className="btn btn-danger" onClick={()=>this.setError()} >Error</button></td>
-        button4  =  <td><button disabled={!start_enabled} className="btn btn-danger" onClick={()=>this.setNa()} >N/A</button></td>
+
+      startJenk() {
+          console.log("Start Job on Jenkins");
+
+          Axios.get('/api/jenkins/runjob/'+this.props.item.id +'.json').then( (response) =>{
+                 this.setState({item:response.data } );
+        })
+        .catch(function (error) {
+            alert(error);
+        });
       }
-    
-    return (
-         <tr>
-            <td>{ item.rel_template_item.name }</td>
-            <td>{ startF }</td>
-            <td>{ endF }</td>
-            <td> { elapsed } </td>
-            <td>{ status } </td>
-            {button1}
-            {button2}
-            {button3}
-            {button4}
-            
-         </tr>    
-    );
-  }
+
+
+    getJenkLog() {
+        console.log("Start Job on Jenkins");
+
+        Axios.get('/api/jenkins/joblog/'+this.props.item.id +'.json').then( (response) =>{
+            this.setState({log:response.data } );
+        })
+            .catch(function (error) {
+                alert(error);
+            });
+    }
+
+
+    handleClose() {
+        this.setState({isShowingModal: false});
+    }
+
+    handleClick() {
+        this.getJenkLog()
+        this.setState({isShowingModal: true});
+    }
+
+    render() {
+        const { item } = this.state;
+        const { log } = this.state;
+
+        let done_enabled=true;
+        let error_enabled=true;
+        let start_enabled=true;
+        let status="";
+
+        let start = moment(item.start_time);
+        let end;
+        if (item.end_time != null){
+           end = moment(item.end_time);
+        }else{
+           end = moment(new Date());
+        }
+        let elapsed="-";
+        if (item.start_time != null){
+           elapsed = moment.duration(end.diff(start)).humanize();
+        }
+
+        if( item.start_time == null && item.end_time == null ){
+          start_enabled=true;
+          error_enabled=false;
+          done_enabled=false;
+        }
+        if( item.end_time == null && item.start_time != null ){
+          error_enabled=true;
+          done_enabled=true;
+          start_enabled=false;
+        }
+        if( item.is_done || item.is_error){
+          error_enabled=false;
+          done_enabled=false;
+          start_enabled=false;
+        }
+        if(item.is_started){
+            status =<span className="label label-primary"> ON GOING </span>
+        }
+        if(item.is_done){
+          status =<span className="label label-success"> SUCCESS </span>
+        }
+        if(item.is_error){
+           status =<span className="label label-danger"> ERROR </span>
+        }
+        let jenk=<td></td>
+        let jenk_log=<td></td>
+
+        if(item.rel_template_item.command && item.job_id  == null){
+            jenk = <td><button className="btn btn-danger" onClick={()=>this.startJenk()} >Exec.</button> </td>
+        }
+
+        if(item.job_id != null){
+            jenk_log =  <td>
+                <button className="btn btn-success" onClick={()=>this.handleClick() }>
+                    {
+                        this.state.isShowingModal &&
+                        <ModalContainer onClose={()=>this.handleClose()}>
+                            <ModalDialog onClose={()=>this.handleClose()}>
+                                <h3>Job log </h3> <button onClick={()=>this.getJenkLog()}>Update...</button>
+                               <div className="pre"> <pre>{log}</pre></div>
+                            </ModalDialog>
+                        </ModalContainer>
+                    }
+                    Log
+                </button>
+            </td>
+        }
+
+         const startF= item.start_time?moment(item.start_time).format('MMMM Do, h:mm:ss a'):"-";
+         const endF= item.end_time?moment(item.end_time).format('MMMM Do, h:mm:ss a'):"-";
+
+          let button1=<td></td>
+          let button2=<td></td>;
+          let button3=<td></td>;
+          let button4=<td></td>;
+
+          if(this.props.show_button != false){
+            button1 = <td><button disabled={!start_enabled} className="btn btn-primary" onClick={()=>this.setStart()}>Start</button></td>
+            button2=     <td><button disabled={!done_enabled} className="btn btn-success" onClick={()=>this.setDone()} >Done</button></td>
+            button3  =  <td><button disabled={!error_enabled} className="btn btn-danger" onClick={()=>this.setError()} >Error</button></td>
+            button4  =  <td><button disabled={!start_enabled} className="btn btn-danger" onClick={()=>this.setNa()} >N/A</button></td>
+          }
+
+        return (
+             <tr key={item.id} >
+                <td>{ item.rel_template_item.name }</td>
+                <td>{ startF }</td>
+                <td>{ endF }</td>
+                <td> { elapsed } </td>
+                <td>{ status } </td>
+                {button1}
+                {button2}
+                {button3}
+                {button4}
+                {jenk}
+                {jenk_log}
+
+             </tr>
+        );
+      }
 }

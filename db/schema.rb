@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160810145218) do
+ActiveRecord::Schema.define(version: 20160906123538) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "trackable_id"
@@ -122,20 +122,8 @@ ActiveRecord::Schema.define(version: 20160810145218) do
     t.boolean  "is_done"
   end
 
-  create_table "item_per_installations", force: :cascade do |t|
-    t.integer  "rel_template_item_id"
-    t.datetime "start_time"
-    t.datetime "end_time"
-    t.integer  "installation_id"
-    t.boolean  "is_done"
-    t.boolean  "is_started"
-    t.boolean  "is_error"
-    t.text     "note"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
-    t.boolean  "is_extra"
-    t.boolean  "is_na"
-  end
+# Could not dump table "item_per_installations" because of following NoMethodError
+#   undefined method `[]' for nil:NilClass
 
   create_table "item_per_templates", force: :cascade do |t|
     t.integer  "rel_template_id"
@@ -168,13 +156,8 @@ ActiveRecord::Schema.define(version: 20160810145218) do
     t.integer  "database_id"
   end
 
-  create_table "rel_template_items", force: :cascade do |t|
-    t.string   "name"
-    t.string   "description"
-    t.text     "note"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
+# Could not dump table "rel_template_items" because of following NoMethodError
+#   undefined method `[]' for nil:NilClass
 
   create_table "rel_templates", force: :cascade do |t|
     t.string   "name"

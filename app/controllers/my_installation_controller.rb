@@ -25,6 +25,10 @@ class MyInstallationController < ApplicationController
     @installation = Installation.find(params[:id])
     commontator_thread_show(@installation)
     @activities = PublicActivity::Activity.where(trackable_type:'ItemPerInstallation').where(recipient: @installation).limit(100).order(created_at: :desc)
+
+    @rmobjects  = ReleaseManager.getObjectForRelease(@installation.release)
+
+
   end
   
   def testview

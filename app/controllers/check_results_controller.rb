@@ -3,7 +3,7 @@ class CheckResultsController < ApplicationController
   before_action :authenticate_user!
 
 
-  
+
   # GET /check_results
   # GET /check_results.json
   def index

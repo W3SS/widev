@@ -1,2 +1,2 @@
-web: rails s -p $PORT -b $IP
-client: sh -c 'rm app/assets/webpack/* || true && cd client && npm run build:dev:client'
+web: rails s -p 8081 -b 127.0.0.1
+client: cd client && npm run build:dev:client'

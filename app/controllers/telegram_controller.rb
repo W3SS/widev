@@ -17,9 +17,7 @@ class TelegramController < Telegram::Bot::UpdatesController
  
     intent = first_entity_value(entities,"intent")
     env  = first_entity_value(entities,"environment")
-    
-    
-     
+
      if env != nil
       env_name = env.upcase.strip
       e  = Environment.where(name: env_name).first
