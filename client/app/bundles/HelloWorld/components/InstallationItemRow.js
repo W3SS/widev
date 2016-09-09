@@ -20,10 +20,16 @@ export default class InstallationItemRow extends React.Component {
     this.state={
         item:this.props.item,
         isShowingModal:false,
-        log:''
+        log:'',
+        joburl:'#'
     }
   }
 
+  componentDidMount(){
+      if(this.props.item.rel_template_item.command ){
+          this.getJenkUrl();
+      }
+  }
     setStart(){
       Axios.get('/api/installation/startTask/'+this.props.item.id +'.json').then( (response) =>{
          this.setState({item:response.data } );
@@ -65,8 +71,11 @@ export default class InstallationItemRow extends React.Component {
           console.log("Start Job on Jenkins");
 
           Axios.get('/api/jenkins/runjob/'+this.props.item.id +'.json').then( (response) =>{
-                 this.setState({item:response.data } );
-        })
+                 this.setStart();
+                 this.getJenkUrl();
+              this.setState({item:response.data } );
+
+          })
         .catch(function (error) {
             alert(error);
         });
@@ -74,10 +83,19 @@ export default class InstallationItemRow extends React.Component {
 
 
     getJenkLog() {
-        console.log("Start Job on Jenkins");
 
         Axios.get('/api/jenkins/joblog/'+this.props.item.id +'.json').then( (response) =>{
             this.setState({log:response.data } );
+        })
+            .catch(function (error) {
+                alert(error);
+            });
+    }
+
+    getJenkUrl(){
+        Axios.get('/api/jenkins/getbuildurl/'+this.props.item.id +'.json').then( (response) =>{
+            console.log("Job url");
+            this.setState({joburl:response.data } );
         })
             .catch(function (error) {
                 alert(error);
@@ -96,11 +114,12 @@ export default class InstallationItemRow extends React.Component {
 
     render() {
         const { item } = this.state;
-        const { log } = this.state;
+        const { log,joburl } = this.state;
 
         let done_enabled=true;
         let error_enabled=true;
         let start_enabled=true;
+        let jenk_enabled=true;
         let status="";
 
         let start = moment(item.start_time);
@@ -129,9 +148,11 @@ export default class InstallationItemRow extends React.Component {
           error_enabled=false;
           done_enabled=false;
           start_enabled=false;
+            jenk_enabled=false;
         }
         if(item.is_started){
             status =<span className="label label-primary"> ON GOING </span>
+            jenk_enabled=false;
         }
         if(item.is_done){
           status =<span className="label label-success"> SUCCESS </span>
@@ -142,25 +163,31 @@ export default class InstallationItemRow extends React.Component {
         let jenk=<td></td>
         let jenk_log=<td></td>
 
-        if(item.rel_template_item.command && item.job_id  == null){
-            jenk = <td><button className="btn btn-danger" onClick={()=>this.startJenk()} >Exec.</button> </td>
-        }
+
 
         if(item.job_id != null){
+            jenk_enabled = false;
             jenk_log =  <td>
                 <button className="btn btn-success" onClick={()=>this.handleClick() }>
                     {
                         this.state.isShowingModal &&
                         <ModalContainer onClose={()=>this.handleClose()}>
                             <ModalDialog onClose={()=>this.handleClose()}>
-                                <h3>Job log </h3> <button onClick={()=>this.getJenkLog()}>Update...</button>
-                               <div className="pre"> <pre>{log}</pre></div>
+                                <h3>Job log <small><a href={joburl} target="_blank"> View on Jenkins </a></small></h3> <button className="btn btn-sm btn-success" onClick={()=>this.getJenkLog()}>Update...</button>
+
+                               <div className="pre">
+                                   <pre>{log}</pre>
+                               </div>
                             </ModalDialog>
                         </ModalContainer>
                     }
                     Log
                 </button>
             </td>
+        }
+
+        if(item.rel_template_item.command ){//&& item.job_id  == null){
+            jenk = <td><button  disabled={!jenk_enabled} className="btn btn-warning" onClick={()=>this.startJenk()} ><i className="fa fa-play" aria-hidden="true"></i> Jenkins</button> </td>
         }
 
          const startF= item.start_time?moment(item.start_time).format('MMMM Do, h:mm:ss a'):"-";

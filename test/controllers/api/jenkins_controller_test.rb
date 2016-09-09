@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Api::Api::JenkinsControllerTest < ActionController::TestCase
+class Api::JenkinsControllerTest < ActionController::TestCase
   test "should get runjob" do
     get :runjob
     assert_response :success

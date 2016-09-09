@@ -8,15 +8,23 @@ class Api::JenkinsController < ApplicationController
     rel = @item.installation.release
     env = @item.installation.environment
 
-    uri = URI.parse( URI::encode("http://localhost:8080/job/"+job+"/build"));
-
+    uri = URI.parse( URI::encode(Rails.configuration.x.jenkins.url+"/job/"+job+"/buildWithParameters"));
+    logger.info("Contacting Jenkins on " + uri.path)
     http = Net::HTTP.new(uri.host, uri.port)
 
-    req = Net::HTTP::Post.new(uri, initheader = {'Content-Type' =>'application/json'})
-    req.basic_auth 'andbet39', '26111979'
-    req.body= {"parameter": [{"name":"REL_TYPE", "value":"EVOLUTIVO"},{"name":"RELEASE", "value": rel }, {"name":"ENVIRONMENT", "value": env }]}.to_json
+    #req = Net::HTTP::Post.new(uri)
+    req = Net::HTTP::Post.new(uri, initheader = {'Content-Type' =>'Application/json'})
+
+    req.basic_auth Rails.configuration.x.jenkins.user, Rails.configuration.x.jenkins.password
+    req.set_form_data({"REL" => rel, "ENVIRONMENT" => env.name})
+    #req.body= {'parameter': [{"REL": rel }, {"name":"ENVIRONMENT", "value": env.name }]}.to_json
+
+
+    logger.info (req.body)
 
     res = http.request(req)
+
+    logger.info (res.body)
 
     uri = URI.parse( res['Location'] + "api/json");
     req = Net::HTTP::Get.new(uri, initheader = {'Content-Type' =>'application/json'})
@@ -40,7 +48,7 @@ class Api::JenkinsController < ApplicationController
     uri = URI.parse( queueurl + "api/json");
     http = Net::HTTP.new(uri.host, uri.port)
     req = Net::HTTP::Get.new(uri)
-    req.basic_auth 'andbet39', '26111979'
+  req.basic_auth Rails.configuration.x.jenkins.user, Rails.configuration.x.jenkins.password
     res = http.request(req)
 
     queue  = JSON.parse(res.body)
@@ -59,13 +67,14 @@ class Api::JenkinsController < ApplicationController
 
   def jobinfo
     @item = ItemPerInstallation.find(params[:item_id]);
+    uri = URI.parse( URI::encode(Rails.configuration.x.jenkins.url+"/job/"+job+"/buildWithParameters"));
 
     uri = URI.parse( @item.job_id + "api/json");
 
     http = Net::HTTP.new(uri.host, uri.port)
 
     req = Net::HTTP::Get.new(uri)
-    req.basic_auth 'andbet39', '26111979'
+    req.basic_auth Rails.configuration.x.jenkins.user, Rails.configuration.x.jenkins.password
 
     res = http.request(req)
 
@@ -76,15 +85,22 @@ class Api::JenkinsController < ApplicationController
   def joblog
     @item = ItemPerInstallation.find(params[:item_id]);
 
-    uri = URI.parse( @item.job_id + "consoleText");
 
+    uri = URI.parse( @item.job_id + "consoleText");
+    logger.info("retrieving log for " + @item.job_id)
     http = Net::HTTP.new(uri.host, uri.port)
 
     req = Net::HTTP::Get.new(uri)
-    req.basic_auth 'andbet39', '26111979'
-
     res = http.request(req)
 
     render json: res.body
+  end
+
+  def getbuildurl
+    @item = ItemPerInstallation.find(params[:item_id])
+    job = @item.rel_template_item.command
+    Rails.configuration.x.jenkins.url+"/job/"+job
+
+    render json: Rails.configuration.x.jenkins.url+"/job/" +job
   end
 end

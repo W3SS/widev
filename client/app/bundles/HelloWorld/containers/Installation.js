@@ -116,7 +116,7 @@ export default class Installation extends React.Component {
     
     if( show_btn != false )
     {
-      thbtn = <th colSpan="7"></th>
+      thbtn = <th colSpan="6"></th>
       formAddItem = <div className="row">
                         <div className="col-md-12">
                         <div className="form-inline">

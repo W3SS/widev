@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     get 'jenkins/runjob/:item_id' => 'jenkins#runjob'
     get 'jenkins/jobinfo/:item_id'=> 'jenkins#jobinfo'
     get 'jenkins/joblog/:item_id'=> 'jenkins#joblog'
+    get 'jenkins/getbuildurl/:item_id'=> 'jenkins#getbuildurl'
 
    end
 
