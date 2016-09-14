@@ -42,6 +42,7 @@
         <tr>
           <th>Uploads KO and logs</th>
           <th>Size</th>
+          <th>Action</th>
         </tr>
       </thead>
     
@@ -50,6 +51,8 @@
           <tr>
             <td><a href="<%= file.myfile.url %>"><%= file.myfile_file_name %></a></td>
             <td><%= file.myfile_file_size %></td>
+            <td><%= link_to 'Delete', file, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
           </tr>
           <% end %>
         </tbody>

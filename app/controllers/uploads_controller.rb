@@ -12,7 +12,14 @@ class UploadsController < ApplicationController
           #  will not interpret the response as an error:
   	  render json: { error: @upload.errors.full_messages.join(',')}, :status => 400
   	end  		
-  end
+	end
+
+	 def destroy
+		 @uplaod = Upload.find(params[:id])
+		 @uplaod.destroy
+
+		 redirect_to :back
+	 end
 
   private
   def upload_params

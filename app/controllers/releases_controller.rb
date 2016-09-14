@@ -20,7 +20,6 @@ class ReleasesController < ApplicationController
 
 
 
-
   # GET /releases/1
   # GET /releases/1.json
   def show

@@ -27,7 +27,6 @@ class Api::RtcController < ApplicationController
     @wi = JSON.parse(res.body)
 
 
-    logger.info(@wi['rtc_cm:com.acn.adt3.workitem.attribute.resolution'])
     date = DateTime.now
     now  = date.strftime('%a %b %d %H:%M:%S')
 
