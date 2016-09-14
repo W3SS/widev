@@ -13,6 +13,7 @@ class Api::RtcController < ApplicationController
     uri = URI.parse("https://adtclmemea03301.accenture.com/ccm/oslc/workitems/"+wi+".json")
 
     logger.info("URI: " << uri.host)
+    logger.info("RTC User: " << rtcinfo.username)
 
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true if uri.scheme == 'https'
@@ -48,7 +49,7 @@ class Api::RtcController < ApplicationController
     res = http.start { |http| http.request req }
     logger.info(res.body)
 
-
+    render json: "Success"
 
   end
 end

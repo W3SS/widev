@@ -20,8 +20,8 @@ export default class Defect extends React.Component {
 
 
     handleVF(i){
-        console.log("Setting Validate FIX on : " + i.DESCRIPTION);
-        this.setState({jenkload:true});
+        console.log("Setting Validate FIX on : " + i);
+        console.log(i);
         Axios.get('/api/rtc/updateWorkItemByInstallation?wi='+i.DESCRIPTION+'&installation_id='+this.props.installation.id).then( (response) =>{
 
         })
@@ -33,10 +33,10 @@ export default class Defect extends React.Component {
   render() {
 
 
-      let items = this.props.rmitems.map((i)=>{
+      let items = this.state.rmitems.map((i)=>{
           let btn="";
           if (!isNaN(i.DESCRIPTION)){
-              btn = <button onClick={(i)=>this.handleVF(i)} className="btn btn-sm btn-success">Validate FIX</button>
+              btn = <button onClick={ () => this.handleVF(i) } className="btn btn-xs btn-success">Validate FIX</button>
               //btn = <button className="btn btn-sm btn-success">Validate FIX</button>
           }else{
               btn = "No action"
