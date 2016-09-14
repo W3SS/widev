@@ -21,7 +21,8 @@ export default class InstallationItemRow extends React.Component {
         item:this.props.item,
         isShowingModal:false,
         log:'',
-        joburl:'#'
+        joburl:'#',
+        jenkload:false
     }
   }
 
@@ -69,15 +70,20 @@ export default class InstallationItemRow extends React.Component {
 
       startJenk() {
           console.log("Start Job on Jenkins");
-
+          this.setState({jenkload:true});
           Axios.get('/api/jenkins/runjob/'+this.props.item.id +'.json').then( (response) =>{
                  this.setStart();
                  this.getJenkUrl();
-              this.setState({item:response.data } );
+              this.setState({
+                  item:response.data,
+                  jenkload:false
+
+              } );
 
           })
         .catch(function (error) {
             alert(error);
+            this.setState({jenkload:false} );
         });
       }
 
@@ -114,7 +120,7 @@ export default class InstallationItemRow extends React.Component {
 
     render() {
         const { item } = this.state;
-        const { log,joburl } = this.state;
+        const { log,joburl,jenkload } = this.state;
 
         let done_enabled=true;
         let error_enabled=true;
@@ -163,7 +169,9 @@ export default class InstallationItemRow extends React.Component {
         let jenk=<td></td>
         let jenk_log=<td></td>
 
-
+        if (jenkload){
+            jenk_enabled=false;
+        }
 
         if(item.job_id != null){
             jenk_enabled = false;
@@ -186,8 +194,11 @@ export default class InstallationItemRow extends React.Component {
             </td>
         }
 
-        if(item.rel_template_item.command ){//&& item.job_id  == null){
+        if(item.rel_template_item.command && !jenkload){//&& item.job_id  == null){
             jenk = <td><button  disabled={!jenk_enabled} className="btn btn-warning" onClick={()=>this.startJenk()} ><i className="fa fa-play" aria-hidden="true"></i> Jenkins</button> </td>
+        }
+        if(item.rel_template_item.command && jenkload){//&& item.job_id  == null){
+            jenk = <td><button  disabled={!jenk_enabled} className="btn btn-warning" onClick={()=>this.startJenk()} ><i className="fa fa-cog" aria-hidden="true"></i> Starting</button> </td>
         }
 
          const startF= item.start_time?moment(item.start_time).format('MMMM Do, h:mm:ss a'):"-";

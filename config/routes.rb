@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  resources :rtc_infos
+
+  get 'my_rtc_infos/edit_my'=> 'rtc_infos#edit_my'
+  post 'my_rtc_infos/update_my'=> 'rtc_infos#update_my'
+
+
+  namespace :api do
+  get 'rtc/updateWorkItemByInstallation'
+  end
+
    namespace :api do
     get 'jenkins/runjob/:item_id' => 'jenkins#runjob'
     get 'jenkins/jobinfo/:item_id'=> 'jenkins#jobinfo'

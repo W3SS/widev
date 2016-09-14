@@ -1,0 +1,29 @@
+<h1>Editing Rtc Info</h1>
+<div class="row">
+  <div class="col-md-6 well">
+    <p id="notice"><%= notice %></p>
+
+    <%= bootstrap_form_tag url: '/my_rtc_infos/update_my' do |f| %>
+        <% if @rtc_info.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@rtc_info.errors.count, "error") %> prohibited this rtc_info from being saved:</h2>
+
+              <ul>
+                <% @rtc_info.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+        <% end %>
+        <div class="field">
+          <%= f.text_field :username ,value: @rtc_info.username %>
+        </div>
+        <div class="field">
+          <%= f.password_field :password,value: @rtc_info.password %>
+        </div>
+        <div class="actions">
+          <%= f.submit %>
+        </div>
+    <% end %>
+  </div>
+</div>

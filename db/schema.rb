@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160906123538) do
+ActiveRecord::Schema.define(version: 20160914130931) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "trackable_id"
@@ -195,6 +195,16 @@ ActiveRecord::Schema.define(version: 20160906123538) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "rtc_infos", force: :cascade do |t|
+    t.string   "username"
+    t.string   "password"
+    t.integer  "users_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "rtc_infos", ["users_id"], name: "index_rtc_infos_on_users_id"
 
   create_table "systems", force: :cascade do |t|
     t.string   "name"

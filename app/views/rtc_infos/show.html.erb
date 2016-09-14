@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Username:</strong>
+  <%= @rtc_info.username %>
+</p>
+
+<p>
+  <strong>Password:</strong>
+  <%= @rtc_info.password %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @rtc_info.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_rtc_info_path(@rtc_info) %> |
+<%= link_to 'Back', rtc_infos_path %>

@@ -16,25 +16,10 @@
     </div>
     <div id="collapse1" class="panel-collapse collapse">
       <div class="panel-body">
-        <table class="table table-bordered objtable">
-          <thead>
-          <tr>
-            <th>Object</th>
-            <th>Description</th>
-            <th>Type</th>
-          </tr>
-          </thead>
-          <tbody>
-          <% @rmobjects.each() do |rmo| %>
-              <tr>
-                <td><%= rmo['NAME'] %></td>
-                <td><%= rmo['DESCRIPTION'] %></td>
-                <td><%= rmo['TYPE'] %></td>
-                <td><%= link_to 'Validate Fix' , rtc_index_path %></td>
-              </tr>
-          <% end %>
-          </tbody>
-         </table>
+
+
+        <%= react_component("DefectApp", props: {currentUser: current_user,rmitems: @rmobjects,installation: @installation }, prerender: false) %>
+
       </div>
     </div>
   </div>
