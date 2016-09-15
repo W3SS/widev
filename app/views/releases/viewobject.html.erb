@@ -41,11 +41,12 @@
 
     <div class="row">
         <div class="col-md-12">
-                  <table  class="table table-bordered datatable">
+                  <table  class="table table-bordered datatable" style="font-size: 12px">
       <thead>
         <tr>
           <th>Filename</th>
           <th>Type</th>
+          <th>Rel DT</th>
           <th>Latest rel</th>
           <th>Latest date</th>
           <th>File REL</th>
@@ -59,6 +60,7 @@
           <tr>
             <td><%= item.file_name %></td>
             <td><%= item.ftype %></td>
+            <td><%= item.test_env_date.strftime("%d/%m/%y") %></td>
             <% if latest %>
                 <td><span class="label cal-label" style="background-color:<%=latest.release.reltype.color %>"><%= link_to latest.release.system.short+"-"+latest.release.rel, latest.release , class: "cal-link" %></span></td>
                 <td><%= latest.release.date.to_s(:rel_date)  %></td>

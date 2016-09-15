@@ -24,6 +24,20 @@ class ReleaseManager
   end
 
 
+  def self.getDateForRelaase(rel)
+      oracle = OCI8.new('SIEBEL', 'SIEBEL', 'CRMDB_NEW')
+
+      cursor = oracle.exec("select created as DATA from RELEASE where nome ='"+rel+"'")
+      q_result = []
+
+      while r = cursor.fetch_hash()
+        q_result.push(r)
+      end
+
+      q_result[0]["DATA"].strftime("%F")
+  end
+
+
   def self.getWorkItemForRelease(rel)
     result=""
     oracle = OCI8.new('SIEBEL', 'SIEBEL', 'CRMDB_NEW')
