@@ -63,7 +63,7 @@
             <% if item.test_env_date %>
                <td><%= item.test_env_date.strftime("%d/%m/%y") %></td>
             <% else %>
-                <td> Not Found on RM</td>
+                <td> N/A</td>
             <% end %>
             <% if latest %>
                 <td><span class="label cal-label" style="background-color:<%=latest.release.reltype.color %>"><%= link_to latest.release.system.short+"-"+latest.release.rel, latest.release , class: "cal-link" %></span></td>
