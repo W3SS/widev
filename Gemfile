@@ -50,6 +50,8 @@ gem 'bootswatch-rails'
 gem 'bootstrap-tour-rails'
 gem 'delayed_job_active_record'
 gem 'ruby-oci8'
+gem 'write_xlsx'
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

@@ -194,12 +194,7 @@ export default class InstallationItemRow extends React.Component {
             </td>
         }
 
-        if(item.rel_template_item.command && !jenkload){//&& item.job_id  == null){
-            jenk = <td><button  disabled={!jenk_enabled} className="btn btn-sm btn-warning" onClick={()=>this.startJenk()} ><i className="fa fa-play" aria-hidden="true"></i> Jenkins</button> </td>
-        }
-        if(item.rel_template_item.command && jenkload){//&& item.job_id  == null){
-            jenk = <td><button  disabled={!jenk_enabled} className="btn btn-sm btn-warning" onClick={()=>this.startJenk()} ><i className="fa fa-cog" aria-hidden="true"></i> Starting</button> </td>
-        }
+
 
          const startF= item.start_time?moment(item.start_time).format('MMMM Do, h:mm:ss a'):"-";
          const endF= item.end_time?moment(item.end_time).format('MMMM Do, h:mm:ss a'):"-";
@@ -214,6 +209,20 @@ export default class InstallationItemRow extends React.Component {
             button2=     <td><button disabled={!done_enabled} className="btn  btn-sm btn-success" onClick={()=>this.setDone()} >Done</button></td>
             button3  =  <td><button disabled={!error_enabled} className="btn btn-sm btn-danger" onClick={()=>this.setError()} >Error</button></td>
             button4  =  <td><button disabled={!start_enabled} className="btn btn-sm btn-danger" onClick={()=>this.setNa()} >N/A</button></td>
+
+              if(item.rel_template_item.command && !jenkload){//&& item.job_id  == null){
+                  jenk = <td><button  disabled={!jenk_enabled} className="btn btn-sm btn-warning" onClick={()=>this.startJenk()} ><i className="fa fa-play" aria-hidden="true"></i> Jenkins</button> </td>
+              }
+              if(item.rel_template_item.command && jenkload){//&& item.job_id  == null){
+                  jenk = <td><button  disabled={!jenk_enabled} className="btn btn-sm btn-warning" onClick={()=>this.startJenk()} ><i className="fa fa-cog" aria-hidden="true"></i> Starting</button> </td>
+              }
+          }else{
+              button1="";
+              button2="";
+              button3="";
+              button4="";
+              jenk="";
+              jenk_log="";
           }
 
         return (

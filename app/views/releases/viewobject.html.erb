@@ -29,10 +29,12 @@
     <% end %>
     </div>
      
-    <div class="col-md-3">
+    <div class="col-md-2">
             <%= link_to 'Remove all', '/ritems/remove_all/'+@release.id.to_s, class:"btn btn-danger" ,:data => {:confirm => 'Are you sure?'} %>
     </div>
-
+          <div class="col-md-1">
+            <%= link_to 'Export', '/utils/release_items/export?release='+@release.id.to_s, class:"btn btn-success"  %>
+          </div>
     
 
     </div>
@@ -46,10 +48,11 @@
         <tr>
           <th>Filename</th>
           <th>Type</th>
-          <th>Rel DT</th>
+          <th>Test DT</th>
           <th>Latest rel</th>
           <th>Latest date</th>
           <th>File REL</th>
+          <th>Rem.</th>
         </tr>
       </thead>
     
@@ -74,6 +77,7 @@
                 <td>-</td>
                 <td>-</td>
             <% end %>
+              <td><%= check_box_tag 'R', item.id , item.removable, :class => "chckbox iten-check" %></td>
           </tr>
           <% end %>
         </tbody>
@@ -111,6 +115,17 @@ $(function() {
 
       });
   });
+
+  $(".iten-check").bind('change', function(){
+    if (this.checked){
+      $.ajax({
+        url: '/release_items/'+this.value+'/toggle',
+        type: 'POST',
+        data: {"removable": this.checked}
+      });
+    }
+  });
   
 });
 </script>
+

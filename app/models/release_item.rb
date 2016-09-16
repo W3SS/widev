@@ -39,20 +39,24 @@ class ReleaseItem < ActiveRecord::Base
 
           sheet = xlsx.sheets
           xlsx.each_with_pagename do |name, sheet|
-            logger.info(name)
             type = name
 
             if sheet.first_row
 
                 ((sheet.first_row + 1)..sheet.last_row).each do |row|
-                    logger.info (sheet.row(row)[0])
 
                     file_name = sheet.row(row)[0]
+                    removable_s= sheet.row(row)[1]
+                    removable = false
+                    if removable_s == "Y" || removable_s == "y"
+                      removable = true
+                    end
                     item = ReleaseItem.new
                     item.ftype = name.upcase
                     item.file_name = file_name
                     item.name = file_name[12r..-1]
                     item.release_id = release
+                    item.removable = removable
                     item.test_env_date = item.getReleaseDate(item)
                     item.save!
                   end

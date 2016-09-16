@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160915131046) do
+ActiveRecord::Schema.define(version: 20160916083304) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "trackable_id"
@@ -175,6 +175,7 @@ ActiveRecord::Schema.define(version: 20160915131046) do
     t.string   "file_name"
     t.integer  "release_id"
     t.date     "test_env_date"
+    t.boolean  "removable"
   end
 
   create_table "releases", force: :cascade do |t|

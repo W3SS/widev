@@ -10,6 +10,63 @@ class ReleaseItemsController < ApplicationController
           ReleaseItem.import(params[:file],release)
           redirect_to :back , notice: "Item imported."
       end
+   end
+
+
+  def export
+    if ( params[:release])
+
+      release = Release.find(params[:release])
+      date = DateTime.now
+
+      name = "ObjectPreview-" + release.date.strftime("%d-%m-%Y")+"-v" +date.strftime("%Y%m%dT%H%M%S")+".xlsx"
+      path = "tmp/"+ name
+
+      workbook = WriteXLSX.new(path)
+      worksheets = Hash.new
+
+      format = workbook.add_format # Add a format
+      format.set_bold
+      format.set_color('yellow')
+      format.set_align('left')
+      format.set_bg_color('blue')
+
+      format2 = workbook.add_format # Add a format
+      format2.set_align('left')
+      format2.set_text_justlast
+
+
+
+      items  = ReleaseItem.where(:release_id => params[:release])
+      category = ReleaseItem.where(:release_id => params[:release]).select(:ftype).uniq
+
+      #prepara gli sheet per le categorie
+      category.each() do |cat|
+        logger.info(cat)
+        worksheets[cat.ftype] = workbook.add_worksheet(cat.ftype.to_s.upcase)
+        worksheets[cat.ftype].write(0,   0, "Name",format)
+        worksheets[cat.ftype].write(0,   1, "Removable",format)
+      end
+
+      row=1
+
+      category.each() do |cat|
+        items  = ReleaseItem.where(:release_id => params[:release]).where(:ftype =>cat.ftype.to_s)
+        items.each() do |i|
+          worksheets[cat.ftype].write(row,   0, i.file_name,format2)
+          if i.removable
+            worksheets[cat.ftype].write(row,   1, "Y")
+          end
+          row = row +1
+        end
+        row=1
+      end
+
+    end
+
+    workbook.close
+
+    send_file path, :type => "application/vnd.ms-excel", :filename => name, :stream => false
   end
   
   def remove_all
@@ -80,6 +137,16 @@ class ReleaseItemsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to release_items_url, notice: 'Release item was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+
+  def toggle
+    @item =  ReleaseItem.find(params[:id])
+    if @item.update_attributes(:removable => params[:removable])
+      render json: "Success"
+    else
+      render json: "Failed"
     end
   end
 

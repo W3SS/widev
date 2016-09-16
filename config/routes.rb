@@ -101,6 +101,10 @@ Rails.application.routes.draw do
   get 'calendar/index'
   get 'monitor/index'
 
+  post 'release_items/:id/toggle' => 'release_items#toggle'
+
+  get  'utils/release_items/export' => 'release_items#export'
+
   get 'uploads/new'
   resources :uploads
 
