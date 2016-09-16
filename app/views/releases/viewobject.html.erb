@@ -117,13 +117,13 @@ $(function() {
   });
 
   $(".iten-check").bind('change', function(){
-    if (this.checked){
+
       $.ajax({
         url: '/release_items/'+this.value+'/toggle',
         type: 'POST',
         data: {"removable": this.checked}
       });
-    }
+    
   });
   
 });

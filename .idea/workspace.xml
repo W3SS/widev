@@ -2,16 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d5e2a7f2-d0aa-4cfd-a4b7-574c4afeb308" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/widev.iml" afterPath="$PROJECT_DIR$/.idea/widev.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile" afterPath="$PROJECT_DIR$/Gemfile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile.lock" afterPath="$PROJECT_DIR$/Gemfile.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/release_items_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/release_items_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/release_item.rb" afterPath="$PROJECT_DIR$/app/models/release_item.rb" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ObjectPreview-15-09-2016-v20160916T120058.xlsx" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ObjectPreview-15-09-2016-v20160916T120152.xlsx" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ObjectPreview-15-09-2016-v20160916T120205.xlsx" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ObjectPreview-15-09-2016-v20160916T120207.xlsx" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ObjectPreview-15-09-2016-v20160916T120424.xlsx" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ObjectPreview-15-09-2016-v20160916T120429.xlsx" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/releases/viewobject.html.erb" afterPath="$PROJECT_DIR$/app/views/releases/viewobject.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/app/bundles/HelloWorld/components/InstallationItemRow.js" afterPath="$PROJECT_DIR$/client/app/bundles/HelloWorld/components/InstallationItemRow.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/schema.rb" afterPath="$PROJECT_DIR$/db/schema.rb" />
     </list>
     <ignored path="widev.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -63,7 +60,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="release_items_controller.rb" pinned="false" current-in-tab="true">
+      <file leaf-file-name="release_items_controller.rb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/release_items_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="343">
@@ -93,11 +90,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="viewobject.html.erb" pinned="false" current-in-tab="false">
+      <file leaf-file-name="viewobject.html.erb" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/releases/viewobject.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
-              <caret line="31" column="24" selection-start-line="31" selection-start-column="24" selection-end-line="31" selection-end-column="24" />
+            <state relative-caret-position="337">
+              <caret line="125" column="4" selection-start-line="125" selection-start-column="4" selection-end-line="125" selection-end-column="4" />
               <folding />
             </state>
           </provider>
@@ -222,9 +219,9 @@
         <option value="$PROJECT_DIR$/db/migrate/20160916083304_add_removable_to_release_item.rb" />
         <option value="$PROJECT_DIR$/Gemfile" />
         <option value="$PROJECT_DIR$/config/routes.rb" />
-        <option value="$PROJECT_DIR$/app/views/releases/viewobject.html.erb" />
         <option value="$PROJECT_DIR$/app/models/release_item.rb" />
         <option value="$PROJECT_DIR$/app/controllers/release_items_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/releases/viewobject.html.erb" />
       </list>
     </option>
   </component>
@@ -702,7 +699,7 @@
       <workItem from="1473668645270" duration="71000" />
       <workItem from="1473842320317" duration="22142000" />
       <workItem from="1473929660080" duration="11747000" />
-      <workItem from="1474013967117" duration="6638000" />
+      <workItem from="1474013967117" duration="7322000" />
     </task>
     <task id="LOCAL-00001" summary="queryDBResult">
       <created>1470843955698</created>
@@ -715,7 +712,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="115817000" />
+    <option name="totallyTimeSpent" value="116501000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
@@ -1161,14 +1158,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/releases/viewobject.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="31" column="24" selection-start-line="31" selection-start-column="24" selection-end-line="31" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/item_per_installations_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1181,6 +1170,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="343">
           <caret line="68" column="41" selection-start-line="68" selection-start-column="30" selection-end-line="68" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/releases/viewobject.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="337">
+          <caret line="125" column="4" selection-start-line="125" selection-start-column="4" selection-end-line="125" selection-end-column="4" />
           <folding />
         </state>
       </provider>
