@@ -33,7 +33,7 @@
             <%= link_to 'Remove all', '/ritems/remove_all/'+@release.id.to_s, class:"btn btn-danger" ,:data => {:confirm => 'Are you sure?'} %>
     </div>
           <div class="col-md-1">
-            <%= link_to 'Export', '/utils/release_items/export?release='+@release.id.to_s, class:"btn btn-success"  %>
+            <%= link_to 'Export', '/utils/release_items/export?release='+@release.id.to_s, 'data-no-turbolink' => true , class: "btn btn-success"   %>
           </div>
     
 
@@ -123,7 +123,7 @@ $(function() {
         type: 'POST',
         data: {"removable": this.checked}
       });
-    
+
   });
   
 });

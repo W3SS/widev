@@ -66,7 +66,7 @@ class ReleaseItemsController < ApplicationController
 
     workbook.close
 
-    send_file path, :type => "application/vnd.ms-excel", :filename => name, :stream => false
+    send_file path, :type => "application/octet-stream", :filename => name, :stream => false, :disposition => 'attachment'
   end
   
   def remove_all

@@ -91,6 +91,8 @@ class Api::JenkinsController < ApplicationController
     http = Net::HTTP.new(uri.host, uri.port)
 
     req = Net::HTTP::Get.new(uri)
+    req.basic_auth Rails.configuration.x.jenkins.user, Rails.configuration.x.jenkins.password
+
     res = http.request(req)
 
     render json: res.body
@@ -99,8 +101,7 @@ class Api::JenkinsController < ApplicationController
   def getbuildurl
     @item = ItemPerInstallation.find(params[:item_id])
     job = @item.rel_template_item.command
-    Rails.configuration.x.jenkins.url+"/job/"+job
 
-    render json: Rails.configuration.x.jenkins.url+"/job/" +job
+    render json: Rails.configuration.x.jenkins.feurl+"/job/" +job
   end
 end
