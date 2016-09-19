@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  namespace :api do
+      get 'link/get_by_environment/:env_id' => 'link#getByEnvironemnt'
+  end
+
+  resources :links
   resources :rtc_infos
 
   get 'my_rtc_infos/edit_my'=> 'rtc_infos#edit_my'

@@ -13,6 +13,7 @@ class MyEnvironmentController < ApplicationController
   end
 
   def info
+    @environment = Environment.find(params[:env_id])
   end
   
   

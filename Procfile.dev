@@ -1,2 +1,2 @@
-web: rails s -p 8081 -b 127.0.0.1
+web: rails s -p 8082 -b 127.0.0.1
 client: cd client && npm run build:dev:client'

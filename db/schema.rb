@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160916083304) do
+ActiveRecord::Schema.define(version: 20160919123631) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "trackable_id"
@@ -134,6 +134,17 @@ ActiveRecord::Schema.define(version: 20160916083304) do
 
   add_index "item_per_templates", ["rel_template_id"], name: "index_item_per_templates_on_rel_template_id"
   add_index "item_per_templates", ["rel_template_item_id"], name: "index_item_per_templates_on_rel_template_item_id"
+
+  create_table "links", force: :cascade do |t|
+    t.string   "url"
+    t.string   "description"
+    t.string   "is_available"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "environment_id"
+  end
+
+  add_index "links", ["environment_id"], name: "index_links_on_environment_id"
 
   create_table "queries", force: :cascade do |t|
     t.string   "title"

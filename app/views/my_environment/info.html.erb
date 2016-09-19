@@ -1,2 +1,4 @@
-<h1>MyEnvironment#info</h1>
-<p>Find me in app/views/my_environment/info.html.erb</p>
+<h1><%= @environment.name %> Info</h1>
+
+<h3>Application Links</h3>
+<%= react_component("LinkListApp", props: {currentUser: current_user,environment: @environment }, prerender: false) %>
