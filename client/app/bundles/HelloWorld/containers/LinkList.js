@@ -81,52 +81,37 @@ export default class LinkList extends React.Component {
               <tr>
                   <td>{m.description}</td>
                   <td>{m.url}</td>
-                  <td><button onClick={()=>this.handleDelete(m)} className="btn btn-xs btn-danger">Remove</button> </td>
-                  <td><a href={m.url} target="_blank" className="btn btn-xs btn-success">Go</a></td>
+                  <td><button onClick={()=>this.handleDelete(m)} className="btn btn-xs btn-danger"><i className="fa fa-trash" aria-hidden="true"></i> Remove</button> </td>
+                  <td><a href={m.url} target="_blank" className="btn btn-xs btn-success"><i className="fa fa-link" aria-hidden="true"></i> Go</a></td>
               </tr>
           )
       });
 
     return (
-      <div >
-        <div className="row">
-              <div className="col-md-12">
-               <br/>
-               <br/>
-              </div>
-        </div>
-         <div className="row">
-              <div className="col-md-12">
-                  <table  className="table table-bordered">
-                      <thead>
-                          <tr>
+        <div className="well">
+            <div className="row">
+                <div className="col-md-12">
+                    <table  className="table table-bordered">
+                        <thead>
+                        <tr>
                             <th>Description</th>
-                              <th>Url</th>
-                              <th colSpan="2">Action</th>
-                          </tr>
+                            <th>Url</th>
+                            <th colSpan="2">Action</th>
+                        </tr>
                         </thead>
-                      <tbody>
+                        <tbody>
                         {link_rows}
+                        <tr>
+                            <td><input type="text" className="form-control input-sm col-md-12"  ref="desc" /></td>
+                            <td> <input type="text" className="form-control input-sm col-md-12" ref="url"  /></td>
+                            <td colSpan="2"><button type="submit" onClick={(e)=>this.handleAddUrl(e)} className="btn btn-sm btn-success"><i className="fa fa-plus" aria-hidden="true"></i> Add URL</button></td>
+                        </tr>
                         </tbody>
-                  </table>
-              </div>
-         </div>
-          <div className="row">
-              <div className="col-md-12">
-                  <form className="form-inline">
-                      <div className="form-group ">
-                          <label >Description</label>
-                          <input type="text" className="form-control input-sm"  ref="desc" />
-                      </div>
-                      <div className="form-group">
-                          <label>URL</label>
-                          <input type="text" className="form-control input-sm" ref="url"  />
-                      </div>
-                      <button type="submit" onClick={(e)=>this.handleAddUrl(e)} className="btn btn-sm">Add URL</button>
-                  </form>
-              </div>
-          </div>
-      </div>
+                    </table>
+                </div>
+            </div>
+        </div>
+
     );
   }
 }
