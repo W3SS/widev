@@ -69,6 +69,6 @@ class EnvironmentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def environment_params
-      params.require(:environment).permit(:name)
+      params.require(:environment).permit(:name,:int_system,:rel_type,:stype,:rel)
     end
 end

@@ -1,21 +1,46 @@
-<%= form_for(@environment) do |f| %>
-  <% if @environment.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@environment.errors.count, "error") %> prohibited this environment from being saved:</h2>
+<div class="row">
+  <div class="col-md-6 well">
+    <%= bootstrap_form_for(@environment) do |f| %>
+        <% if @environment.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@environment.errors.count, "error") %> prohibited this environment from being saved:</h2>
 
-      <ul>
-      <% @environment.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+              <ul>
+                <% @environment.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+        <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+        <div class="field">
+          <%= f.text_field :name %>
+        </div>
+        <div class="field">
+          <%= f.select :rel_type, [['EVO', 'EVO'], ['FIX', 'FIX']], { label: "Choose release type" }, { class: "selectpicker" } %>
+        </div>
+        <div class="field">
+          <%= f.text_field :rel %>
+        </div>
+        <div class="field">
+          <%= f.select :stype, [['Integr. Test', 'Integration Test'],
+                                ['System Test', 'System Test'],
+                                ['Development', 'Development'],
+                                ['Production', 'Production'],
+                                ['Performance', 'Performance'],
+                                ['HotFix', 'HotFix']], { label: "Choose system type" }, { class: "selectpicker" } %>
+
+        </div>
+        <div class="field">
+          <%= f.select :int_system, [['ESB', 'ESB'],
+                                    ['WIDE', 'WIDE']
+              ], { label: "Choose system integration" }, { class: "selectpicker" } %>
+        </div>
+        <div class="actions">
+          <%= f.submit %>
+        </div>
+    <% end %>
+
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>
+

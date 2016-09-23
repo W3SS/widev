@@ -23,13 +23,11 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li><%= link_to "Timeline", monitor_index_path %> </li>
+            <li><%= link_to '<i class="fa fa-briefcase" aria-hidden="true"></i> Environments'.html_safe, my_environment_home_path %></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Release<span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><%= link_to '<i class="fa fa-calendar" aria-hidden="true"></i> Release Plan'.html_safe, calendar_index_path %></li>
-                    <li role="separator" class="divider"></li>
-
-                <li><%= link_to '<i class="fa fa-tasks" aria-hidden="true"></i> Release progress'.html_safe, my_environment_home_path %></li>
                     <li role="separator" class="divider"></li>
                 <li><%= link_to "T&A - Releases Template", rel_templates_path %></li>
                 <li><%= link_to "T&A - New Installation", my_installation_newinstall_path %></li>

@@ -1,4 +1,17 @@
-<h1><%= @environment.name %> Info</h1>
+<div class="row">
+  <div class="col-md-12" style="text-align:center">
+      <h1><%= @environment.name %> Info</h1>
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="col-md 6" style="text-align:center;font-size: 22px">
+    <p><strong>Use : </strong><%= @environment.stype %> </p>
+    <p><strong>Chain : </strong><%= @environment.rel_type %> </p>
+    <p><strong>Actual release : </strong><%= @environment.rel %> </p>
+    <p><strong>Integrated : </strong><%= @environment.int_system %> </p>
+  </div>
+</div>
 
 <h3>Application Links</h3>
 <%= react_component("LinkListApp", props: {currentUser: current_user,environment: @environment }, prerender: false) %>
