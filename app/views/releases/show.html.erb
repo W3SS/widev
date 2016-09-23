@@ -11,9 +11,14 @@
 
     <%= link_to 'Edit', edit_release_path(@release), class:"btn btn-primary" %>
     <%= f.submit 'Save', :class => "btn btn-success" %>
-    <%= link_to 'Release Items' , '/release/objects/'+@release.id.to_s , class:"btn btn-primary" %>
+      <%= link_to 'Release Items' , '/release/objects/'+@release.id.to_s , class:"btn btn-primary" %>
+      <% if @release.installation_id %>
+        <%= link_to 'Installation' , '/my_installation/viewinstall/'+@release.installation_id.to_s , class:"btn btn-primary" %>
+      <% else %>
+          <%= link_to 'Create Installation' , '/my_installation/newinstall?release_id='+@release.id.to_s  , class:"btn btn-primary" %>
+      <% end %>
 
-     <br/>
+      <br/>
     
      <div class="row">
           <div class="col-md-6">

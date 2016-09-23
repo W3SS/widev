@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160923103437) do
+ActiveRecord::Schema.define(version: 20160923125448) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "trackable_id"
@@ -199,11 +199,14 @@ ActiveRecord::Schema.define(version: 20160923103437) do
     t.text     "outcome"
     t.datetime "date"
     t.boolean  "completed"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.integer  "system_id"
     t.integer  "reltype_id"
+    t.integer  "installation_id"
   end
+
+  add_index "releases", ["installation_id"], name: "index_releases_on_installation_id"
 
   create_table "reltypes", force: :cascade do |t|
     t.string   "name"

@@ -91,6 +91,7 @@ Rails.application.routes.draw do
   get 'my_installation/testview/:id' => 'my_installation#testview'
 
   post 'my_installation/createinstall'
+  patch 'my_installation/update/:inst_id' => 'my_installation#update'
 
   resources :item_per_installations
   resources :installations

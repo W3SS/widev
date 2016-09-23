@@ -1,0 +1,13 @@
+<h1>Create new installation for install</h1>
+
+<div class="row">
+    <div class="col-md-6 well">
+        <%= bootstrap_form_for(@installation, :url => '/my_installation/update/' + @installation.id.to_s ) do |f| %>
+                <%= f.text_field :release %>
+                <%= f.collection_select :rel_template_id, RelTemplate.all, :id, :name %>
+                 <%= f.collection_select :environment_id, Environment.all, :id, :name %>
+            
+                <%= f.submit %>
+            <% end %>
+    </div>
+</div>

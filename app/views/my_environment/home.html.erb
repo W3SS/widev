@@ -18,10 +18,10 @@
             <strong><%= environment.name %></strong>
           </td>
           <td>
-            <%= link_to  "View Installations ", '/my_environment/status?env_id='+environment.id.to_s  %>
+            <%= link_to  "View Installations ", '/my_environment/status?env_id='+environment.id.to_s   , class:"btn btn-xs btn-primary" %>
           </td>
           <td>
-            <%= link_to "View Info ",'/my_environment/info?env_id='+environment.id.to_s  %>
+            <%= link_to "View Info ",'/my_environment/info?env_id='+environment.id.to_s , class:"btn btn-xs btn-success"  %>
           </td>
         </tr>
 

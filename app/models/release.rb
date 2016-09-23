@@ -7,6 +7,7 @@ class Release < ActiveRecord::Base
     belongs_to :system
     belongs_to :reltype
     has_many :release_items
+    belongs_to :installation
 
     def start_time
         self.date
