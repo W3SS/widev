@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -24,6 +24,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'jenkins_api_client'
+gem 'json', '~> 1.8.3'
 
 gem 'roo'
 gem 'acts-as-taggable-on', '~> 3.4'
@@ -51,8 +52,8 @@ gem 'bootstrap-tour-rails'
 gem 'delayed_job_active_record'
 gem 'ruby-oci8'
 gem 'write_xlsx'
-
-
+gem 'ffi'
+gem 'faker'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

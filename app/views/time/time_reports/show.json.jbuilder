@@ -1,0 +1,1 @@
+json.partial! "/time/time_reports/report", time_time_report: @time_time_report

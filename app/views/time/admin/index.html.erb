@@ -1,0 +1,14 @@
+<h1>Time Report Admin</h1>
+
+<%= bootstrap_form_tag url: '/time/admin/index',:html => {:class => "form-inline center"} , method: :get do |f| %>
+    <%= f.date_field :sdate, value: @start_date %>
+    <%= f.date_field :edate, value: @end_date %>
+    <%= f.check_box :explode, label: "Explode reason", value: @explode %>
+    <%= f.submit 'Load' %>
+    <%= link_to('Export',time_admin_export_path(:sdate =>@start_date , :edate=>@end_date ,:explode =>@explode  ) )%>
+
+<% end %>
+
+<div class="container-fluid">
+      <%= react_component("ReportMainApp", props:{columns:@columns, rows:@rows, users: @users ,reports:@reports,currentUser:current_user}, prerender: false) %>
+</div>

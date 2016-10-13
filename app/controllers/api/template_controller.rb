@@ -20,9 +20,7 @@ class Api::TemplateController < ApplicationController
   def addsteptotemplate
       @template = RelTemplate.find(params[:templ_id])
       @rel_template_item  =RelTemplateItem.find(params[:task_id])
-      
-      
-      
+
       @template.item_per_template.create(rel_template_item_id:   @rel_template_item.id)
     
     respond_to do |format|

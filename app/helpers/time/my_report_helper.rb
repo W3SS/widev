@@ -1,0 +1,2 @@
+module Time::MyReportHelper
+end

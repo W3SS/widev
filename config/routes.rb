@@ -1,4 +1,27 @@
 Rails.application.routes.draw do
+  namespace :time do
+  get 'admin/index'
+    get 'admin/export'
+  end
+
+  namespace :time do
+    resources :reasons
+  end
+  namespace :time do
+  get 'my_report/calendar'
+  end
+
+  namespace :time do
+  get 'my_report/index'
+  end
+
+  namespace :time do
+  get 'my_report/view'
+  end
+
+  namespace :time do
+    resources :time_reports
+  end
   namespace :api do
       get 'link/get_by_environment/:env_id' => 'link#getByEnvironemnt'
   end

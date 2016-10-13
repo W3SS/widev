@@ -6,6 +6,8 @@ import TemplateApp from './TemplateClient';
 import CheckResultApp from './CheckResultClient';
 import DefectApp from './DefectClient';
 import LinkListApp from './LinkListClient';
+import TimeReportApp from './TimeReportApp';
+import ReportMainApp from './ReportMainApp';
 
 // This is how react_on_rails can see the HelloWorldApp in the browser.
 ReactOnRails.register({ HelloWorldApp });
@@ -15,3 +17,5 @@ ReactOnRails.register({ TemplateApp });
 ReactOnRails.register({ CheckResultApp });
 ReactOnRails.register({ DefectApp });
 ReactOnRails.register({ LinkListApp });
+ReactOnRails.register({ TimeReportApp });
+ReactOnRails.register({ ReportMainApp });

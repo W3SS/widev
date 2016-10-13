@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  repdate: 2016-10-12
+  hours: 1.5
+  note: MyString
+
+two:
+  repdate: 2016-10-12
+  hours: 1.5
+  note: MyString

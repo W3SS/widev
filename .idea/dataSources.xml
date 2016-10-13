@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="2524364550">
+  <component name="DataSourceManagerImpl" format="xml" hash="3947056783">
     <data-source source="LOCAL" name="Rails widev: production" uuid="3b756c42-47a9-4eb9-ae15-c07d6bba9f15">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
@@ -24,6 +24,12 @@
       <remarks>$PROJECT_DIR$/config/database.yml</remarks>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
       <jdbc-url>jdbc:sqlite:C:\Users\andrea.terzani\Desktop\Dev\widev\db\development.sqlite3</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="Sqlite (Xerial) - development.sqlite3" uuid="623b091d-7a89-4727-84df-e473c32c4b5d">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/db/development.sqlite3</jdbc-url>
     </data-source>
   </component>
 </project>

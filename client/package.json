@@ -35,12 +35,19 @@
     "pubnub": "^3.14.5",
     "react": "^0.14.8 || ^15.0.0",
     "react-addons-css-transition-group": "^15.2.1",
+    "react-bootstrap-sweetalert": "^2.1.0",
+    "react-data-grid": "^1.0.52",
     "react-dom": "^0.14.8 || ^15.0.0",
     "react-modal": "^1.4.0",
     "react-modal-dialog": "^3.0.2",
     "react-notifications": "^1.2.0",
     "react-on-rails": "5.2.0",
+    "react-select": "^1.0.0-rc.2",
+    "react-spinkit": "^1.1.11",
+    "recharts": "^0.15.2",
     "webpack": "^1.12.14"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "style-loader": "^0.13.1"
+  }
 }

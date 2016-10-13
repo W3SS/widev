@@ -9,5 +9,9 @@
       <auth-required>false</auth-required>
       <first-sync>true</first-sync>
     </data-source>
+    <data-source name="Sqlite (Xerial) - development.sqlite3" uuid="623b091d-7a89-4727-84df-e473c32c4b5d">
+      <secret-storage>master_key</secret-storage>
+      <auth-required>false</auth-required>
+    </data-source>
   </component>
 </project>

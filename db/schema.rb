@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160923125448) do
+ActiveRecord::Schema.define(version: 20161013124205) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "trackable_id"
@@ -253,6 +253,27 @@ ActiveRecord::Schema.define(version: 20160923125448) do
   end
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true
+
+  create_table "time_reasons", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.float    "fcast_value", default: 8.0
+    t.boolean  "chageable",   default: true
+  end
+
+  create_table "time_time_reports", force: :cascade do |t|
+    t.date     "repdate"
+    t.float    "hours"
+    t.string   "note"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "user_id"
+    t.integer  "time_reason_id"
+  end
+
+  add_index "time_time_reports", ["time_reason_id"], name: "index_time_time_reports_on_time_reason_id"
+  add_index "time_time_reports", ["user_id"], name: "index_time_time_reports_on_user_id"
 
   create_table "uploads", force: :cascade do |t|
     t.datetime "created_at",          null: false

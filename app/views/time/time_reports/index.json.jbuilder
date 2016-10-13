@@ -1,0 +1,1 @@
+json.array! @time_time_reports, partial: 'time_time_reports/time_time_report', as: :time_time_report

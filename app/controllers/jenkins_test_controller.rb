@@ -13,7 +13,5 @@ class JenkinsTestController < ApplicationController
     puts code
 
     raise "Could not build the job specified" unless code == '201'
-
-
   end
 end

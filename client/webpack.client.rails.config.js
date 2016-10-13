@@ -37,7 +37,8 @@ config.module.loaders.push(
   {
     test: require.resolve('jquery-ujs'),
     loader: 'imports?jQuery=jquery',
-  }
+  },
+  { test: /\.css$/, loader: "style!css" }
 );
 
 module.exports = config;

@@ -1,0 +1,1 @@
+json.array! @time_reasons, partial: 'time_reasons/time_reason', as: :time_reason

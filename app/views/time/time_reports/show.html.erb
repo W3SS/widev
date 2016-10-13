@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Repdate:</strong>
+  <%= @time_time_report.repdate %>
+</p>
+
+<p>
+  <strong>Hours:</strong>
+  <%= @time_time_report.hours %>
+</p>
+
+<p>
+  <strong>Note:</strong>
+  <%= @time_time_report.note %>
+</p>
+
+<%= link_to 'Edit', edit_time_time_report_path(@time_time_report) %> |
+<%= link_to 'Back', time_time_reports_path %>

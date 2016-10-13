@@ -1,0 +1,1 @@
+json.partial! "time_reasons/time_reason", time_reason: @time_reason

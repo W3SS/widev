@@ -1,0 +1,29 @@
+<%= form_for(@time_reason) do |f| %>
+  <% if @time_reason.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@time_reason.errors.count, "error") %> prohibited this time_reason from being saved:</h2>
+
+      <ul>
+      <% @time_reason.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+    <div class="field">
+    <%= f.label :fcast_value %><br>
+    <%= f.text_field :fcast_value %>
+  </div>
+    <div class="field">
+      <%= f.label :chargeable %><br>
+      <%= f.text_field :chargeable %>
+    </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

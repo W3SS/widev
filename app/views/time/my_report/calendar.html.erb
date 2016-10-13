@@ -1,0 +1,15 @@
+<div class="container">
+  <h1>Time Report Calendar</h1>
+  <%= month_calendar events: @reports do |date, reports| %>
+      <%= react_component("TimeReportApp", props:{date: date ,reasons:@reasons,reports:reports,currentUser:current_user}, prerender: false) %>
+  <% end %>
+</div>
+
+<style>
+  .list-group-item {
+    padding: 3px 10px
+  }
+    .cal-header{
+      display: inline-flex;
+    }
+</style>
