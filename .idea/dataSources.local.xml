@@ -7,7 +7,6 @@
     </data-source>
     <data-source name="Rails widev: development" uuid="3f5e3663-9bd5-4750-8ee0-dc4a9004a4ba">
       <auth-required>false</auth-required>
-      <first-sync>true</first-sync>
     </data-source>
     <data-source name="Sqlite (Xerial) - development.sqlite3" uuid="623b091d-7a89-4727-84df-e473c32c4b5d">
       <secret-storage>master_key</secret-storage>

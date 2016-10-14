@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: 
+  deployed: false
+  team: MyString
+  sap: MyString
+
+two:
+  user: 
+  deployed: false
+  team: MyString
+  sap: MyString

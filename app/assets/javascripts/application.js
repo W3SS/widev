@@ -37,6 +37,7 @@
 //= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
 //= require froala_editor.min.js
 //= require bootstrap-tour
+//= require ag-grid/dist/ag-grid
 // require_tree .
 
 $.material.init()

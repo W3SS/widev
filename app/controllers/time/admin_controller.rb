@@ -49,6 +49,33 @@ class Time::AdminController < ApplicationController
 
   end
 
+
+  def createreport
+
+    start_date = Date.parse(params[:sdate])
+    end_date = Date.parse(params[:edate])
+    @start_date=start_date
+    @end_date=end_date
+    profiles  = UserProfile.where(deployed:1)
+    reasons  = Time::Reason.all
+    @rows=[]
+
+    profiles.each() do |profile|
+        reasons.each() do |reason|
+          row={'email': profile.email ,'sap':profile.sap, 'reason':reason.name}
+          (start_date..end_date).each() do |day|
+            hours = Time::TimeUtils.getProfileTimeForDateAndReason(profile,day,reason,true)
+            row[day.strftime('%d-%m')] = hours
+          end #End loop date
+          @rows << row
+        end #End loop reason
+    end #End loop profile
+
+    @columns = Time::TimeUtils.getColumnsDef(start_date,end_date)
+
+
+  end
+
   def getUserTimebyDateRangeWithNA user, start_date, end_date
     i=0
     tot=0
@@ -66,11 +93,11 @@ class Time::AdminController < ApplicationController
           tot_fcast += result.somma
         else
           row[i.to_s]="-"
-          tot_fcast += getFcast(d,nil)
+          tot_fcast += Time::TimeUtils.getFcast(d,nil)
         end
       else
         row[i.to_s]="-"
-        tot_fcast += getFcast(d,nil)
+        tot_fcast += Time::TimeUtils.getFcast(d,nil)
       end
       i = i+1
     end
@@ -81,6 +108,7 @@ class Time::AdminController < ApplicationController
     end
     row['tot']=tot
     row['totfcast']=tot_fcast
+
     #Calcola avg 15gg before
     row['avg15']= Time::TimeReport.where(:user => user)
                       .where("repdate > ?", start_date - 15.days)
@@ -118,11 +146,11 @@ class Time::AdminController < ApplicationController
           tot_fcast += result.somma
         else
           row[i.to_s]="-"
-          tot_fcast += getFcast(d,res)
+          tot_fcast += Time::TimeUtils.getFcast(d,res)
         end
       else
         row[i.to_s]="-"
-        tot_fcast += getFcast(d,res)
+        tot_fcast += Time::TimeUtils.getFcast(d,res)
       end
       i = i+1
     end
@@ -152,21 +180,6 @@ class Time::AdminController < ApplicationController
 
 
     row
-  end
-
-  def getFcast(date, reason)
-
-    if reason != nil
-      fcast = reason.fcast_value
-
-      if(date.saturday? || date.sunday?)
-        fcast=0
-      end
-    else
-      fcast=0
-    end
-
-    fcast
   end
 
   def export

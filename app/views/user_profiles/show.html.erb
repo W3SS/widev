@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @user_profile.user.email %>
+</p>
+
+<p>
+  <strong>Deployed:</strong>
+  <%= @user_profile.deployed %>
+</p>
+
+<p>
+  <strong>Team:</strong>
+  <%= @user_profile.team %>
+</p>
+
+<p>
+  <strong>Sap:</strong>
+  <%= @user_profile.sap %>
+</p>
+
+<%= link_to 'Edit', edit_user_profile_path(@user_profile) %> |
+<%= link_to 'Back', user_profiles_path %>

@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
+  resources :user_profiles
   namespace :time do
   get 'admin/index'
     get 'admin/export'
+    get 'admin/createreport'
   end
 
   namespace :time do

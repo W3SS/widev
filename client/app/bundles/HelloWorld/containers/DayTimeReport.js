@@ -121,7 +121,7 @@ export default class DayTimeReport extends React.Component {
       let reports  = this.state.reports.map((e)=>{
           return <li className="list-group-item" key={e.id}>{e.hours} hr {e.time_reason.name}
                       <span className="pull-right">
-                          <button onClick={()=>this.handleDelete(e)} className="btn btn-xs btn-warning">
+                          <button  onClick={()=>this.handleDelete(e)} className="btn btn-xs">
                             <i className="fa fa-trash fa-1" aria-hidden="true"></i>
                           </button>
                         </span>

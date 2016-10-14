@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161013124205) do
+ActiveRecord::Schema.define(version: 20161014080656) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "trackable_id"
@@ -286,6 +286,17 @@ ActiveRecord::Schema.define(version: 20161013124205) do
   end
 
   add_index "uploads", ["release_id"], name: "index_uploads_on_release_id"
+
+  create_table "user_profiles", force: :cascade do |t|
+    t.boolean  "deployed"
+    t.string   "team"
+    t.string   "sap"
+    t.string   "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "user_profiles", ["email"], name: "index_user_profiles_on_email"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

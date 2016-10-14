@@ -1,0 +1,36 @@
+<h2>
+  Report
+</h2>
+
+
+<%= bootstrap_form_tag url: '/time/admin/createreport',:html => {:class => "form-inline center"} , method: :get do |f| %>
+    <%= f.date_field :sdate, value: @start_date %>
+    <%= f.date_field :edate, value: @end_date %>
+    <%= f.check_box :explode, label: "Explode reason", value: @explode %>
+    <%= f.submit 'Load' %>
+
+<% end %>
+<br/>
+<div id="myGrid" class="ag-fresh" style="height: 400px">
+
+</div>
+
+<script type="text/javascript" charset="utf-8">
+  var columnDefs = <%= @columns.to_json.html_safe %>;
+
+  var rowData = <%= @rows.to_json.html_safe %>;
+  var gridOptions = {
+    columnDefs: columnDefs,
+    rowData: rowData,
+    enableColResize: true, //one of [true, false]
+    enableSorting: true, //one of [true, false]
+    enableFilter: true, //one of [true, false]
+    rowSelection: "single"
+  };
+
+  // setup the grid after the page has finished loading
+  document.addEventListener('DOMContentLoaded', function() {
+    var gridDiv = document.querySelector('#myGrid');
+    new agGrid.Grid(gridDiv, gridOptions);
+  });
+</script>
