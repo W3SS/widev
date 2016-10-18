@@ -1,14 +1,24 @@
 class Time::AdminController < ApplicationController
   before_action :authenticate_user!
   def index
-    start_date = Date.parse(params[:sdate])
-    end_date = Date.parse(params[:edate]) #start_date + (params[:days].to_i).days
+    if params[:sdate]
+      start_date = Date.parse(params[:sdate])
+    else
+      start_date=Date.today.at_beginning_of_month
+    end
 
-    @start_date = start_date
-    @end_date = end_date
+    if params[:edate]
+      end_date = Date.parse(params[:edate])
+    else
+      end_date = start_date +14.days
+    end
+
+    @start_date=start_date
+    @end_date=end_date
+
     @explode = params['explode']
 
-    @users = User.all
+    @users = UserProfile.where(deployed:1)
     @reports =[]
     @columns = []
     @rows=[]
@@ -38,12 +48,12 @@ class Time::AdminController < ApplicationController
 
     @users.each do |user|
       if params[:explode] =="1"
-        tr  = Time::TimeReport.where(:user => user).where("repdate > ?", start_date).where("repdate < ?", end_date).select("distinct(time_reason_id) as reason_id")
+        tr  = Time::TimeReport.where(:user => user.user).where("repdate > ?", start_date).where("repdate < ?", end_date).select("distinct(time_reason_id) as reason_id")
         tr.each() do |r|
-           @rows << getUserTimebyDateRangeWithNAbyReason(user,start_date,end_date,r.reason_id)
+           @rows << getUserTimebyDateRangeWithNAbyReason(user.user,start_date,end_date,r.reason_id)
         end
       else
-        @rows << getUserTimebyDateRangeWithNA(user,start_date,end_date)
+        @rows << getUserTimebyDateRangeWithNA(user.user,start_date,end_date)
       end
 
     end
@@ -149,7 +159,6 @@ class Time::AdminController < ApplicationController
     row
   end
 
-
   def getUserTimebyDateRangeWithNAbyReason user, start_date, end_date, reason
     i=0
     tot=0
@@ -209,8 +218,8 @@ class Time::AdminController < ApplicationController
   def export
 
     start_date = Date.parse(params[:sdate])
-    end_date = Date.parse(params[:edate]) #start_date + (params[:days].to_i).days
-    @users = User.all
+    end_date = Date.parse(params[:edate])
+    @users = UserProfile.where(deployed:1)
     @reports =[]
     @columns = []
     @rows=[]
@@ -237,12 +246,12 @@ class Time::AdminController < ApplicationController
 
     @users.each do |user|
         if params[:explode] =="1"
-          tr  = Time::TimeReport.where(:user => user).where("repdate > ?", start_date).where("repdate < ?", end_date).select("distinct(time_reason_id) as reason_id")
+          tr  = Time::TimeReport.where(:user => user.user).where("repdate > ?", start_date).where("repdate < ?", end_date).select("distinct(time_reason_id) as reason_id")
           tr.each() do |r|
-            @rows << getUserTimebyDateRangeWithNAbyReason(user,start_date,end_date,r.reason_id)
+            @rows << getUserTimebyDateRangeWithNAbyReason(user.user,start_date,end_date,r.reason_id)
           end
         else
-          @rows << getUserTimebyDateRangeWithNA(user,start_date,end_date)
+          @rows << getUserTimebyDateRangeWithNA(user.user,start_date,end_date)
         end
         row = row +1
     end
