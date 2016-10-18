@@ -6,7 +6,7 @@
 <%= bootstrap_form_tag url: '/time/admin/createreport',:html => {:class => "form-inline center"} , method: :get do |f| %>
     <%= f.date_field :sdate, value: @start_date %>
     <%= f.date_field :edate, value: @end_date %>
-    <%= f.check_box :explode, label: "Explode reason", value: @explode %>
+    
     <%= f.submit 'Load' %>
     <%= link_to('Excel',time_admin_exportnew_path(:sdate =>@start_date , :edate=>@end_date ,:explode =>@explode  ),class: "btn btn-success" )%>
 
