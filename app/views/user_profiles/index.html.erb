@@ -2,7 +2,9 @@
 
 <h1>Listing User Profiles</h1>
 
-<table>
+<div class="row">
+  <div class="col-md-12 well">
+    <table  class="table table-bordered datatable">
   <thead>
     <tr>
       <th>User</th>
@@ -16,7 +18,7 @@
   <tbody>
     <% @user_profiles.each do |user_profile| %>
       <tr>
-        <td><%= user_profile.user %></td>
+        <td><%= user_profile.email %></td>
         <td><%= user_profile.deployed %></td>
         <td><%= user_profile.team %></td>
         <td><%= user_profile.sap %></td>
@@ -27,7 +29,15 @@
     <% end %>
   </tbody>
 </table>
-
+</div>
+</div>
 <br>
 
 <%= link_to 'New User profile', new_user_profile_path %>
+
+<script>
+
+  $(function() {
+    $('.datatable').DataTable({});
+  });
+</script>
