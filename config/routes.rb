@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
+  namespace :time do
+    resources :festivita
+  end
   resources :user_profiles
   namespace :time do
   get 'admin/index'
     get 'admin/export'
+    get 'admin/exportnew'
     get 'admin/createreport'
   end
 

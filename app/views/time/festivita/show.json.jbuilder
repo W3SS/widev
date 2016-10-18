@@ -1,0 +1,1 @@
+json.partial! "time_festivita/time_festivitum", time_festivitum: @time_festivitum

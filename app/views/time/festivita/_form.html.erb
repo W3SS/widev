@@ -1,12 +1,12 @@
 <div class="row">
   <div class="col-md-6 well">
-    <%= bootstrap_form_for(@time_reason) do |f| %>
-        <% if @time_reason.errors.any? %>
+    <%= bootstrap_form_for(@time_festivitum) do |f| %>
+        <% if @time_festivitum.errors.any? %>
             <div id="error_explanation">
-              <h2><%= pluralize(@time_reason.errors.count, "error") %> prohibited this time_reason from being saved:</h2>
+              <h2><%= pluralize(@time_festivitum.errors.count, "error") %> prohibited this time_festivitum from being saved:</h2>
 
               <ul>
-                <% @time_reason.errors.full_messages.each do |message| %>
+                <% @time_festivitum.errors.full_messages.each do |message| %>
                     <li><%= message %></li>
                 <% end %>
               </ul>
@@ -17,10 +17,13 @@
           <%= f.text_field :name %>
         </div>
         <div class="field">
-          <%= f.text_field :fcast_value %>
+          <%= f.text_field :forecast_val %>
         </div>
         <div class="field">
-          <%= f.text_field :chageable %>
+          <%= f.check_box :chargeable %>
+        </div>
+        <div class="field">
+          <%= f.date_select :festdate %>
         </div>
         <div class="actions">
           <%= f.submit %>
@@ -29,3 +32,4 @@
 
   </div>
 </div>
+

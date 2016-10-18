@@ -1,4 +1,5 @@
 class Time::AdminController < ApplicationController
+  before_action :authenticate_user!
   def index
     start_date = Date.parse(params[:sdate])
     end_date = Date.parse(params[:edate]) #start_date + (params[:days].to_i).days
@@ -52,8 +53,19 @@ class Time::AdminController < ApplicationController
 
   def createreport
 
+
+    if params[:sdate]
     start_date = Date.parse(params[:sdate])
-    end_date = Date.parse(params[:edate])
+    else
+      start_date=Date.today.at_beginning_of_month
+    end
+
+    if params[:edate]
+      end_date = Date.parse(params[:edate])
+    else
+      end_date = start_date +14.days
+    end
+
     @start_date=start_date
     @end_date=end_date
     profiles  = UserProfile.where(deployed:1)
@@ -63,10 +75,22 @@ class Time::AdminController < ApplicationController
     profiles.each() do |profile|
         reasons.each() do |reason|
           row={'email': profile.email ,'sap':profile.sap, 'reason':reason.name}
+          tot = 0
+          count = 0
           (start_date..end_date).each() do |day|
+
             hours = Time::TimeUtils.getProfileTimeForDateAndReason(profile,day,reason,true)
+            cleaned  = hours
+            if !cleaned.instance_of? Float
+              tot += (cleaned.delete! '?').to_f
+            else
+              tot += cleaned.to_f
+            end
+            count += 1
             row[day.strftime('%d-%m')] = hours
           end #End loop date
+          row['total'] = tot
+          row['avg'] = tot/count
           @rows << row
         end #End loop reason
     end #End loop profile
@@ -253,6 +277,90 @@ class Time::AdminController < ApplicationController
   rescue TypeError, ArgumentError
     false
   end
+
+
+
+  def exportnew
+
+    if params[:sdate]
+      start_date = Date.parse(params[:sdate])
+    else
+      start_date=Date.today.at_beginning_of_month
+    end
+
+    if params[:edate]
+      end_date = Date.parse(params[:edate])
+    else
+      end_date = start_date +14.days
+    end
+
+    @start_date=start_date
+    @end_date=end_date
+    profiles  = UserProfile.where(deployed:1)
+    reasons  = Time::Reason.all
+    @rows=[]
+
+    profiles.each() do |profile|
+      reasons.each() do |reason|
+        row={'email': profile.email ,'sap':profile.sap, 'reason':reason.name}
+        tot = 0
+        count = 0
+        (start_date..end_date).each() do |day|
+
+          hours = Time::TimeUtils.getProfileTimeForDateAndReason(profile,day,reason,true)
+          cleaned  = hours
+          if !cleaned.instance_of? Float
+            tot += (cleaned.delete! '?').to_f
+          else
+            tot += cleaned.to_f
+          end
+          count += 1
+          row[day.strftime('%d-%m')] = hours
+        end #End loop date
+        row['total'] = tot
+        row['avg'] = tot/count
+        @rows << row
+      end #End loop reason
+    end #End loop profile
+
+    @columns = Time::TimeUtils.getColumnsDef(start_date,end_date)
+
+    row=1
+    date = DateTime.now
+
+    name = "Carichi-"+start_date.strftime("%Y%m%d")+"-"+ end_date.strftime("%Y%m%d") +".xlsx"
+    path = "tmp/"+ name
+
+    workbook = WriteXLSX.new(path)
+    worksheets = Hash.new
+
+    format = workbook.add_format # Add a format
+    format.set_bold
+    format.set_color('yellow')
+    format.set_align('left')
+    format.set_bg_color('blue')
+    format2 = workbook.add_format # Add a format
+    format2.set_align('left')
+    format2.set_text_justlast
+
+    worksheets[0] = workbook.add_worksheet('CARICHI')
+
+    @rows.each() do |r|
+      col=0
+      r.each() do |key, value|
+          worksheets[0].write(0,   col, key,format )
+          worksheets[0].write(row,   col, value.to_s,format2 )
+        col +=1
+      end
+      row= row +1
+    end
+
+    workbook.close
+
+    send_file path, :type => "application/octet-stream", :filename => name, :stream => false, :disposition => 'attachment'
+
+  end
+
 
 
 end

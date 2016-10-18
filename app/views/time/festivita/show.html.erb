@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @time_festivitum.name %>
+</p>
+
+<p>
+  <strong>Forecast val:</strong>
+  <%= @time_festivitum.forecast_val %>
+</p>
+
+<p>
+  <strong>Chargeable:</strong>
+  <%= @time_festivitum.chargeable %>
+</p>
+
+<p>
+  <strong>Festdate:</strong>
+  <%= @time_festivitum.festdate %>
+</p>
+
+<%= link_to 'Edit', edit_time_festivitum_path(@time_festivitum) %> |
+<%= link_to 'Back', time_festivita_path %>

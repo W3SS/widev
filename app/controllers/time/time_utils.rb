@@ -11,7 +11,7 @@ class Time::TimeUtils
                                .where(:repdate => date)
                                .select('sum(time_time_reports.hours) as somma ,count(*) as numero').first
     Rails.logger.debug (sum_hour)
-    sum_hour.somma == nil ? hours = 0 : hours=(sum_hour.somma.to_f)
+    sum_hour.somma == nil ? hours = 0: hours=(sum_hour.somma.to_f)
 
     if enableFcast == true && sum_hour.numero.to_i == 0
       hours = "?" + self.getFcast(date,reason).to_s
@@ -31,6 +31,9 @@ class Time::TimeUtils
       columnDefs <<  {headerName: day.strftime('%d'), field: day.strftime('%d-%m'), width: 45}
     end
 
+    columnDefs <<  {headerName: 'Total', field: 'total', width: 45}
+    columnDefs <<  {headerName: 'Avg', field: 'avg', width: 45}
+
   columnDefs
 
   end
@@ -41,14 +44,23 @@ class Time::TimeUtils
       return 0
     end
 
+
     if reason != nil
       fcast = reason.fcast_value
-
       if(date.saturday? || date.sunday?)
         fcast=0
       end
+
+      #Check per festività
+      fest = Time::Festivitum.where(festdate: date).first
+      if fest != nil  && reason.fcast_value > 0
+        fcast=fest.forecast_val
+      end
+
     else
+
       fcast=0
+
     end
 
     fcast

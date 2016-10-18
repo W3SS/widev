@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161014080656) do
+ActiveRecord::Schema.define(version: 20161017093904) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "trackable_id"
@@ -253,6 +253,15 @@ ActiveRecord::Schema.define(version: 20161014080656) do
   end
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true
+
+  create_table "time_festivita", force: :cascade do |t|
+    t.string   "name"
+    t.float    "forecast_val"
+    t.boolean  "chargeable"
+    t.date     "festdate"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
 
   create_table "time_reasons", force: :cascade do |t|
     t.string   "name"

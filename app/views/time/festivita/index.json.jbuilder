@@ -1,0 +1,1 @@
+json.array! @time_festivita, partial: 'time_festivita/time_festivitum', as: :time_festivitum

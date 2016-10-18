@@ -8,8 +8,18 @@
     <%= f.date_field :edate, value: @end_date %>
     <%= f.check_box :explode, label: "Explode reason", value: @explode %>
     <%= f.submit 'Load' %>
+    <%= link_to('Excel',time_admin_exportnew_path(:sdate =>@start_date , :edate=>@end_date ,:explode =>@explode  ),class: "btn btn-success" )%>
 
 <% end %>
+
+<br>
+<ul>
+    <li>Dove presente il simbolo "?" l' utente nn ha caricato ore, si riporta il valore di fcast</li>
+    <li>Per le festività il forecast viene preso in considerazione solo sulle reason che hanno fcast value > 0</li>
+    <li>Il valore di fcast sulle date antecedenti l' attuale è sempre 0</li>
+    <li>Il valore di fcast per le date future è calcolato in base al valore fcast assciato alla reason ad eccezione delle festività</li>
+</ul>
+
 <br/>
 <div id="myGrid" class="ag-fresh" style="height: 400px">
 

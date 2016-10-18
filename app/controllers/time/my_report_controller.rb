@@ -1,4 +1,5 @@
 class Time::MyReportController < ApplicationController
+  before_action :authenticate_user!
   def calendar
 
     @reasons = Time::Reason.all

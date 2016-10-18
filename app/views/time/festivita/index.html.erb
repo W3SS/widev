@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Time Festivita</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Forecast val</th>
+      <th>Chargeable</th>
+      <th>Festdate</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @time_festivita.each do |time_festivitum| %>
+      <tr>
+        <td><%= time_festivitum.name %></td>
+        <td><%= time_festivitum.forecast_val %></td>
+        <td><%= time_festivitum.chargeable %></td>
+        <td><%= time_festivitum.festdate %></td>
+        <td><%= link_to 'Show', time_festivitum %></td>
+        <td><%= link_to 'Edit', edit_time_festivitum_path(time_festivitum) %></td>
+        <td><%= link_to 'Destroy', time_festivitum, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Festivitum', new_time_festivitum_path %>

@@ -1,6 +1,6 @@
 class Time::ReasonsController < ApplicationController
   before_action :set_time_reason, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
   # GET /time/reasons
   # GET /time/reasons.json
   def index
