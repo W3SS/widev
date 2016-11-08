@@ -1,10 +1,29 @@
 class UserProfilesController < ApplicationController
   before_action :set_user_profile, only: [:show, :edit, :update, :destroy]
+  skip_before_action :verify_authenticity_token
 
   # GET /user_profiles
   # GET /user_profiles.json
   def index
     @user_profiles = UserProfile.all
+  end
+
+
+  def updateRampSkill
+
+    @user_profile = UserProfile.find(params[:prof_id])
+
+    if(params[:skill_id].to_i > 9999)
+      @user_profile.ramp_skill = nil
+      @user_profile.ramp_skill_id=nil
+    else
+      @user_profile.ramp_skill_id = (params[:skill_id])
+    end
+
+    @user_profile.save!
+
+    render json: @user_profile.as_json
+
   end
 
   # GET /user_profiles/1
@@ -69,6 +88,7 @@ class UserProfilesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_profile_params
-      params.require(:user_profile).permit(:user, :deployed, :team, :sap, :email , :skill_team)
+      params.require(:user_profile).permit(:user, :deployed, :team, :sap, :email , :skill_team, :ramp_skill_id,:ramp_skill)
+          #
     end
 end

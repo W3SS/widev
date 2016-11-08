@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161104113653) do
+ActiveRecord::Schema.define(version: 20161108135358) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "trackable_id"
@@ -322,9 +322,10 @@ ActiveRecord::Schema.define(version: 20161104113653) do
     t.string   "team"
     t.string   "sap"
     t.string   "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.string   "skill_team"
+    t.integer  "ramp_skill_id"
   end
 
   add_index "user_profiles", ["email"], name: "index_user_profiles_on_email"

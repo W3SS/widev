@@ -1,6 +1,8 @@
 import React, { PropTypes } from 'react';
 import {ModalContainer, ModalDialog} from 'react-modal-dialog';
 import SkillToProfile from './SkillToProfile';
+import Select from 'react-select';
+import axios from 'axios';
 
 
 export default class SkillRow extends React.Component {
@@ -21,12 +23,36 @@ export default class SkillRow extends React.Component {
           skills_profile:this.props.profile.skills_to_profiles,
           is_loading:false,
           average:0,
-          selectedSkill:null
+          selectedSkill:null,
+          ramp_skill:null
       }
    }
 
   componentDidMount(){
   }
+
+    rampSkllChange(e){
+        let prof = this.state.profile;
+        if(e != null){
+            prof.ramp_skill_id = e.id;
+            console.log(e);
+        }else{
+            e ={value: 10000}
+        }
+
+
+      axios.get('/user_prof/updaterampskill?prof_id='+prof.id+'&skill_id='+e.value).then((resp)=>{
+          console.log(resp.data);
+          this.setState({
+              ramp_skill:e.id,
+              profile:resp.data
+          });
+            })
+            .catch(()=>{
+            });
+
+
+    }
 
   handleNewSkill(new_skill_to_profile){
       console.log("HandleNewSkill");
@@ -69,12 +95,27 @@ export default class SkillRow extends React.Component {
       });
 
       let average = Math.round(tot_skill/n_skill,2);
+      let skill_options = [];
+      this.state.skills.forEach((s)=>{
+          skill_options.push({value:s.id,label:s.name, clearableValue: true});
+      });
+
+      let sel_value = null;
+      if (this.state.profile.ramp_skill !=null) sel_value=this.state.profile.ramp_skill.id;
 
     return (
         <tr>
             <td>{this.props.profile.email}</td>
             <td>{average}</td>
             {skillcell}
+            <td> <Select
+                name="form-field-name"
+                value={sel_value}
+                options={skill_options}
+                onChange={(e)=>this.rampSkllChange(e)}
+
+            />
+            </td>
         </tr>
 
     );

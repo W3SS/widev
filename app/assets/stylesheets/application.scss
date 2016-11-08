@@ -356,3 +356,15 @@ table{
   border: none;
   background-color: transparent;
 }
+
+
+.skilltable{
+  font-size:12px;
+
+  .rampcell{
+    width: 150px;
+  }
+  .skillcell{
+    width: 70px;
+  }
+}

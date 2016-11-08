@@ -48,7 +48,7 @@ export default class SkillTable extends React.Component {
   render() {
 
       let headcells = this.state.skills.map((s)=>{
-          return <th key={s.id} >{s.name}</th>
+          return <th className="skillcell" key={s.id} >{s.name}</th>
       });
 
       let profileRow = this.props.profiles.map((p)=>{
@@ -58,12 +58,13 @@ export default class SkillTable extends React.Component {
             <div>
                 {this.state.detail_visible &&
                 <SkillDeatail onClose={()=>this.handleDetailClose()} profile={this.state.selectedProfile} skill={this.state.selectedSkill} />}
-                <table className="table table-bordered">
+                <table className="table table-bordered skilltable">
                     <thead>
                         <tr>
                             <th>Email </th>
-                            <th>Avg </th>
+                            <th className="skillcell" >Avg </th>
                             {headcells}
+                            <th className="rampcell" >Ramp</th>
                         </tr>
                     </thead>
                     <tbody>

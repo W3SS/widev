@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :festivita
   end
   resources :user_profiles
+
   namespace :time do
   get 'admin/index'
     get 'admin/export'
@@ -35,7 +36,7 @@ Rails.application.routes.draw do
     resources :time_reports
   end
   namespace :api do
-      get 'link/get_by_environment/:env_id' => 'link#getByEnvironemnt'
+    get 'link/get_by_environment/:env_id' => 'link#getByEnvironemnt'
   end
 
   resources :links
@@ -44,6 +45,7 @@ Rails.application.routes.draw do
   get 'my_rtc_infos/edit_my'=> 'rtc_infos#edit_my'
   post 'my_rtc_infos/update_my'=> 'rtc_infos#update_my'
 
+  get 'user_prof/updaterampskill' => 'user_profiles#updateRampSkill'
 
   namespace :api do
   get 'rtc/updateWorkItemByInstallation'
