@@ -9,6 +9,7 @@ import LinkListApp from './LinkListClient';
 import TimeReportApp from './TimeReportApp';
 import ReportMainApp from './ReportMainApp';
 import Report2MainApp from './Report2MainApp';
+import SkillTableApp from './SkillTableApp';
 
 // This is how react_on_rails can see the HelloWorldApp in the browser.
 ReactOnRails.register({ HelloWorldApp });
@@ -21,3 +22,4 @@ ReactOnRails.register({ LinkListApp });
 ReactOnRails.register({ TimeReportApp });
 ReactOnRails.register({ ReportMainApp });
 ReactOnRails.register({ Report2MainApp });
+ReactOnRails.register({ SkillTableApp });

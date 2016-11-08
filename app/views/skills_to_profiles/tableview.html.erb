@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Proficency:</strong>
+  <%= @skills_to_profile.proficency %>
+</p>
+
+<p>
+  <strong>Note:</strong>
+  <%= @skills_to_profile.note %>
+</p>
+
+<p>
+  <strong>Add1:</strong>
+  <%= @skills_to_profile.add1 %>
+</p>
+
+<p>
+  <strong>Add2:</strong>
+  <%= @skills_to_profile.add2 %>
+</p>
+
+<%= link_to 'Edit', edit_skills_to_profile_path(@skills_to_profile) %> |
+<%= link_to 'Back', skills_to_profiles_path %>
