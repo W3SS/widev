@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  proficency: 1
+  note: MyString
+  add1: MyString
+  add2: MyString
+
+two:
+  proficency: 1
+  note: MyString
+  add1: MyString
+  add2: MyString

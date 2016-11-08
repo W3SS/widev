@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161017093904) do
+ActiveRecord::Schema.define(version: 20161104113653) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "trackable_id"
@@ -226,6 +226,27 @@ ActiveRecord::Schema.define(version: 20161017093904) do
 
   add_index "rtc_infos", ["users_id"], name: "index_rtc_infos_on_users_id"
 
+  create_table "skills", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "skills_to_profiles", force: :cascade do |t|
+    t.integer  "proficency"
+    t.string   "note"
+    t.string   "add1"
+    t.string   "add2"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "skill_id"
+    t.integer  "user_profile_id"
+  end
+
+  add_index "skills_to_profiles", ["skill_id"], name: "index_skills_to_profiles_on_skill_id"
+  add_index "skills_to_profiles", ["user_profile_id"], name: "index_skills_to_profiles_on_user_profile_id"
+
   create_table "systems", force: :cascade do |t|
     t.string   "name"
     t.string   "color"
@@ -303,6 +324,7 @@ ActiveRecord::Schema.define(version: 20161017093904) do
     t.string   "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "skill_team"
   end
 
   add_index "user_profiles", ["email"], name: "index_user_profiles_on_email"

@@ -1,0 +1,29 @@
+<%= bootstrap_form_for(@skills_to_profile) do |f| %>
+  <% if @skills_to_profile.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@skills_to_profile.errors.count, "error") %> prohibited this skills_to_profile from being saved:</h2>
+
+      <ul>
+      <% @skills_to_profile.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.number_field :proficency %>
+  </div>
+  <div class="field">
+    <%= f.text_field :note %>
+  </div>
+    <div class="field">
+      <%= f.select :skill_id, Skill.all.collect { |p| [ p.name, p.id ] }, include_blank: false %>
+    </div>
+  <div class="field">
+    <%= f.select :user_profile_id, UserProfile.where(skill_team: "IDC-DEV").collect { |p| [ p.email, p.id ] }, include_blank: false %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

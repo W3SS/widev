@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+
+  resources :skills_to_profiles
+  resources :skills
+
+  get 'skillsprofile/tableview' => 'skills_to_profiles#tableview'
+
   namespace :time do
     resources :festivita
   end
