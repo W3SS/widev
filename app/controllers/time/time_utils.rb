@@ -16,7 +16,7 @@ class Time::TimeUtils
                       .where(:user_id=> "99999999")
                       .where(:repdate => date)
                       .select('sum(time_time_reports.hours) as somma ,count(*) as numero').first
-      
+
     end
 
 
