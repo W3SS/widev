@@ -1113,120 +1113,123 @@ context</columns>
       <column id="328" parent="33" name="skill_team">
         <data-type>VARCHAR(0,-1)|12</data-type>
       </column>
-      <index id="329" parent="33" name="index_user_profiles_on_email">
+      <column id="329" parent="33" name="ramp_skill_id">
+        <data-type>INTEGER(0,-1)|4</data-type>
+      </column>
+      <index id="330" parent="33" name="index_user_profiles_on_email">
         <columns>email</columns>
         <desc-columns></desc-columns>
         <unique>1</unique>
       </index>
-      <key id="330" parent="33">
+      <key id="331" parent="33">
         <columns>id</columns>
         <primary>1</primary>
       </key>
-      <column id="331" parent="34" name="id">
+      <column id="332" parent="34" name="id">
         <mandatory>1</mandatory>
         <data-type>INTEGER(0,-1)|4</data-type>
       </column>
-      <column id="332" parent="34" name="email">
+      <column id="333" parent="34" name="email">
         <mandatory>1</mandatory>
         <data-type>VARCHAR(0,-1)|12</data-type>
         <default-expression>&apos;&apos;</default-expression>
       </column>
-      <column id="333" parent="34" name="encrypted_password">
+      <column id="334" parent="34" name="encrypted_password">
         <mandatory>1</mandatory>
         <data-type>VARCHAR(0,-1)|12</data-type>
         <default-expression>&apos;&apos;</default-expression>
       </column>
-      <column id="334" parent="34" name="reset_password_token">
+      <column id="335" parent="34" name="reset_password_token">
         <data-type>VARCHAR(0,-1)|12</data-type>
       </column>
-      <column id="335" parent="34" name="reset_password_sent_at">
+      <column id="336" parent="34" name="reset_password_sent_at">
         <data-type>DATETIME(0,-1)|12</data-type>
       </column>
-      <column id="336" parent="34" name="remember_created_at">
+      <column id="337" parent="34" name="remember_created_at">
         <data-type>DATETIME(0,-1)|12</data-type>
       </column>
-      <column id="337" parent="34" name="sign_in_count">
+      <column id="338" parent="34" name="sign_in_count">
         <mandatory>1</mandatory>
         <data-type>INTEGER(0,-1)|4</data-type>
         <default-expression>0</default-expression>
       </column>
-      <column id="338" parent="34" name="current_sign_in_at">
+      <column id="339" parent="34" name="current_sign_in_at">
         <data-type>DATETIME(0,-1)|12</data-type>
       </column>
-      <column id="339" parent="34" name="last_sign_in_at">
+      <column id="340" parent="34" name="last_sign_in_at">
         <data-type>DATETIME(0,-1)|12</data-type>
       </column>
-      <column id="340" parent="34" name="current_sign_in_ip">
+      <column id="341" parent="34" name="current_sign_in_ip">
         <data-type>VARCHAR(0,-1)|12</data-type>
       </column>
-      <column id="341" parent="34" name="last_sign_in_ip">
+      <column id="342" parent="34" name="last_sign_in_ip">
         <data-type>VARCHAR(0,-1)|12</data-type>
       </column>
-      <column id="342" parent="34" name="created_at">
+      <column id="343" parent="34" name="created_at">
         <mandatory>1</mandatory>
         <data-type>DATETIME(0,-1)|12</data-type>
       </column>
-      <column id="343" parent="34" name="updated_at">
+      <column id="344" parent="34" name="updated_at">
         <mandatory>1</mandatory>
         <data-type>DATETIME(0,-1)|12</data-type>
       </column>
-      <index id="344" parent="34" name="index_users_on_email">
+      <index id="345" parent="34" name="index_users_on_email">
         <columns>email</columns>
         <desc-columns></desc-columns>
         <unique>1</unique>
       </index>
-      <index id="345" parent="34" name="index_users_on_reset_password_token">
+      <index id="346" parent="34" name="index_users_on_reset_password_token">
         <columns>reset_password_token</columns>
         <desc-columns></desc-columns>
         <unique>1</unique>
       </index>
-      <key id="346" parent="34">
+      <key id="347" parent="34">
         <columns>id</columns>
         <primary>1</primary>
       </key>
-      <column id="347" parent="35" name="id">
+      <column id="348" parent="35" name="id">
         <mandatory>1</mandatory>
         <data-type>INTEGER(0,-1)|4</data-type>
       </column>
-      <column id="348" parent="35" name="name">
+      <column id="349" parent="35" name="name">
         <data-type>VARCHAR(0,-1)|12</data-type>
       </column>
-      <column id="349" parent="35" name="int_endpoint">
+      <column id="350" parent="35" name="int_endpoint">
         <data-type>VARCHAR(0,-1)|12</data-type>
       </column>
-      <column id="350" parent="35" name="bs">
+      <column id="351" parent="35" name="bs">
         <data-type>VARCHAR(0,-1)|12</data-type>
       </column>
-      <column id="351" parent="35" name="bs_method">
+      <column id="352" parent="35" name="bs_method">
         <data-type>VARCHAR(0,-1)|12</data-type>
       </column>
-      <column id="352" parent="35" name="applet">
+      <column id="353" parent="35" name="applet">
         <data-type>VARCHAR(0,-1)|12</data-type>
       </column>
-      <column id="353" parent="35" name="applet_method">
+      <column id="354" parent="35" name="applet_method">
         <data-type>VARCHAR(0,-1)|12</data-type>
       </column>
-      <column id="354" parent="35" name="description">
+      <column id="355" parent="35" name="description">
         <data-type>TEXT(0,-1)|12</data-type>
       </column>
-      <column id="355" parent="35" name="created_at">
+      <column id="356" parent="35" name="created_at">
         <mandatory>1</mandatory>
         <data-type>DATETIME(0,-1)|12</data-type>
       </column>
-      <column id="356" parent="35" name="updated_at">
+      <column id="357" parent="35" name="updated_at">
         <mandatory>1</mandatory>
         <data-type>DATETIME(0,-1)|12</data-type>
       </column>
-      <column id="357" parent="35" name="comments">
+      <column id="358" parent="35" name="comments">
         <data-type>TEXT(0,-1)|12</data-type>
       </column>
-      <column id="358" parent="35" name="involvedflow">
+      <column id="359" parent="35" name="involvedflow">
         <data-type>TEXT(0,-1)|12</data-type>
       </column>
-      <column id="359" parent="35" name="workflow">
+      <column id="360" parent="35" name="workflow">
         <data-type>TEXT(0,-1)|12</data-type>
       </column>
-      <key id="360" parent="35">
+      <key id="361" parent="35">
         <columns>id</columns>
         <primary>1</primary>
       </key>

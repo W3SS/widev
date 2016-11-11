@@ -4,13 +4,22 @@ class Time::TimeUtils
 
   def self.getProfileTimeForDateAndReason (profile , date, reason, enableFcast)
 
-    user = profile.user
-    hours = 0
-    sum_hour  = Time::TimeReport.where(:time_reason_id => reason.id)
-                              .where(:user_id=> user.id)
-                               .where(:repdate => date)
-                               .select('sum(time_time_reports.hours) as somma ,count(*) as numero').first
-    Rails.logger.debug (sum_hour)
+    if(profile.user != nil)
+      user = profile.user
+      hours = 0
+      sum_hour  = Time::TimeReport.where(:time_reason_id => reason.id)
+                                 .where(:user_id=> user.id)
+                                 .where(:repdate => date)
+                                 .select('sum(time_time_reports.hours) as somma ,count(*) as numero').first
+    else
+      sum_hour  = Time::TimeReport.where(:time_reason_id => reason.id)
+                      .where(:user_id=> "99999999")
+                      .where(:repdate => date)
+                      .select('sum(time_time_reports.hours) as somma ,count(*) as numero').first
+      
+    end
+
+
     sum_hour.somma == nil ? hours = 0: hours=(sum_hour.somma.to_f)
 
     if enableFcast == true && sum_hour.numero.to_i == 0
