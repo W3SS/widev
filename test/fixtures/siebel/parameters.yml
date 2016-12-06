@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ptype: MyString
+  pa_value: MyString
+  pa_alias: MyString
+  pa_setlevel: MyString
+  server: MyString
+  enterprise: MyString
+  version: 1
+
+two:
+  ptype: MyString
+  pa_value: MyString
+  pa_alias: MyString
+  pa_setlevel: MyString
+  server: MyString
+  enterprise: MyString
+  version: 1

@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<style>
+    .different{
+      background-color: #f99595;
+    }
+    .equal{
+      background-color: #cffec2;
+    }
+    .notpresent{
+      background-color: orange;
+    }
+</style>
+
+<h1>Compare Siebel Parameters</h1>
+<table class="table table-bordered">
+<tr>
+  <th>Parameter</th>
+  <th> A VALUE</th>
+  <th> B VALUE</th>
+</tr>
+<% @paramcomp.each() do |comp| %>
+  <tr class="<%= comp[:css_class] %> ">
+    <td><%= comp[:pa].pa_alias %></td>
+    <td><%= comp[:pa].pa_value %></td>
+    <% if comp[:pb] %>
+        <td><%= comp[:pb].pa_value    %></td>
+        <% else %>
+        <td>NON PRESENTE</td>
+  <% end %>
+  </tr>
+<% end %>
+
+</table>
+
+<h2>To align A ( left ) to B ( right ) </h2>
+<table class="table table-bordered">
+  <% @aligncommand.each() do | cmd | %>
+  <tr>
+    <td><%= cmd %></td>
+  </tr>
+      <% end %>
+</table>

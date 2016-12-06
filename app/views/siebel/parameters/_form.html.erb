@@ -1,0 +1,45 @@
+<%= form_for(@siebel_parameter) do |f| %>
+  <% if @siebel_parameter.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@siebel_parameter.errors.count, "error") %> prohibited this siebel_parameter from being saved:</h2>
+
+      <ul>
+      <% @siebel_parameter.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :ptype %><br>
+    <%= f.text_field :ptype %>
+  </div>
+  <div class="field">
+    <%= f.label :pa_value %><br>
+    <%= f.text_field :pa_value %>
+  </div>
+  <div class="field">
+    <%= f.label :pa_alias %><br>
+    <%= f.text_field :pa_alias %>
+  </div>
+  <div class="field">
+    <%= f.label :pa_setlevel %><br>
+    <%= f.text_field :pa_setlevel %>
+  </div>
+  <div class="field">
+    <%= f.label :server %><br>
+    <%= f.text_field :server %>
+  </div>
+  <div class="field">
+    <%= f.label :enterprise %><br>
+    <%= f.text_field :enterprise %>
+  </div>
+  <div class="field">
+    <%= f.label :version %><br>
+    <%= f.number_field :version %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

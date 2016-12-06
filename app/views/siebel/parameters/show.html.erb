@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Ptype:</strong>
+  <%= @siebel_parameter.ptype %>
+</p>
+
+<p>
+  <strong>Pa value:</strong>
+  <%= @siebel_parameter.pa_value %>
+</p>
+
+<p>
+  <strong>Pa alias:</strong>
+  <%= @siebel_parameter.pa_alias %>
+</p>
+
+<p>
+  <strong>Pa setlevel:</strong>
+  <%= @siebel_parameter.pa_setlevel %>
+</p>
+
+<p>
+  <strong>Server:</strong>
+  <%= @siebel_parameter.server %>
+</p>
+
+<p>
+  <strong>Enterprise:</strong>
+  <%= @siebel_parameter.enterprise %>
+</p>
+
+<p>
+  <strong>Version:</strong>
+  <%= @siebel_parameter.version %>
+</p>
+
+<%= link_to 'Edit', edit_siebel_parameter_path(@siebel_parameter) %> |
+<%= link_to 'Back', siebel_parameters_path %>

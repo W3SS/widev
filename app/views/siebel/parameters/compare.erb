@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Compare Siebel Parameters</h1>
+
+<%= form_tag("/siebel/params/compareview", method: "get") do %>
+    <div class="row">
+      <div class="col-md-6">
+        <table class="table">
+          <tr>
+            <td>  <%= label_tag(:enta, "Enterprise:") %>
+              <%= select_tag(:enta, options_for_select(@dist_ent)) %></td>
+            <td>
+               <%= label_tag(:compa, "Component:") %>
+              <%= select_tag(:compa, options_for_select(@dist_comp)) %>
+            </td>
+            <td>
+                <%= label_tag(:serva, "Server:") %>
+              <%= select_tag(:serva, options_for_select(@dist_server)) %>
+            </td>
+          </tr>
+        </table>
+      </div>
+  <div class="col-md-6">
+    <table class="table">
+      <tr>
+        <td>  <%= label_tag(:entb, "Enterprise:") %>
+          <%= select_tag(:entb, options_for_select(@dist_ent)) %></td>
+        <td>
+           <%= label_tag(:compb, "Component:") %>
+          <%= select_tag(:compb, options_for_select(@dist_comp)) %>
+        </td>
+        <td>
+            <%= label_tag(:servb, "Server:") %>
+          <%= select_tag(:servb, options_for_select(@dist_server)) %>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+    <div class="row">
+      <div class="col-md-12">
+          <%= label_tag(:hideeq, "Hide Equal ") %>
+        <%= check_box_tag(:hideeq)%>
+      </div>
+    </div>
+    <div class="row centered">
+
+      <%= submit_tag("Compare") %>
+    </div>
+
+
+<% end %>
+
+
+<a href="/siebel/params/import">Import new parameter set</a>

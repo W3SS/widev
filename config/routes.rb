@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  namespace :siebel do
+    resources :parameters
+    get 'params/import' =>'parameters#import'
+    post 'params/load' => 'parameters#load'
+    get 'params/compare' => 'parameters#compare'
+    get 'params/compareview' => 'parameters#compareview'
+  end
+
   resources :skills_to_profiles
   resources :skills
 

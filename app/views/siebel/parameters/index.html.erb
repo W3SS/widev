@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Siebel Parameters</h1>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Ptype</th>
+      <th>Pa value</th>
+      <th>Pa alias</th>
+      <th>Pa setlevel</th>
+      <th>Server</th>
+      <th>Enterprise</th>
+      <th>Version</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @siebel_parameters.each do |siebel_parameter| %>
+      <tr>
+        <td><%= siebel_parameter.ptype %></td>
+        <td><%= siebel_parameter.pa_value %></td>
+        <td><%= siebel_parameter.pa_alias %></td>
+        <td><%= siebel_parameter.pa_setlevel %></td>
+        <td><%= siebel_parameter.server %></td>
+        <td><%= siebel_parameter.enterprise %></td>
+        <td><%= siebel_parameter.version %></td>
+        <td><%= link_to 'Show', siebel_parameter %></td>
+        <td><%= link_to 'Edit', edit_siebel_parameter_path(siebel_parameter) %></td>
+        <td><%= link_to 'Destroy', siebel_parameter, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Parameter', new_siebel_parameter_path %>

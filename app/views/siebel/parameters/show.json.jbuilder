@@ -1,0 +1,1 @@
+json.partial! "siebel_parameters/siebel_parameter", siebel_parameter: @siebel_parameter

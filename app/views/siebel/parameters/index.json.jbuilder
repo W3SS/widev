@@ -1,0 +1,1 @@
+json.array! @siebel_parameters, partial: 'siebel_parameters/siebel_parameter', as: :siebel_parameter

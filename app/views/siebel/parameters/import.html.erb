@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p><h1>Import Siebel Parameters</h1>
+
+<div class="row">
+  <div class="col-md-12 well">
+    <ul>
+      <li>Connect to server manager using <strong>srvrmgr /g crmpec53 /e CRMDH /u sadmin /k "|" </strong></li>
+      <li>Spool parameters <strong>list param for comp sccobjmgr_ita show PA_ALIAS,PA_VALUE</strong></li>
+      <li>Paste result in the TextArea or save into file and upload</li>
+    </ul>
+  </div>
+</div>
+
+<%= form_tag("/siebel/params/load", method: "post", multipart: true) do %>
+      <%= label_tag(:enterprise, "Enterprise:") %>
+    <%= select_tag(:enterprise, options_for_select([['CRMDA', 'CRMDA'], ['CRMDH', 'CRMDH']])) %>
+      <%= label_tag(:enterprise, "Param Type:") %>
+    <%= select_tag(:ptype, options_for_select([['normal', 'normal'], ['advanced', 'advanced'], ['hidden', 'hidden']])) %>
+    <%= label_tag(:server, "Server:") %>
+      <%= text_field_tag(:server) %>
+    <%= label_tag(:component, "Component Alias:") %>
+      <%= text_field_tag(:component) %>
+      <%= text_area_tag(:srvspool) %>
+      <%= file_field_tag :file %>
+
+    <%= submit_tag("Import") %>
+<% end %>
+
+

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161108135358) do
+ActiveRecord::Schema.define(version: 20161205120548) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "trackable_id"
@@ -225,6 +225,19 @@ ActiveRecord::Schema.define(version: 20161108135358) do
   end
 
   add_index "rtc_infos", ["users_id"], name: "index_rtc_infos_on_users_id"
+
+  create_table "siebel_parameters", force: :cascade do |t|
+    t.string   "ptype"
+    t.string   "pa_value"
+    t.string   "pa_alias"
+    t.string   "pa_setlevel"
+    t.string   "server"
+    t.string   "enterprise"
+    t.integer  "version"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "component"
+  end
 
   create_table "skills", force: :cascade do |t|
     t.string   "name"
