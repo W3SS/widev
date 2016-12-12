@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Import Siebel Parameters result</h1>
+
+<h2>New params : <%= @p_created %></h2>
+<h2>Updated params : <%= @p_updated %></h2>
+
+<h2>Errors </h2>
+<ul>
+  <% @mess.each() do |m| %>
+    <li><%= m %></li>
+  <% end %>
+</ul>
+

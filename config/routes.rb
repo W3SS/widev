@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     post 'params/load' => 'parameters#load'
     get 'params/compare' => 'parameters#compare'
     get 'params/compareview' => 'parameters#compareview'
+    get 'params/queryparam' => 'parameters#queryparam'
+    get 'params/serv' => 'parameters#serv'
   end
 
   resources :skills_to_profiles

@@ -1,0 +1,53 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Import Siebel Parameters from server manager</h1>
+<%= form_tag("/siebel/params/queryparam", method: "get") do %>
+    <div class="row">
+      <div class="col-md-6">
+        <table class="table">
+          <tr>
+            <td>  <%= label_tag(:enterprise, "Enterprise:") %>
+                <%= text_field_tag(:enterprise) %>
+            </td>
+
+            <td>
+                <%= label_tag(:server, "Server:") %>
+                <%= text_field_tag(:server) %>
+            </td>
+            <td>
+                <%= label_tag(:ptype, "Param Type:") %>
+              <%= select_tag(:ptype, options_for_select([['normal', 'normal'], ['advanced', 'advanced'], ['hidden', 'hidden']])) %>
+            </td>
+            <td>
+               <%= label_tag(:component, "Component:") %>
+                <%= text_field_tag(:component) %>
+            </td>
+          <tr>
+              <td>
+                <%= label_tag(:server, "Host:") %>
+                <%= text_field_tag(:host) %>
+            </td>
+              <td>
+                  <%= label_tag(:user, "User:") %>
+                  <%= text_field_tag(:user) %>
+              </td>
+              <td>
+                  <%= label_tag(:pass, "Password:") %>
+                  <%= text_field_tag(:pass) %>
+              </td>
+            <td>
+                <%= label_tag(:sadminp, "Sadmin Password:") %>
+                <%= text_field_tag(:sadminp) %>
+            </td>
+            </tr>
+
+          </tr>
+        </table>
+
+        <%= submit_tag("Import") %>
+
+      </div>
+      </div>
+<% end %>
+
+

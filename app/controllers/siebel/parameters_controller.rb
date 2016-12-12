@@ -1,9 +1,82 @@
+
+
 class Siebel::ParametersController < ApplicationController
   before_action :set_siebel_parameter, only: [:show, :edit, :update, :destroy]
 
   def import
 
   end
+
+def serv
+
+end
+  def queryparam
+
+    @enterprise = params[:enterprise]
+    @server  = params[:server]
+    @component  = params[:component]
+    @host = params[:host]
+    @user = params[:user]
+    @pass = params[:pass]
+    @sadminp = params[:sadminp]
+    @ptype = params[:ptype]
+
+    @mess=[]
+    @res="";
+    pt=@ptype
+    if @ptype == 'normal'
+      pt =''
+    end
+    @cmd = '. ./.profile;srvrmgr /g '+@host+' /e '+@enterprise+' /u sadmin /p '+@sadminp+' /s '+@server+' /k "|" /c "list '+pt+' param for comp '+@component+' show PA_ALIAS,PA_VALUE"'
+    ssh = Net::SSH.start(@host, @user, :password => @pass)
+    res = ssh.exec!(@cmd)
+    ssh.close
+    @res=res
+
+    rows = res.split(/\n+/)
+    i=0
+    start_row=0;
+    end_row=0
+    rows.each() do |r|
+      if r.include? "PA_ALIAS"
+        start_row = i+2
+      end
+      if r.include? "rows returned"
+        end_row=i-2
+      end
+      i = i+1
+    end
+    @p_updated =0
+    @p_created =0
+    if start_row !=0 && end_row !=0
+      rows[start_row..end_row].each() do |r|
+        p = r.split("|")
+        pname = p[0]
+        pvalue = p[1]
+
+        old_p = Siebel::Parameter.where(:enterprise => @enterprise, :ptype => @ptype, :server=>@server ,:component =>  @component, :pa_alias =>pname.strip).first
+        if old_p != nil
+          old_p.pa_value = pvalue.strip
+          if old_p.version == nil
+            old_p.version = 1
+          else
+            old_p.version  = old_p.version + 1
+          end
+          old_p.save!
+          @p_updated +=1
+        else
+          Siebel::Parameter.create!(:enterprise => @enterprise, :ptype =>@ptype, :server=>@server ,:component => @component, :pa_alias =>pname.strip,:pa_value =>pvalue.strip)
+          @p_created +=1
+        end
+      end
+    else
+      @mess.push(@cmd)
+      @mess.push("Error on getting params from server")
+      @mess.push(res)
+    end
+
+  end
+
 
   def compare
 

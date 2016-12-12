@@ -54,6 +54,9 @@ gem 'ruby-oci8'
 gem 'write_xlsx'
 gem 'ffi'
 gem 'faker'
+gem 'jruby-pageant', '~> 1.1'
+gem 'net-ssh', '~> 3.2'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

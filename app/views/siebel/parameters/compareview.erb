@@ -15,12 +15,14 @@
 <h1>Compare Siebel Parameters</h1>
 <table class="table table-bordered">
 <tr>
+  <th> Type </th>
   <th>Parameter</th>
   <th> A VALUE</th>
   <th> B VALUE</th>
 </tr>
 <% @paramcomp.each() do |comp| %>
   <tr class="<%= comp[:css_class] %> ">
+    <td><%= comp[:pa].ptype %></td>
     <td><%= comp[:pa].pa_alias %></td>
     <td><%= comp[:pa].pa_value %></td>
     <% if comp[:pb] %>
