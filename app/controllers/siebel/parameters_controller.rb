@@ -42,7 +42,7 @@ end
         start_row = i+2
       end
       if r.include? "rows returned"
-        end_row=i-2
+        end_row=i-1
       end
       i = i+1
     end
